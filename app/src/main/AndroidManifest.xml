@@ -29,8 +29,7 @@
             android:name=".OwnerRegister"
             android:exported="false" />
         <activity
-            android:name=".Otp"
-            android:exported="false" />
+            android:name=".Otp"/>
         <activity
             android:name=".Register"
             android:exported="false"/>

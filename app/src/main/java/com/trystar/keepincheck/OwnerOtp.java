@@ -1,5 +1,7 @@
 package com.trystar.keepincheck;
 
+import static android.widget.Toast.makeText;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,8 +35,8 @@ public class OwnerOtp extends AppCompatActivity {
         setContentView(R.layout.activity_owner_otp);
 
         phonenumber = getIntent().getStringExtra("mobile");
-        otp = findViewById(R.id.OTP);
-        btn2 = findViewById(R.id.btn2);
+        //otp = findViewById(R.id.OTP);
+        //btn2 = findViewById(R.id.btn2);
         mAuth = FirebaseAuth.getInstance();
 
         initiateotp();
@@ -42,9 +44,9 @@ public class OwnerOtp extends AppCompatActivity {
         try {
             btn2.setOnClickListener(view -> {
                 if (otp.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "please Enter OTP", Toast.LENGTH_LONG).show();
+                    makeText(getApplicationContext(), "please Enter OTP", Toast.LENGTH_SHORT).show();
                 } else if (otp.getText().toString().length() != 6) {
-                    Toast.makeText(getApplicationContext(), "Invalid OTP", Toast.LENGTH_LONG).show();
+                    makeText(getApplicationContext(), "Invalid OTP", Toast.LENGTH_SHORT).show();
                 } else {
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpid, otp.getText().toString());
                     signInWithPhoneAuthCredential(credential);
@@ -54,7 +56,7 @@ public class OwnerOtp extends AppCompatActivity {
             });
 
         } catch (Exception e) {
-            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+            makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -79,7 +81,7 @@ public class OwnerOtp extends AppCompatActivity {
 
                                     @Override
                                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                                        makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                                     }
                                 }
                         )          // OnVerificationStateChangedCallbacks
@@ -97,7 +99,7 @@ public class OwnerOtp extends AppCompatActivity {
                             startActivity(new Intent(OwnerOtp.this,MainActivity.class));
                             finish();
                         } else {
-                            Toast.makeText(getApplicationContext(),"Signin code Error",Toast.LENGTH_LONG).show();
+                            makeText(getApplicationContext(),"Signin code Error",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
