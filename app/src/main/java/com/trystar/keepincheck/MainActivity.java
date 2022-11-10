@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this,Register.class));
+                startActivity(new Intent(MainActivity.this,SelectIdentity.class));
                 Toast.makeText(MainActivity.this,"Signing Out",Toast.LENGTH_SHORT).show();
             }
         });

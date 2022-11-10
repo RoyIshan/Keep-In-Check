@@ -14,10 +14,7 @@
         android:theme="@style/Theme.KeepInCheck"
         tools:targetApi="31">
         <activity
-            android:name=".Otp"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
+            android:name=".SelectIdentity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,9 +23,20 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".OwnerOtp"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerRegister"
+            android:exported="false" />
+        <activity
+            android:name=".Otp"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
