@@ -6,10 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,15 +15,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.concurrent.TimeUnit;
+import java.util.jar.Attributes;
+
 
 public class Register extends AppCompatActivity {
 
     //int ans=0;
-    static int ans = 1;
+    //static int ans = 0;
     EditText number,name,inviteCode;
     Button btn;
     FirebaseAuth fAuth;
+    String code, mNumber ,Name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +38,17 @@ public class Register extends AppCompatActivity {
             finish();
         }
 
-        number=(EditText)findViewById(R.id.number);
+        number=findViewById(R.id.number);
         name = findViewById(R.id.name);
-        btn = (Button) findViewById(R.id.btn);
+        btn =  findViewById(R.id.btn);
         inviteCode = findViewById(R.id.invite);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String code = inviteCode.getText().toString();
-                String Name = name.getText().toString();
-                String mNumber = number.getText().toString();
+                code = inviteCode.getText().toString();
+                Name = name.getText().toString();
+                mNumber = number.getText().toString();
                 if(Name.length()<1){
                     name.setError("Name can not be NULL");
                     name.requestFocus();
@@ -67,7 +67,7 @@ public class Register extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         Toast.makeText(Register.this,e.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }*/
-                    if(c==1)
+                    /*if(c==1)
                     {
                         if(Name.length()>1 && mNumber.length()==10)
                         {
@@ -80,7 +80,7 @@ public class Register extends AppCompatActivity {
                     }
                     else {
                         Toast.makeText(Register.this,"Incorrect invite code", Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
                 }
                 else{
                     inviteCode.setError("Length should be 6");
@@ -95,6 +95,9 @@ public class Register extends AppCompatActivity {
 
             private int checkExist(String companyCode) {
                 try {
+                    code = inviteCode.getText().toString();
+                    Name = name.getText().toString();
+                    mNumber = number.getText().toString();
                     db.collection("Owner detail")
                             .whereEqualTo("Invite Code",companyCode)//this is for checking the existence of company code
                             .get()
@@ -103,25 +106,34 @@ public class Register extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     if (task.isSuccessful()) {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
-                                            if (document.exists())
-                                            {
-                                                Toast.makeText(Register.this,document.getString("Invite Code"), Toast.LENGTH_LONG).show();
-                                                ans = 1;
-                                            }
+                                            if (document.exists()) {
 
+                                                if (Name.length() > 1 && mNumber.length() == 10) {
+                                                    // saveOnFirestore();
+                                                    Intent intent = new Intent(Register.this, Otp.class);
+                                                    intent.putExtra("mobile", "+91" + number.getText().toString());
+                                                    startActivity(intent);
+                                                    Toast.makeText(Register.this, document.getString("Invite Code"), Toast.LENGTH_SHORT).show();
+                                                }
+
+                                                //ans = 1;
+                                                else {
+                                                    Toast.makeText(Register.this, "Incorrect invite code", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else {
+                                                Toast.makeText(Register.this, "error: code doesnt exist", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
                                     } else {
-
                                         Toast.makeText(Register.this,"error", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });}
                 catch (Exception e)
                 {
-
-                    Toast.makeText(Register.this,e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(Register.this,e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                return ans;
+                return 0;
             }
         });
     }
