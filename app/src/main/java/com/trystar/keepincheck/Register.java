@@ -17,9 +17,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.concurrent.TimeUnit;
+
 public class Register extends AppCompatActivity {
 
-    boolean ans=false;
+    //int ans=0;
+    static int ans = 1;
     EditText number,name,inviteCode;
     Button btn;
     FirebaseAuth fAuth;
@@ -57,14 +60,22 @@ public class Register extends AppCompatActivity {
                 }
                 if(code.length()==6)
                 {
-                    if(checkExist(code))
+                    int c = checkExist(code);
+                    //creating Delay
+                   /* try {
+                        TimeUnit.SECONDS.sleep(3);
+                    } catch (InterruptedException e) {
+                        Toast.makeText(Register.this,e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }*/
+                    if(c==1)
                     {
                         if(Name.length()>1 && mNumber.length()==10)
                         {
-                            saveOnFirestore();
+                           // saveOnFirestore();
                             Intent intent = new Intent(Register.this, Otp.class);
                             intent.putExtra("mobile", "+91" + number.getText().toString());
                             startActivity(intent);
+                            ans=0;
                         }
                     }
                     else {
@@ -79,9 +90,10 @@ public class Register extends AppCompatActivity {
             }
 
             private void saveOnFirestore() {
+
             }
 
-            private boolean checkExist(String companyCode) {
+            private int checkExist(String companyCode) {
                 try {
                     db.collection("Owner detail")
                             .whereEqualTo("Invite Code",companyCode)//this is for checking the existence of company code
@@ -93,11 +105,13 @@ public class Register extends AppCompatActivity {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             if (document.exists())
                                             {
-                                                ans = true;
+                                                Toast.makeText(Register.this,document.getString("Invite Code"), Toast.LENGTH_LONG).show();
+                                                ans = 1;
                                             }
-                                            //document.getString("Company Code");
+
                                         }
                                     } else {
+
                                         Toast.makeText(Register.this,"error", Toast.LENGTH_SHORT).show();
                                     }
                                 }
