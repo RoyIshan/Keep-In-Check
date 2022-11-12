@@ -9,12 +9,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.jar.Attributes;
 
 
@@ -89,8 +94,29 @@ public class Register extends AppCompatActivity {
 
             }
 
-            private void saveOnFirestore() {
+            private void saveOnFirestore(String cName) {
 
+                Map<String, Object> user = new HashMap<>();
+                user.put("Name", name.getText().toString());
+                user.put("Company Name", cName);
+                user.put("Phone Number", number.getText().toString());
+                user.put("Invite Code",inviteCode.getText().toString());
+
+                // Add a new document with a generated ID
+                db.collection("Worker detail")
+                        .add(user)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                //Toast.makeText(Register.this,"Data added", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Register.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
 
             private int checkExist(String companyCode) {
@@ -109,11 +135,13 @@ public class Register extends AppCompatActivity {
                                             if (document.exists()) {
 
                                                 if (Name.length() > 1 && mNumber.length() == 10) {
-                                                    // saveOnFirestore();
+
+                                                    String cName = document.getString("Company Name");
+                                                    saveOnFirestore(cName);
                                                     Intent intent = new Intent(Register.this, Otp.class);
                                                     intent.putExtra("mobile", "+91" + number.getText().toString());
                                                     startActivity(intent);
-                                                    Toast.makeText(Register.this, document.getString("Invite Code"), Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(Register.this,"You are joining as a employee of"+cName, Toast.LENGTH_SHORT).show();
                                                 }
 
                                                 //ans = 1;
