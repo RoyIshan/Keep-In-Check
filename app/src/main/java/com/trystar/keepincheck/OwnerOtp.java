@@ -32,11 +32,11 @@ public class OwnerOtp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner_otp);
+        setContentView(R.layout.activity_otp);
 
         phonenumber = getIntent().getStringExtra("mobile");
-        //otp = findViewById(R.id.OTP);
-        //btn2 = findViewById(R.id.btn2);
+        otp = findViewById(R.id.OTP);
+        btn2 = findViewById(R.id.btn2);
         mAuth = FirebaseAuth.getInstance();
 
         initiateotp();
@@ -99,7 +99,7 @@ public class OwnerOtp extends AppCompatActivity {
                             startActivity(new Intent(OwnerOtp.this,MainActivity.class));
                             finish();
                         } else {
-                            makeText(getApplicationContext(),"Signin code Error",Toast.LENGTH_SHORT).show();
+                            makeText(getApplicationContext(),"Signing code Error",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

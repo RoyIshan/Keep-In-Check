@@ -36,9 +36,9 @@ public class OwnerRegister extends AppCompatActivity {
             finish();
         }
 
-        number=(EditText)findViewById(R.id.number);
+        number=findViewById(R.id.number);
         name = findViewById(R.id.name);
-        btn = (Button) findViewById(R.id.btn);
+        btn =  findViewById(R.id.btn);
         inviteCode = findViewById(R.id.invite);
         companyName = findViewById(R.id.cName);
 
