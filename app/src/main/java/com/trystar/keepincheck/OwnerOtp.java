@@ -96,7 +96,7 @@ public class OwnerOtp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            startActivity(new Intent(OwnerOtp.this,MainActivity.class));
+                            startActivity(new Intent(OwnerOtp.this,AssignTask.class));
                             finish();
                         } else {
                             makeText(getApplicationContext(),"Signing code Error",Toast.LENGTH_SHORT).show();
