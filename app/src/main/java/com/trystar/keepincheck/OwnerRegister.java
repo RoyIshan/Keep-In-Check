@@ -72,7 +72,7 @@ public class OwnerRegister extends AppCompatActivity {
                     if(mNumber.length() == 10)
                     {
                         saveOnFirestore();
-                        Intent intent = new Intent(OwnerRegister.this, Otp.class);
+                        Intent intent = new Intent(OwnerRegister.this, OwnerOtp.class);
                         intent.putExtra("mobile", "+91" + mNumber);
                         startActivity(intent);
                     }
