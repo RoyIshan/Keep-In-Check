@@ -17,16 +17,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.jar.Attributes;
 
 
 public class Register extends AppCompatActivity {
 
-    //int ans=0;
-    //static int ans = 0;
     EditText number,name,inviteCode;
     Button btn;
     FirebaseAuth fAuth;
@@ -66,26 +62,7 @@ public class Register extends AppCompatActivity {
                 if(code.length()==6)
                 {
                     int c = checkExist(code);
-                    //creating Delay
-                   /* try {
-                        TimeUnit.SECONDS.sleep(3);
-                    } catch (InterruptedException e) {
-                        Toast.makeText(Register.this,e.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }*/
-                    /*if(c==1)
-                    {
-                        if(Name.length()>1 && mNumber.length()==10)
-                        {
-                           // saveOnFirestore();
-                            Intent intent = new Intent(Register.this, Otp.class);
-                            intent.putExtra("mobile", "+91" + number.getText().toString());
-                            startActivity(intent);
-                            ans=0;
-                        }
-                    }
-                    else {
-                        Toast.makeText(Register.this,"Incorrect invite code", Toast.LENGTH_SHORT).show();
-                    }*/
+
                 }
                 else{
                     inviteCode.setError("Length should be 6");
