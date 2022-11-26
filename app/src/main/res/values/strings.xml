@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Keep In Check</string>
+    <string name="title_activity_maps_worker">MapsActivityWorker</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
