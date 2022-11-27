@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,17 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KeepInCheck"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
             android:name=".WorkerDashboard"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <!--
-            
-
              To get one, follow the directions here:
 
                 https://developers.google.com/maps/documentation/android-sdk/get-api-key
@@ -37,19 +36,15 @@
             android:value="YOUR_API_KEY" />
 
         <activity
-            android:name=".MapsActivityWorker"
-            android:exported="false"
-            android:label="@string/title_activity_maps_worker" />
-        <activity
             android:name=".AssignTask"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".SelectIdentity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,14 +52,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OwnerOtp"
+            android:name=".OwnerPart.OwnerOtp"
             android:exported="false" />
         <activity
-            android:name=".OwnerRegister"
+            android:name=".OwnerPart.OwnerRegister"
             android:exported="false" />
-        <activity android:name=".Otp" />
+        <activity android:name=".WorkerPart.Otp" />
         <activity
-            android:name=".Register"
+            android:name=".WorkerPart.Register"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
