@@ -1,4 +1,4 @@
-package com.trystar.keepincheck;
+package com.trystar.keepincheck.WorkerPart;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.WorkerDashboard;
 
 import java.util.concurrent.TimeUnit;
 
@@ -91,7 +93,7 @@ public class Otp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            startActivity(new Intent(Otp.this,WorkerDashboard.class));
+                            startActivity(new Intent(Otp.this, WorkerDashboard.class));
 
 
                             finish();

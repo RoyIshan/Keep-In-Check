@@ -1,4 +1,4 @@
-package com.trystar.keepincheck;
+package com.trystar.keepincheck.OwnerPart;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.trystar.keepincheck.MainActivity;
+import com.trystar.keepincheck.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +34,7 @@ public class OwnerRegister extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
 
