@@ -12,6 +12,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +24,9 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
 
 
     private LocationManager locationManager;
+    TextView num;
+    String Number;
+
 
 
     @Override
@@ -32,6 +36,7 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
 
         Button signOut;
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED &&
@@ -71,8 +76,12 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
 
 
         LocationHelper helper= new LocationHelper(
+
                 location.getLongitude(), location.getLatitude()
         );
+        String mnumber =getIntent().getStringExtra("mobile");
+        num=findViewById(R.id.textView7);
+        num.setText(mnumber);
         OnCompleteListener<Void> onCompleteListener;
         FirebaseDatabase.getInstance().getReference("Current Location")
                 .setValue(helper).addOnCompleteListener(new OnCompleteListener<Void>() {
