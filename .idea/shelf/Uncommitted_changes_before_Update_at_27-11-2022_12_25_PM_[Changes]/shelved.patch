@@ -1,0 +1,179 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'com.android.application'\r\n    id 'com.google.gms.google-services'\r\n}\r\n\r\nandroid {\r\n    compileSdk 32\r\n\r\n    defaultConfig {\r\n        applicationId \"com.trystar.keepincheck\"\r\n        minSdk 28\r\n        targetSdk 32\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    namespace 'com.trystar.keepincheck'\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation 'androidx.appcompat:appcompat:1.5.1'\r\n    implementation 'com.google.android.material:material:1.7.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'\r\n    implementation 'com.google.firebase:firebase-auth:21.1.0'\r\n    implementation 'com.google.firebase:firebase-firestore:24.4.1'\r\n    testImplementation 'junit:junit:4.13.2'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.4'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'\r\n    implementation platform('com.google.firebase:firebase-bom:31.0.2')\r\n        // When using the BoM, you don't specify versions in Firebase library dependencies\r\n    implementation 'com.google.firebase:firebase-auth'\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	
++++ b/app/build.gradle	
+@@ -36,6 +36,8 @@
+     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+     implementation 'com.google.firebase:firebase-auth:21.1.0'
+     implementation 'com.google.firebase:firebase-firestore:24.4.1'
++    implementation 'com.google.firebase:firebase-database:20.1.0'
++    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+     testImplementation 'junit:junit:4.13.2'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+Index: app/src/main/java/com/trystar/keepincheck/SelectIdentity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.trystar.keepincheck;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\n\r\npublic class SelectIdentity extends AppCompatActivity {\r\n\r\n    Button owner,worker;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_select_identity);\r\n\r\n        owner = findViewById(R.id.Owner);\r\n        worker = findViewById(R.id.Worker);\r\n\r\n        owner.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(SelectIdentity.this,OwnerRegister.class));\r\n            }\r\n        });\r\n        worker.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(SelectIdentity.this,Register.class));\r\n            }\r\n        });\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/trystar/keepincheck/SelectIdentity.java b/app/src/main/java/com/trystar/keepincheck/SelectIdentity.java
+--- a/app/src/main/java/com/trystar/keepincheck/SelectIdentity.java	
++++ b/app/src/main/java/com/trystar/keepincheck/SelectIdentity.java	
+@@ -7,6 +7,9 @@
+ import android.view.View;
+ import android.widget.Button;
+ 
++import com.trystar.keepincheck.OwnerPart.OwnerRegister;
++import com.trystar.keepincheck.WorkerPart.Register;
++
+ public class SelectIdentity extends AppCompatActivity {
+ 
+     Button owner,worker;
+@@ -21,13 +24,13 @@
+         owner.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+-                startActivity(new Intent(SelectIdentity.this,OwnerRegister.class));
++                startActivity(new Intent(SelectIdentity.this, OwnerRegister.class));
+             }
+         });
+         worker.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+-                startActivity(new Intent(SelectIdentity.this,Register.class));
++                startActivity(new Intent(SelectIdentity.this, Register.class));
+             }
+         });
+     }
+Index: app/src/main/res/layout/activity_register.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".Register\">\r\n\r\n\r\n    <EditText\r\n        android:id=\"@+id/number\"\r\n        android:layout_width=\"205dp\"\r\n        android:layout_height=\"51dp\"\r\n        android:autoText=\"true\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Mobile number\"\r\n        android:inputType=\"phone\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#070707\"\r\n        android:textSize=\"24sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.15\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.633\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btn\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"#8A2222\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:text=\"OTP\"\r\n        android:textSize=\"20sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.848\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.631\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/name\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:autoText=\"true\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Enter Your Name\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#000000\"\r\n        android:textSize=\"24sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.233\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.37\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView3\"\r\n        android:layout_width=\"331dp\"\r\n        android:layout_height=\"54dp\"\r\n        android:fontFamily=\"sans-serif\"\r\n        android:text=\"Welcome\"\r\n        android:textAlignment=\"center\"\r\n        android:textAllCaps=\"true\"\r\n        android:textColor=\"#000000\"\r\n        android:textSize=\"50sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.387\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.126\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/invite\"\r\n        android:layout_width=\"204dp\"\r\n        android:layout_height=\"55dp\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Invite code\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textAllCaps=\"true\"\r\n        android:textColorHint=\"#101010\"\r\n        android:textSize=\"24sp\"\r\n        android:textStyle=\"bold|italic\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.154\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_register.xml b/app/src/main/res/layout/activity_register.xml
+--- a/app/src/main/res/layout/activity_register.xml	
++++ b/app/src/main/res/layout/activity_register.xml	
+@@ -4,7 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".Register">
++    tools:context=".WorkerPart.Register">
+ 
+ 
+     <EditText
+Index: app/src/main/res/layout/activity_otp.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#08DA01\"\r\n    tools:context=\".Otp\">\r\n\r\n    <EditText\r\n        android:id=\"@+id/OTP\"\r\n        android:layout_width=\"243dp\"\r\n        android:layout_height=\"59dp\"\r\n        android:ems=\"10\"\r\n        android:gravity=\"center\"\r\n        android:hint=\"Enter OTP\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textAllCaps=\"true\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#A3A3A3\"\r\n        android:textSize=\"21sp\"\r\n        android:textStyle=\"bold|italic\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.354\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btn2\"\r\n        android:layout_width=\"198dp\"\r\n        android:layout_height=\"73dp\"\r\n        android:text=\"Okay\"\r\n        android:textSize=\"18sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_otp.xml b/app/src/main/res/layout/activity_otp.xml
+--- a/app/src/main/res/layout/activity_otp.xml	
++++ b/app/src/main/res/layout/activity_otp.xml	
+@@ -5,7 +5,7 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:background="#08DA01"
+-    tools:context=".Otp">
++    tools:context=".WorkerPart.Otp">
+ 
+     <EditText
+         android:id="@+id/OTP"
+Index: app/src/main/res/layout/activity_owner_otp.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".OwnerOtp\">\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_owner_otp.xml b/app/src/main/res/layout/activity_owner_otp.xml
+--- a/app/src/main/res/layout/activity_owner_otp.xml	
++++ b/app/src/main/res/layout/activity_owner_otp.xml	
+@@ -4,6 +4,6 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".OwnerOtp">
++    tools:context=".OwnerPart.OwnerOtp">
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <bytecodeTargetLevel target=\"1.8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	
++++ b/.idea/compiler.xml	
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="1.8" />
++    <bytecodeTargetLevel target="11" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_owner_register.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".OwnerRegister\">\r\n\r\n    <EditText\r\n        android:id=\"@+id/number\"\r\n        android:layout_width=\"205dp\"\r\n        android:layout_height=\"51dp\"\r\n        android:autoText=\"true\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Mobile number\"\r\n        android:inputType=\"phone\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#070707\"\r\n        android:textSize=\"24sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.15\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.682\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btn\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:background=\"#8A2222\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:text=\"Generate OTP\"\r\n        android:textSize=\"20sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.145\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.794\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/name\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:autoText=\"true\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Enter Your Name\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#000000\"\r\n        android:textSize=\"24sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.233\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.348\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textView3\"\r\n        android:layout_width=\"331dp\"\r\n        android:layout_height=\"54dp\"\r\n        android:fontFamily=\"sans-serif\"\r\n        android:text=\"Welcome\"\r\n        android:textAlignment=\"center\"\r\n        android:textAllCaps=\"true\"\r\n        android:textColor=\"#000000\"\r\n        android:textSize=\"50sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.387\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.126\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/invite\"\r\n        android:layout_width=\"204dp\"\r\n        android:layout_height=\"55dp\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Create Invite Code\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textAllCaps=\"true\"\r\n        android:textColorHint=\"#101010\"\r\n        android:textSize=\"24sp\"\r\n        android:textStyle=\"bold|italic\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.149\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.573\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/cName\"\r\n        android:layout_width=\"204dp\"\r\n        android:layout_height=\"55dp\"\r\n        android:elegantTextHeight=\"true\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Company Name\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textAllCaps=\"true\"\r\n        android:textColorHint=\"#101010\"\r\n        android:textSize=\"24sp\"\r\n        android:textStyle=\"bold|italic\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.149\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.465\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_owner_register.xml b/app/src/main/res/layout/activity_owner_register.xml
+--- a/app/src/main/res/layout/activity_owner_register.xml	
++++ b/app/src/main/res/layout/activity_owner_register.xml	
+@@ -4,7 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".OwnerRegister">
++    tools:context=".OwnerPart.OwnerRegister">
+ 
+     <EditText
+         android:id="@+id/number"
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>\r\n    <uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.KeepInCheck\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".WorkerDashboard\"\r\n            android:exported=\"false\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <!--\r\n            \r\n\r\n             To get one, follow the directions here:\r\n\r\n                https://developers.google.com/maps/documentation/android-sdk/get-api-key\r\n\r\n             Once you have your API key (it starts with \"AIza\"), define a new property in your\r\n             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the\r\n             \"YOUR_API_KEY\" string in this file with \"${MAPS_API_KEY}\".\r\n        -->\r\n        <meta-data\r\n            android:name=\"com.google.android.geo.API_KEY\"\r\n            android:value=\"YOUR_API_KEY\" />\r\n\r\n        <activity\r\n            android:name=\".MapsActivityWorker\"\r\n            android:exported=\"false\"\r\n            android:label=\"@string/title_activity_maps_worker\" />\r\n        <activity\r\n            android:name=\".AssignTask\"\r\n            android:exported=\"false\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".SelectIdentity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity\r\n            android:name=\".OwnerOtp\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".OwnerRegister\"\r\n            android:exported=\"false\" />\r\n        <activity android:name=\".Otp\" />\r\n        <activity\r\n            android:name=\".Register\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"false\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	
++++ b/app/src/main/AndroidManifest.xml	
+@@ -57,14 +57,14 @@
+             </intent-filter>
+         </activity>
+         <activity
+-            android:name=".OwnerOtp"
++            android:name=".OwnerPart.OwnerOtp"
+             android:exported="false" />
+         <activity
+-            android:name=".OwnerRegister"
++            android:name=".OwnerPart.OwnerRegister"
+             android:exported="false" />
+-        <activity android:name=".Otp" />
++        <activity android:name=".WorkerPart.Otp" />
+         <activity
+-            android:name=".Register"
++            android:name=".WorkerPart.Register"
+             android:exported="false" />
+         <activity
+             android:name=".MainActivity"
