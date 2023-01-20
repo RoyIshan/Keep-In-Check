@@ -2,4 +2,13 @@
     <string name="app_name">Keep In Check</string>
     <string name="title_activity_maps_worker">MapsActivityWorker</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="profile">Profile</string>
+    <string name="invite_code">Invite Code</string>
+    <string name="active_jobs">Active Jobs</string>
+    <string name="create_jobs">Create Jobs</string>
+    <string name="map">Map</string>
+    <string name="workers">Workers</string>
+    <string name="profile2">Profile2</string>
+    <string name="attendance">Attendance</string>
+    <string name="active_jobs2">Active Jobs2</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.Adapter;
+package com.trystar.keepincheck.OwnerPart.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.trystar.keepincheck.AssignTask;
-import com.trystar.keepincheck.MainActivity;
-import com.trystar.keepincheck.Model.ToDoModel;
+import com.trystar.keepincheck.OwnerPart.AssignTask;
+import com.trystar.keepincheck.OwnerPart.Model.ToDoModel;
 import com.trystar.keepincheck.R;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.Model;
+package com.trystar.keepincheck.OwnerPart.Model;
 
 public class ToDoModel extends TaskId{
 
