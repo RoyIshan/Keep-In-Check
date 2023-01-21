@@ -122,9 +122,6 @@ public class Register extends AppCompatActivity {
                                                     Intent intent = new Intent(Register.this, Otp.class);
                                                     intent.putExtra("mobile", "+91" + number.getText().toString());
                                                     startActivity(intent);
-                                                    Intent intent1 = new Intent(Register.this,WorkerDashboard.class);
-                                                    intent1.putExtra("mobile", "+91" + number.getText().toString());
-                                                    startActivity(intent1);
                                                     Toast.makeText(Register.this,"You are joining as a employee of"+cName, Toast.LENGTH_SHORT).show();
                                                 }
 

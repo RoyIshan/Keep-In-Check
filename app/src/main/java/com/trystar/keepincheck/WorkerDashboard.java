@@ -12,11 +12,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class WorkerDashboard extends AppCompatActivity implements LocationListener {
@@ -24,8 +24,10 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
 
 
     private LocationManager locationManager;
-    TextView num;
-    String Number;
+
+    String uid;
+    FirebaseUser user;
+    Button signOut;
 
 
 
@@ -34,7 +36,7 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_dashboard);
 
-        Button signOut;
+
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
@@ -50,9 +52,10 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-        onLocationChanged(location);
+        onLocationChanged(lastKnownLocation);
+
 
         signOut = findViewById(R.id.signOutwr);
         signOut.setOnClickListener(new View.OnClickListener() {
@@ -79,11 +82,13 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
 
                 location.getLongitude(), location.getLatitude()
         );
-        String mnumber =getIntent().getStringExtra("mobile");
-        num=findViewById(R.id.textView7);
-        num.setText(mnumber);
         OnCompleteListener<Void> onCompleteListener;
-        FirebaseDatabase.getInstance().getReference("Current Location")
+       user=FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null)
+       {
+           uid=user.getPhoneNumber();
+      }
+        FirebaseDatabase.getInstance().getReference(uid)
                 .setValue(helper).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -118,6 +123,8 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
     public void onProviderEnabled( String provider) {
         LocationListener.super.onProviderEnabled(provider);
     }
+
+
     public class LocationHelper {
 
         private double longitude;
