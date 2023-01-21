@@ -1,4 +1,4 @@
-package com.trystar.keepincheck;
+package com.trystar.keepincheck.OwnerPart;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -26,6 +26,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.trystar.keepincheck.OnDialogCloseListner;
+import com.trystar.keepincheck.R;
 
 import java.util.Calendar;
 import java.util.HashMap;
