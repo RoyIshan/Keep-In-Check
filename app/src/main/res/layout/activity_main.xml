@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/signOut"
-        android:layout_width="183dp"
-        android:layout_height="262dp"
+        android:layout_width="193dp"
+        android:layout_height="257dp"
         android:text="Sign Out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

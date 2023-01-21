@@ -77,7 +77,12 @@ public class AssignTask extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();
                 return true;
             case R.id.item2:
-                Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                try {
+                    startActivity(new Intent(AssignTask.this,WorkerList.class));
+                }catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                }
                 return true;
             case R.id.item3:
                 Toast.makeText(getApplicationContext(),"Item 3 Selected",Toast.LENGTH_LONG).show();
