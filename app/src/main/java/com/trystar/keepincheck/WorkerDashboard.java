@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 public class WorkerDashboard extends AppCompatActivity implements LocationListener {
 
@@ -28,6 +29,7 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
     String uid;
     FirebaseUser user;
     Button signOut;
+    Button showloc;
 
 
 
@@ -55,8 +57,15 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
         Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
         onLocationChanged(lastKnownLocation);
+        showloc=findViewById(R.id.button);
+        showloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(WorkerDashboard.this, MapsActivity.class);
+                startActivity(myIntent);
 
-
+            }
+        });
         signOut = findViewById(R.id.signOutwr);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,9 +75,6 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
                 Toast.makeText(WorkerDashboard.this, "Signing Out", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
 
 
