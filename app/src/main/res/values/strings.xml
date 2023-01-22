@@ -11,4 +11,5 @@
     <string name="profile2">Profile2</string>
     <string name="attendance">Attendance</string>
     <string name="active_jobs2">Active Jobs2</string>
+    <string name="hello_blank_fragment" />
 </resources>
