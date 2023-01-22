@@ -3,8 +3,6 @@ package com.trystar.keepincheck.OwnerPart.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +20,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     private List<ToDoModel> todoList;
     private AssignTask activity;
     private FirebaseFirestore firestore;
+    private View view;
 
     public ToDoAdapter(AssignTask assignTask, List<ToDoModel> todoList){
         this.todoList = todoList;
@@ -30,7 +29,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.each_task, parent, false);
+        view = LayoutInflater.from(activity).inflate(R.layout.each_task, parent, false);
         firestore = FirebaseFirestore.getInstance();
         return new MyViewHolder(view);
     }
@@ -42,17 +41,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         holder.wCheckBox.setText(toDoModel.getTask());
         holder.wDeadline.setText("Deadline: " + toDoModel.getDeadline());
 
-        holder.wCheckBox.setChecked(toBoolean(toDoModel.getStatus()));
-        holder.wCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (isChecked){
-                    firestore.collection("task").document(toDoModel.TaskId).update("status", 1);
-                }else{
-                    firestore.collection("task").document(toDoModel.TaskId).update("status", 0);
-                }
+        //holder.wCheckBox.setChecked(toBoolean(toDoModel.getStatus()));
+        /*holder.wCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            if (isChecked){
+                firestore.collection("task").document(toDoModel.TaskId).update("status", 1);
+            }else{
+                firestore.collection("task").document(toDoModel.TaskId).update("status", 0);
             }
-        });
+        });*/
     }
 
     private boolean toBoolean(int status){
@@ -67,7 +63,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView wDeadline;
-        CheckBox wCheckBox;
+        TextView wCheckBox;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 

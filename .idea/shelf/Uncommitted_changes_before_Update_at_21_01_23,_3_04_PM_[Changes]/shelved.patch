@@ -1,0 +1,204 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    id 'com.android.application'\n    id 'com.google.gms.google-services'\n}\n\nandroid {\n    compileSdk 32\n\n    defaultConfig {\n        applicationId \"com.trystar.keepincheck\"\n        minSdk 28\n        targetSdk 32\n        versionCode 1\n        versionName \"1.0\"\n\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\n    }\n\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\n        }\n    }\n    compileOptions {\n        sourceCompatibility JavaVersion.VERSION_1_8\n        targetCompatibility JavaVersion.VERSION_1_8\n    }\n    namespace 'com.trystar.keepincheck'\n}\n\ndependencies {\n\n    implementation 'androidx.appcompat:appcompat:1.5.1'\n    implementation 'com.google.android.material:material:1.7.0'\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'\n    implementation 'com.google.firebase:firebase-auth:21.1.0'\n    implementation 'com.google.firebase:firebase-firestore:24.4.1'\n    implementation 'com.google.firebase:firebase-database:20.1.0'\n    implementation 'com.google.android.gms:play-services-maps:18.1.0'\n    testImplementation 'junit:junit:4.13.2'\n    androidTestImplementation 'androidx.test.ext:junit:1.1.4'\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'\n    implementation platform('com.google.firebase:firebase-bom:31.0.2')\n        // When using the BoM, you don't specify versions in Firebase library dependencies\n    implementation 'com.google.firebase:firebase-auth'\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision d8088ad04e07b97a9e1d1bc4b951d2b20cd5dae1)
++++ b/app/build.gradle	(date 1674293414411)
+@@ -4,12 +4,12 @@
+ }
+ 
+ android {
+-    compileSdk 32
++    compileSdk 33
+ 
+     defaultConfig {
+         applicationId "com.trystar.keepincheck"
+         minSdk 28
+-        targetSdk 32
++        targetSdk 33
+         versionCode 1
+         versionName "1.0"
+ 
+@@ -31,16 +31,16 @@
+ 
+ dependencies {
+ 
+-    implementation 'androidx.appcompat:appcompat:1.5.1'
++    implementation 'androidx.appcompat:appcompat:1.6.0'
+     implementation 'com.google.android.material:material:1.7.0'
+     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+     implementation 'com.google.firebase:firebase-auth:21.1.0'
+-    implementation 'com.google.firebase:firebase-firestore:24.4.1'
++    implementation 'com.google.firebase:firebase-firestore:24.4.2'
+     implementation 'com.google.firebase:firebase-database:20.1.0'
+     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+     testImplementation 'junit:junit:4.13.2'
+-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
++    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
++    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+     implementation platform('com.google.firebase:firebase-bom:31.0.2')
+         // When using the BoM, you don't specify versions in Firebase library dependencies
+     implementation 'com.google.firebase:firebase-auth'
+Index: app/src/main/res/layout/activity_assign_task.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".AssignTask\">\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/recyclerView\"\n        android:layout_width=\"0dp\"\n        android:layout_height=\"0dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\n        android:id=\"@+id/assigntask\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginEnd=\"24dp\"\n        android:layout_marginBottom=\"24dp\"\n        android:clickable=\"true\"\n        app:backgroundTint=\"@color/purple_200\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:srcCompat=\"@drawable/ic_baseline_add_24\" />\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_assign_task.xml b/app/src/main/res/layout/activity_assign_task.xml
+--- a/app/src/main/res/layout/activity_assign_task.xml	(revision d8088ad04e07b97a9e1d1bc4b951d2b20cd5dae1)
++++ b/app/src/main/res/layout/activity_assign_task.xml	(date 1674292577698)
+@@ -6,7 +6,8 @@
+     android:layout_height="match_parent"
+     tools:context=".AssignTask">
+ 
+-    <androidx.recyclerview.widget.RecyclerView
++
++    <ListView
+         android:id="@+id/recyclerView"
+         android:layout_width="0dp"
+         android:layout_height="0dp"
+@@ -19,12 +20,14 @@
+         android:id="@+id/assigntask"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginEnd="24dp"
+-        android:layout_marginBottom="24dp"
+         android:clickable="true"
+-        app:backgroundTint="@color/purple_200"
++        app:backgroundTint="@color/teal_200"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.856"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.953"
+         app:srcCompat="@drawable/ic_baseline_add_24" />
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\n  <component name=\"GradleSettings\">\n    <option name=\"linkedExternalProjectsSettings\">\n      <GradleProjectSettings>\n        <option name=\"testRunner\" value=\"GRADLE\" />\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"gradleJvm\" value=\"11\" />\n        <option name=\"modules\">\n          <set>\n            <option value=\"$PROJECT_DIR$\" />\n            <option value=\"$PROJECT_DIR$/app\" />\n          </set>\n        </option>\n      </GradleProjectSettings>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision d8088ad04e07b97a9e1d1bc4b951d2b20cd5dae1)
++++ b/.idea/gradle.xml	(date 1674291132599)
+@@ -7,7 +7,7 @@
+         <option name="testRunner" value="GRADLE" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="gradleJvm" value="11" />
++        <option name="gradleJvm" value="Embedded JDK" />
+         <option name="modules">
+           <set>
+             <option value="$PROJECT_DIR$" />
+Index: app/src/main/java/com/trystar/keepincheck/SelectIdentity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.trystar.keepincheck;\n\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.view.View;\nimport android.widget.Button;\nimport android.widget.Toast;\n\nimport androidx.appcompat.app.AppCompatActivity;\n\nimport com.trystar.keepincheck.OwnerPart.OwnerRegister;\nimport com.trystar.keepincheck.WorkerPart.Register;\n\npublic class SelectIdentity extends AppCompatActivity {\n\n    Button owner,worker;\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_select_identity);\n\n        owner = findViewById(R.id.Owner);\n        worker = findViewById(R.id.Worker);\n\n        try {\n            owner.setOnClickListener(new View.OnClickListener() {\n                @Override\n                public void onClick(View view) {\n                    try {\n                        startActivity(new Intent(SelectIdentity.this, OwnerRegister.class));\n                    }\n                    catch (Exception e)\n                    {\n                        Toast.makeText(SelectIdentity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();\n                    }\n                }\n            });\n            worker.setOnClickListener(new View.OnClickListener() {\n                @Override\n                public void onClick(View view) {\n                    try {\n                        startActivity(new Intent(SelectIdentity.this, Register.class));\n                    }\n                    catch (Exception e)\n                    {\n                        Toast.makeText(SelectIdentity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();\n                    }\n                }\n            });\n        }\n        catch (Exception e)\n        {\n            Toast.makeText(this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/trystar/keepincheck/SelectIdentity.java b/app/src/main/java/com/trystar/keepincheck/SelectIdentity.java
+--- a/app/src/main/java/com/trystar/keepincheck/SelectIdentity.java	(revision d8088ad04e07b97a9e1d1bc4b951d2b20cd5dae1)
++++ b/app/src/main/java/com/trystar/keepincheck/SelectIdentity.java	(date 1674292039239)
+@@ -2,7 +2,6 @@
+ 
+ import android.content.Intent;
+ import android.os.Bundle;
+-import android.view.View;
+ import android.widget.Button;
+ import android.widget.Toast;
+ 
+@@ -23,28 +22,22 @@
+         worker = findViewById(R.id.Worker);
+ 
+         try {
+-            owner.setOnClickListener(new View.OnClickListener() {
+-                @Override
+-                public void onClick(View view) {
+-                    try {
+-                        startActivity(new Intent(SelectIdentity.this, OwnerRegister.class));
+-                    }
+-                    catch (Exception e)
+-                    {
+-                        Toast.makeText(SelectIdentity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+-                    }
++            owner.setOnClickListener(view -> {
++                try {
++                    startActivity(new Intent(SelectIdentity.this, OwnerRegister.class));
++                }
++                catch (Exception e)
++                {
++                    Toast.makeText(SelectIdentity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                 }
+             });
+-            worker.setOnClickListener(new View.OnClickListener() {
+-                @Override
+-                public void onClick(View view) {
+-                    try {
+-                        startActivity(new Intent(SelectIdentity.this, Register.class));
+-                    }
+-                    catch (Exception e)
+-                    {
+-                        Toast.makeText(SelectIdentity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+-                    }
++            worker.setOnClickListener(view -> {
++                try {
++                    startActivity(new Intent(SelectIdentity.this, Register.class));
++                }
++                catch (Exception e)
++                {
++                    Toast.makeText(SelectIdentity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                 }
+             });
+         }
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Tue Nov 08 09:53:43 IST 2022\ndistributionBase=GRADLE_USER_HOME\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-7.4-bin.zip\ndistributionPath=wrapper/dists\nzipStorePath=wrapper/dists\nzipStoreBase=GRADLE_USER_HOME\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+--- a/gradle/wrapper/gradle-wrapper.properties	(revision d8088ad04e07b97a9e1d1bc4b951d2b20cd5dae1)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1674291178775)
+@@ -1,6 +1,6 @@
+ #Tue Nov 08 09:53:43 IST 2022
+ distributionBase=GRADLE_USER_HOME
+-distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-7.5-bin.zip
+ distributionPath=wrapper/dists
+ zipStorePath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>buildscript {\n    repositories {\n        google()\n        mavenCentral()\n\n    }\n    dependencies {\n        classpath 'com.google.gms:google-services:4.3.14'\n    }\n}// Top-level build file where you can add configuration options common to all sub-projects/modules.\nplugins {\n    id 'com.android.application' version '7.3.1' apply false\n    id 'com.android.library' version '7.3.1' apply false\n    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false\n}\n\ntask clean(type: Delete) {\n    delete rootProject.buildDir\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	(revision d8088ad04e07b97a9e1d1bc4b951d2b20cd5dae1)
++++ b/build.gradle	(date 1674291178770)
+@@ -9,8 +9,8 @@
+     }
+ }// Top-level build file where you can add configuration options common to all sub-projects/modules.
+ plugins {
+-    id 'com.android.application' version '7.3.1' apply false
+-    id 'com.android.library' version '7.3.1' apply false
++    id 'com.android.application' version '7.4.0' apply false
++    id 'com.android.library' version '7.4.0' apply false
+     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
+ }
+ 
