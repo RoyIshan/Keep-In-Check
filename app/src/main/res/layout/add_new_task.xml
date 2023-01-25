@@ -4,7 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionName="Select Worker"
     tools:context=".OwnerPart.AddNewTask">
+
+    <EditText
+        android:id="@+id/task_phoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Customer's Phone Number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_address" />
+
+    <EditText
+        android:id="@+id/task_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="8dp"
+        android:hint="Enter Address of Customer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_edittext" />
 
     <EditText
         android:id="@+id/task_edittext"
@@ -20,38 +44,42 @@
 
     <TextView
         android:id="@+id/set_deadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="152dp"
+        android:layout_height="27dp"
         android:drawableRight="@drawable/ic_baseline_calendar_month_24"
         android:drawablePadding="8dp"
         android:text="Set Deadline"
         android:textColor="@color/purple_200"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_edittext" />
-
-    <TextView
-        android:id="@+id/set_worker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="8dp"
-        android:text="Select Workers"
-        android:textColor="@color/purple_200"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_deadline" />
+        app:layout_constraintTop_toBottomOf="@+id/task_phoneNumber"
+        app:layout_constraintVertical_bias="0.022" />
 
     <Button
         android:id="@+id/assignbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
         android:text="Assign"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_edittext" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.357" />
+
+    <Spinner
+        android:id="@+id/workerSpinner"
+        android:layout_width="404dp"
+        android:layout_height="40dp"
+        android:autofillHints="Select Worker"
+        android:transitionName="Select Worker"
+        app:layout_constraintBottom_toTopOf="@+id/assignbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/set_deadline"
+        app:layout_constraintVertical_bias="0.045" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
