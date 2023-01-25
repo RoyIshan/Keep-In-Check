@@ -11,9 +11,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +29,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.OnDialogCloseListner;
 import com.trystar.keepincheck.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,11 +43,12 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "AddNewTask";
 
     private TextView setDeadline;
-    private EditText wTaskEdit;
+    private EditText wTaskEdit,address,phoneNumber;
     private Button wAssignBtn;
     private FirebaseFirestore firestore;
     private Context context;
-    private String deadLine = "";
+    private String deadLine = "",NameofWorker;
+    FirebaseFirestore db;
 
     public static AddNewTask newInstance() {
         return new AddNewTask();
@@ -57,11 +64,44 @@ public class AddNewTask extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Spinner spinner = view.findViewById(R.id.workerSpinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item,new ArrayList<>());
+        spinner.setAdapter(adapter);
+
         setDeadline = view.findViewById(R.id.set_deadline);
         wTaskEdit = view.findViewById(R.id.task_edittext);
         wAssignBtn = view.findViewById(R.id.assignbtn);
-        firestore = FirebaseFirestore.getInstance();
+        address = view.findViewById(R.id.task_address);
+        phoneNumber = view.findViewById(R.id.task_phoneNumber);
 
+        firestore = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
+        db.collection("Worker detail")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                adapter.add(document.getString("Name"));
+                            }
+                        } else {
+
+                        }
+                    }
+                });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                NameofWorker = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         wTaskEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -119,6 +159,9 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     taskMap.put("task", task);
                     taskMap.put("deadline", deadLine);
                     taskMap.put("status", 0);
+                    taskMap.put("address", address.getText().toString());
+                    taskMap.put("number", phoneNumber.getText().toString());
+                    taskMap.put("worker",NameofWorker);
 
                     firestore.collection("task").add(taskMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                         @Override
