@@ -4,16 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#FEFEFE"
     tools:context=".Otp">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="405dp"
+        android:layout_height="443dp"
+        android:src="@drawable/otpwall"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/OTP"
-        android:layout_width="243dp"
-        android:layout_height="59dp"
+        android:layout_width="282dp"
+        android:layout_height="58dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="Enter OTP"
+        android:hint="One Time Password"
         android:inputType="textPersonName"
         android:textAllCaps="true"
         android:textColor="#000000"
@@ -22,22 +34,24 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias="0.772" />
 
     <Button
         android:id="@+id/btn2"
-        android:layout_width="333dp"
-        android:layout_height="66dp"
-        android:text="Okay"
+        android:layout_width="282dp"
+        android:layout_height="62dp"
+        android:background="#009CEF"
+        android:text="VERIFY"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876" />
+        app:layout_constraintTop_toBottomOf="@+id/OTP"
+        app:layout_constraintVertical_bias="0.33" />
 
     <TextView
         android:id="@+id/textView4"
@@ -49,46 +63,43 @@
         android:textColor="#000000"
         android:textIsSelectable="false"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.032"
-        tools:visibility="visible" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
         android:text="Enter OTP"
         android:textColor="#000000"
         android:textSize="48sp"
         android:textStyle="bold"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.517"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.024" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="340dp"
         android:layout_height="71dp"
         android:text="We have sent the verification code to Your Mobile Number"
-        android:textColor="#000000"
+        android:textColor="#818181"
         android:textSize="20sp"
-        android:visibility="visible"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.597"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.027" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

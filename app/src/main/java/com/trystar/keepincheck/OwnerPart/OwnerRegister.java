@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.login;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ import java.util.Map;
 public class OwnerRegister extends AppCompatActivity {
 
     EditText number,name,inviteCode,companyName;
-    Button btn;
+    Button btn, login;
     FirebaseAuth fAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,10 @@ public class OwnerRegister extends AppCompatActivity {
         btn =  findViewById(R.id.btn);
         inviteCode = findViewById(R.id.invite);
         companyName = findViewById(R.id.cName);
+        login = findViewById(R.id.btn_signup3);
+
+        login.setOnClickListener(view -> startActivity(new Intent(OwnerRegister.this, login.class)));
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

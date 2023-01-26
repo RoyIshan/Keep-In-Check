@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -19,7 +21,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.MainActivity;
 import com.trystar.keepincheck.R;
-import com.trystar.keepincheck.WorkerDashboard;
+import com.trystar.keepincheck.login;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +30,7 @@ import java.util.Map;
 public class Register extends AppCompatActivity {
 
     EditText number,name,inviteCode;
-    Button btn;
+    Button btn, login;
     FirebaseAuth fAuth;
     String code, mNumber ,Name;
     @Override
@@ -47,6 +49,9 @@ public class Register extends AppCompatActivity {
         name = findViewById(R.id.name);
         btn =  findViewById(R.id.btn);
         inviteCode = findViewById(R.id.invite);
+        login = findViewById(R.id.btn_signup2);
+
+        login.setOnClickListener(view -> startActivity(new Intent(Register.this, login.class)));
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

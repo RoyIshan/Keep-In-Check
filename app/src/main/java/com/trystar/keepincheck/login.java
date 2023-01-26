@@ -21,7 +21,7 @@ import com.trystar.keepincheck.WorkerPart.Otp;
 public class login extends AppCompatActivity {
 
     EditText number,name,inviteCode,companyName;
-    Button btn;
+    Button btn, signup;
     FirebaseAuth fAuth;
     String mNumber;
     @Override
@@ -33,7 +33,10 @@ public class login extends AppCompatActivity {
 
         number = findViewById(R.id.number_login);
         btn = findViewById(R.id.btn_login);
+        signup = findViewById(R.id.btn_signup);
 
+
+        signup.setOnClickListener(view -> startActivity(new Intent(login.this, SelectIdentity.class)));
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

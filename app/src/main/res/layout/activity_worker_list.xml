@@ -8,8 +8,9 @@
 
     <ListView
         android:id="@+id/workerList"
-        android:layout_width="407dp"
-        android:layout_height="691dp"
+        android:layout_width="409dp"
+        android:layout_height="828dp"
+        android:background="#E4E4E4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
