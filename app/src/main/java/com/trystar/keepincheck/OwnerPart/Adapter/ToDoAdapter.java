@@ -40,6 +40,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         ToDoModel toDoModel = todoList.get(position);
         holder.wCheckBox.setText(toDoModel.getTask());
         holder.wDeadline.setText("Deadline: " + toDoModel.getDeadline());
+        holder.wAssignedWorker.setText("Worker: " + toDoModel.getWorkerAssigned());
 
         //holder.wCheckBox.setChecked(toBoolean(toDoModel.getStatus()));
         /*holder.wCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
@@ -60,15 +61,15 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         return todoList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView wDeadline;
-        TextView wCheckBox;
+        TextView wDeadline, wCheckBox, wAssignedWorker;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             wDeadline = itemView.findViewById(R.id.deadline);
             wCheckBox = itemView.findViewById(R.id.mcheckbox);
+            wAssignedWorker = itemView.findViewById(R.id.workername);
         }
     }
 }
