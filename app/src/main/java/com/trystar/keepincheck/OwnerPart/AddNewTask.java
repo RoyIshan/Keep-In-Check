@@ -65,8 +65,32 @@ public class AddNewTask extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         Spinner spinner = view.findViewById(R.id.workerSpinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item,new ArrayList<>());
-        spinner.setAdapter(adapter);
+        // Initializing an ArrayAdapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item,new ArrayList<>())
+        {
+            @Override
+            public boolean isEnabled(int position){
+                // Disable the first item from Spinner
+                // First item will be use for hint
+                return position != 0;
+            }
+            @Override
+            public View getDropDownView(
+                    int position, View convertView,
+                    @NonNull ViewGroup parent) {
+
+                // Get the item view
+                View view = super.getDropDownView(
+                        position, convertView, parent);
+                TextView textView = (TextView) view;
+                if(position == 0){
+                    // Set the hint text color gray
+                    textView.setTextColor(Color.GRAY);
+                }
+                else { textView.setTextColor(Color.BLACK); }
+                return view;
+            }
+        };
 
         setDeadline = view.findViewById(R.id.set_deadline);
         wTaskEdit = view.findViewById(R.id.task_edittext);
@@ -91,6 +115,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     }
                 });
 
+
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -102,6 +128,9 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
             }
         });
+
+        spinner.setAdapter(adapter);
+
         wTaskEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
