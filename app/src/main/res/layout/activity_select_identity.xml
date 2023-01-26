@@ -36,6 +36,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.642" />
 
+    <Button
+        android:id="@+id/gotoLogin"
+        android:layout_width="319dp"
+        android:layout_height="54dp"
+        android:background="#8A2222"
+        android:elegantTextHeight="true"
+        android:text="login"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.845" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
