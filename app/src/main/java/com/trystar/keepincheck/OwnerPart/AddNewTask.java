@@ -100,6 +100,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
         firestore = FirebaseFirestore.getInstance();
         db = FirebaseFirestore.getInstance();
+        adapter.add("Select Worker");
         db.collection("Worker detail")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

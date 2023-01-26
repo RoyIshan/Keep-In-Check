@@ -2,7 +2,7 @@ package com.trystar.keepincheck.OwnerPart.Model;
 
 public class ToDoModel extends TaskId{
 
-    private String task, deadline, workername;
+    private String task, deadline, worker;
     private int status;
 
     public String getTask() {
@@ -14,7 +14,7 @@ public class ToDoModel extends TaskId{
     }
 
     public String getWorkerAssigned() {
-        return workername;
+        return worker;
     }
 
     public int getStatus() {
