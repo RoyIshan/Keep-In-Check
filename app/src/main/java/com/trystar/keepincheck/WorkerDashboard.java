@@ -3,6 +3,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,8 +29,9 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
 
     String uid;
     FirebaseUser user;
-    Button signOut;
+    Button signOutwr;
     Button showloc;
+
 
 
 
@@ -38,8 +40,34 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_dashboard);
 
+        showloc=findViewById(R.id.showbtn);
+        showloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent =new Intent(WorkerDashboard.this,MapsActivity.class);
+                startActivity(myIntent);
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            }
+        });
+
+
+        signOutwr=findViewById(R.id.signOutwr);
+
+        signOutwr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(WorkerDashboard.this,SelectIdentity.class));
+                Toast.makeText(WorkerDashboard.this,"Signing Out",Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
+
+
+    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -57,26 +85,7 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
         Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
         onLocationChanged(lastKnownLocation);
-        showloc=findViewById(R.id.button);
-        showloc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(WorkerDashboard.this, MapsActivity.class);
-                startActivity(myIntent);
-
-            }
-        });
-        signOut = findViewById(R.id.signOutwr);
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(WorkerDashboard.this, SelectIdentity.class));
-                Toast.makeText(WorkerDashboard.this, "Signing Out", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
-
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
