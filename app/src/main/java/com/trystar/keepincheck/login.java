@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,8 @@ import com.trystar.keepincheck.WorkerPart.Otp;
 public class login extends AppCompatActivity {
 
     EditText number,name,inviteCode,companyName;
-    Button btn, signup;
+    TextView signup;
+    Button btn;
     FirebaseAuth fAuth;
     String mNumber;
     @Override
