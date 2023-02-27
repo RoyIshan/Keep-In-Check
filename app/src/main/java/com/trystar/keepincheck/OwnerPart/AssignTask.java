@@ -74,7 +74,8 @@ public class AssignTask extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.ownerprofile:
-                Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"View Profile",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, ViewProfile.class));
                 return true;
             case R.id.item2:
                 try {
