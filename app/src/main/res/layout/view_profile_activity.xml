@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewProfile"
+    tools:context=".OwnerPart.ViewProfile"
     android:orientation="vertical">
 
     <LinearLayout
@@ -43,7 +43,7 @@
                 <ImageView
                     android:id="@+id/imageView10"
                     android:layout_width="30dp"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:src="@drawable/baseline_person_24" />
 
                 <LinearLayout
@@ -56,10 +56,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="Name"
+                        android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/textView20"
+                        android:id="@+id/ownerName"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
@@ -76,8 +77,8 @@
                 <ImageView
                     android:id="@+id/imageView21"
                     android:layout_width="30dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/baseline_person_24" />
+                    android:layout_height="50dp"
+                    android:src="@drawable/baseline_phone_iphone_24" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -89,10 +90,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="Phone Number"
+                        android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/textView22"
+                        android:id="@+id/ownerPhoneNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
@@ -109,8 +111,8 @@
                 <ImageView
                     android:id="@+id/imageView9"
                     android:layout_width="30dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/baseline_person_24" />
+                    android:layout_height="50dp"
+                    android:src="@drawable/baseline_business_24" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -122,10 +124,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="Company Name"
+                        android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/textView18"
+                        android:id="@+id/ownerCN"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
@@ -142,8 +145,8 @@
                 <ImageView
                     android:id="@+id/imageView8"
                     android:layout_width="30dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/baseline_person_24" />
+                    android:layout_height="50dp"
+                    android:src="@drawable/baseline_code_24" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -155,10 +158,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:text="Company Code"
+                        android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/textView16"
+                        android:id="@+id/ownerCC"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_weight="1"
