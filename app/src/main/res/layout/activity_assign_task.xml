@@ -53,7 +53,7 @@
         android:clickable="true"
         android:fadingEdge="none"
         android:focusable="true"
-        app:itemIconTint="@color/white"
+        app:itemIconTint="@color/black"
         app:itemTextAppearance="@style/TextAppearance.AppCompat.Large"
         app:menu="@menu/menu_owner"
         tools:ignore="MissingConstraints" />
