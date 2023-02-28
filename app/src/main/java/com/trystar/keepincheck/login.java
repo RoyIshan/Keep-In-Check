@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,9 +45,9 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                    mNumber = number.getText().toString();
+                    mNumber ="+91" +number.getText().toString();
 
-                    if(mNumber.length() == 10) {
+                    if(mNumber.length() == 13) {
                         checkOnOwner();
                         checkOnWorker();
                     }
@@ -54,13 +55,14 @@ public class login extends AppCompatActivity {
                         number.setError("Length of Number should be 10");
                         number.requestFocus();
                     }
+                Toast.makeText(login.this,mNumber,Toast.LENGTH_SHORT).show();
             }
 
             private void checkOnWorker() {
                 FirebaseFirestore db;
                 db = FirebaseFirestore.getInstance();
                 db.collection("Worker detail")
-                        .whereEqualTo("Phone Number",mNumber)
+                        .whereEqualTo("Phone Number", mNumber)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -70,7 +72,7 @@ public class login extends AppCompatActivity {
                                         if(document.exists())
                                         {
                                             Intent intent = new Intent(login.this, Otp.class);
-                                            intent.putExtra("mobile", "+91" + mNumber);
+                                            intent.putExtra("mobile",  mNumber);
                                             startActivity(intent);
                                         }
                                     }
@@ -85,7 +87,7 @@ public class login extends AppCompatActivity {
                 FirebaseFirestore db;
                 db = FirebaseFirestore.getInstance();
                 db.collection("Owner detail")
-                        .whereEqualTo("Phone Number",mNumber)
+                        .whereEqualTo("Phone Number", mNumber)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -95,7 +97,7 @@ public class login extends AppCompatActivity {
                                         if(document.exists())
                                         {
                                             Intent intent = new Intent(login.this, OwnerOtp.class);
-                                            intent.putExtra("mobile", "+91" + mNumber);
+                                            intent.putExtra("mobile", mNumber);
                                             startActivity(intent);
                                         }
                                     }
