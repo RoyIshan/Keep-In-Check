@@ -85,7 +85,7 @@ public class Register extends AppCompatActivity {
                 Map<String, Object> user = new HashMap<>();
                 user.put("Name", name.getText().toString());
                 user.put("Company Name", cName);
-                user.put("Phone Number", number.getText().toString());
+                user.put("Phone Number", "+91"+number.getText().toString());
                 user.put("Invite Code",inviteCode.getText().toString());
 
                 // Add a new document with a generated ID
