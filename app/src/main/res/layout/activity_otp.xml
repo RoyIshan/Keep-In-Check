@@ -23,6 +23,8 @@
         android:id="@+id/OTP"
         android:layout_width="282dp"
         android:layout_height="58dp"
+        android:background="@drawable/input"
+        android:backgroundTint="#D7E5F1"
         android:ems="10"
         android:gravity="center"
         android:hint="One Time Password"
@@ -36,8 +38,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.269" />
 
     <Button
         android:id="@+id/btn2"
@@ -49,14 +51,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/OTP"
-        app:layout_constraintVertical_bias="0.33" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Verification"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -73,9 +77,9 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
+        android:layout_width="253dp"
+        android:layout_height="63dp"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Enter OTP"
         android:textColor="#000000"
         android:textSize="48sp"
@@ -89,8 +93,9 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="340dp"
-        android:layout_height="71dp"
+        android:layout_width="351dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/poppins"
         android:text="We have sent the verification code to Your Mobile Number"
         android:textColor="#818181"
         android:textSize="20sp"

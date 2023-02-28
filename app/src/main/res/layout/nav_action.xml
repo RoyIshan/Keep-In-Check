@@ -3,7 +3,7 @@
     android:id="@+id/nav_action"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#2196F3"
+    android:background="#E54AFF"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
