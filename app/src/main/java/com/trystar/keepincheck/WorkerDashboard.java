@@ -11,6 +11,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.trystar.keepincheck.OwnerPart.WorkerList;
 import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 public class WorkerDashboard extends AppCompatActivity implements LocationListener {
@@ -85,6 +88,44 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
         Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
         onLocationChanged(lastKnownLocation);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_worker, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.ownerprofile:
+                Toast.makeText(getApplicationContext(),"View Profile",Toast.LENGTH_LONG).show();
+                //startActivity(new Intent(this, ViewProfile.class));
+                return true;
+            case R.id.item2:
+                try {
+                    startActivity(new Intent(WorkerDashboard.this, WorkerList.class));
+                }catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+                return true;
+            case R.id.item3:
+                Toast.makeText(getApplicationContext(),"Item 3 Selected",Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.item4:
+                Toast.makeText(getApplicationContext(),"Item 4 Selected",Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.item5:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(WorkerDashboard.this, SelectIdentity.class));
+                Toast.makeText(WorkerDashboard.this, "Signing Out", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
