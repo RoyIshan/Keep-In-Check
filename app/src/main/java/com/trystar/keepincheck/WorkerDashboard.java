@@ -1,9 +1,6 @@
 package com.trystar.keepincheck;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
+
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,9 +10,12 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,8 +32,6 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
 
     String uid;
     FirebaseUser user;
-    Button signOutwr;
-    Button showloc;
 
 
 
@@ -42,33 +40,6 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_dashboard);
-
-        showloc=findViewById(R.id.showbtn);
-        showloc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent =new Intent(WorkerDashboard.this,MapsActivity.class);
-                startActivity(myIntent);
-
-            }
-        });
-
-
-        signOutwr=findViewById(R.id.signOutwr);
-
-        signOutwr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(WorkerDashboard.this,SelectIdentity.class));
-                Toast.makeText(WorkerDashboard.this,"Signing Out",Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
-
-
-
 
     locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -116,7 +87,9 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
                 Toast.makeText(getApplicationContext(),"Item 3 Selected",Toast.LENGTH_LONG).show();
                 return true;
             case R.id.item4:
-                Toast.makeText(getApplicationContext(),"Item 4 Selected",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"show location",Toast.LENGTH_LONG).show();
+                Intent myIntent =new Intent(WorkerDashboard.this,MapsActivity.class);
+                startActivity(myIntent);
                 return true;
             case R.id.item5:
                 FirebaseAuth.getInstance().signOut();
