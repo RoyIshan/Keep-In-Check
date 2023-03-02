@@ -7,7 +7,7 @@
     <item  android:id="@+id/item3"
         android:title="Job Assigned"/>
     <item  android:id="@+id/item4"
-        android:title="My Location"/>
+        android:title="Show Location"/>
     <item  android:id="@+id/item5"
         android:title="LogOut"/>
 </menu>
