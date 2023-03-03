@@ -16,6 +16,9 @@
         android:theme="@style/Theme.KeepInCheck"
         tools:targetApi="31">
         <activity
+            android:name=".Worker.WorkerProfile"
+            android:exported="false" />
+        <activity
             android:name=".Owner.ViewProfile"
             android:exported="false" />
         <activity
@@ -60,8 +63,8 @@
         </activity>
         <activity
             android:name=".Owner.AssignTask"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

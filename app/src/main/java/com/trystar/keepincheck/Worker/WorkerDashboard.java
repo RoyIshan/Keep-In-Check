@@ -52,7 +52,7 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
         switch (id) {
             case R.id.ownerprofile:
                 Toast.makeText(getApplicationContext(), "View Profile", Toast.LENGTH_LONG).show();
-                //startActivity(new Intent(this, ViewProfile.class));
+                startActivity(new Intent(this, WorkerProfile.class));
                 return true;
             case R.id.item2:
                 try {

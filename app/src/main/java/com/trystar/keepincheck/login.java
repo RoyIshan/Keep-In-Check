@@ -14,11 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.trystar.keepincheck.Owner.AssignTask;
 import com.trystar.keepincheck.Owner.OwnerOtp;
 import com.trystar.keepincheck.Worker.Otp;
+import com.trystar.keepincheck.Worker.WorkerDashboard;
+import com.trystar.keepincheck.Worker.WorkerProfile;
 
 public class login extends AppCompatActivity {
 
@@ -26,7 +30,8 @@ public class login extends AppCompatActivity {
     TextView signup;
     Button btn;
     FirebaseAuth fAuth;
-    String mNumber;
+    String mNumber,mobile;
+    FirebaseFirestore db,dbp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +42,23 @@ public class login extends AppCompatActivity {
         number = findViewById(R.id.number_login);
         btn = findViewById(R.id.btn_login);
         signup = findViewById(R.id.btn_signup);
+        db = FirebaseFirestore.getInstance();
 
 
         signup.setOnClickListener(view -> startActivity(new Intent(login.this, SelectIdentity.class)));
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            mNumber =user.getPhoneNumber();
+            try {
+                checkOnOwner2();
+                checkOnWorker2();
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(login.this,e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+            Toast.makeText(login.this,mNumber,Toast.LENGTH_SHORT).show();
+        }
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,11 +75,9 @@ public class login extends AppCompatActivity {
                     }
                 Toast.makeText(login.this,mNumber,Toast.LENGTH_SHORT).show();
             }
-
-            private void checkOnWorker() {
-                FirebaseFirestore db;
-                db = FirebaseFirestore.getInstance();
-                db.collection("Worker detail")
+            void checkOnWorker() {
+                dbp =FirebaseFirestore.getInstance();
+                dbp.collection("Worker detail")
                         .whereEqualTo("Phone Number", mNumber)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -83,10 +99,9 @@ public class login extends AppCompatActivity {
                         });
             }
 
-            private void checkOnOwner() {
-                FirebaseFirestore db;
-                db = FirebaseFirestore.getInstance();
-                db.collection("Owner detail")
+            void checkOnOwner() {
+                dbp =FirebaseFirestore.getInstance();
+                dbp.collection("Owner detail")
                         .whereEqualTo("Phone Number", mNumber)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -97,7 +112,6 @@ public class login extends AppCompatActivity {
                                         if(document.exists())
                                         {
                                             Intent intent = new Intent(login.this, OwnerOtp.class);
-                                            intent.putExtra("mobile", mNumber);
                                             startActivity(intent);
                                         }
                                     }
@@ -108,6 +122,54 @@ public class login extends AppCompatActivity {
                         });
             }
         });
+
+
+    }
+
+    private void checkOnWorker2() {
+        db.collection("Worker detail")
+                .whereEqualTo("Phone Number", mNumber)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(document.exists())
+                                {
+                                    Intent intent = new Intent(login.this, WorkerDashboard.class);
+                                    startActivity(intent);
+                                }
+                            }
+                        } else {
+
+                        }
+                    }
+                });
+    }
+
+    private void checkOnOwner2() {
+        db =FirebaseFirestore.getInstance();
+        db.collection("Owner detail")
+                .whereEqualTo("Phone Number", mNumber)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(document.exists())
+                                {
+                                    Intent intent = new Intent(login.this, AssignTask.class);
+                                    intent.putExtra("mobile", mNumber);
+                                    startActivity(intent);
+                                }
+                            }
+                        } else {
+
+                        }
+                    }
+                });
 
     }
 }
