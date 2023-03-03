@@ -30,19 +30,17 @@ public class login extends AppCompatActivity {
     TextView signup;
     Button btn;
     FirebaseAuth fAuth;
-    String mNumber,mobile;
+    String mNumber;
     FirebaseFirestore db,dbp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
 
         number = findViewById(R.id.number_login);
         btn = findViewById(R.id.btn_login);
         signup = findViewById(R.id.btn_signup);
-        db = FirebaseFirestore.getInstance();
 
 
         signup.setOnClickListener(view -> startActivity(new Intent(login.this, SelectIdentity.class)));
@@ -57,7 +55,6 @@ public class login extends AppCompatActivity {
             {
                 Toast.makeText(login.this,e.getMessage(),Toast.LENGTH_LONG).show();
             }
-            Toast.makeText(login.this,mNumber,Toast.LENGTH_SHORT).show();
         }
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +109,7 @@ public class login extends AppCompatActivity {
                                         if(document.exists())
                                         {
                                             Intent intent = new Intent(login.this, OwnerOtp.class);
+                                            intent.putExtra("mobile",  mNumber);
                                             startActivity(intent);
                                         }
                                     }
@@ -127,6 +125,8 @@ public class login extends AppCompatActivity {
     }
 
     private void checkOnWorker2() {
+
+        db = FirebaseFirestore.getInstance();
         db.collection("Worker detail")
                 .whereEqualTo("Phone Number", mNumber)
                 .get()
@@ -149,7 +149,8 @@ public class login extends AppCompatActivity {
     }
 
     private void checkOnOwner2() {
-        db =FirebaseFirestore.getInstance();
+
+        db = FirebaseFirestore.getInstance();
         db.collection("Owner detail")
                 .whereEqualTo("Phone Number", mNumber)
                 .get()
