@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.OwnerPart;
+package com.trystar.keepincheck.Owner;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;

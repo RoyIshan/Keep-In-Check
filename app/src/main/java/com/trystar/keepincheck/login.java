@@ -17,8 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.trystar.keepincheck.OwnerPart.OwnerOtp;
-import com.trystar.keepincheck.WorkerPart.Otp;
+import com.trystar.keepincheck.Owner.OwnerOtp;
+import com.trystar.keepincheck.Worker.Otp;
 
 public class login extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.OwnerPart;
+package com.trystar.keepincheck.Owner;
 
 import android.content.Intent;
 import android.os.Bundle;

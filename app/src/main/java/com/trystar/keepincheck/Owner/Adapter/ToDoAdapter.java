@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.OwnerPart.Adapter;
+package com.trystar.keepincheck.Owner.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +13,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.trystar.keepincheck.OwnerPart.AssignTask;
-import com.trystar.keepincheck.OwnerPart.Model.ToDoModel;
+import com.trystar.keepincheck.Owner.AssignTask;
+import com.trystar.keepincheck.Owner.Model.ToDoModel;
 import com.trystar.keepincheck.R;
 
 import java.util.List;

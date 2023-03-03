@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.OwnerPart;
+package com.trystar.keepincheck.Owner;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -26,8 +26,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.trystar.keepincheck.OwnerPart.Adapter.ToDoAdapter;
-import com.trystar.keepincheck.OwnerPart.Model.ToDoModel;
+import com.trystar.keepincheck.Owner.Adapter.ToDoAdapter;
+import com.trystar.keepincheck.Owner.Model.ToDoModel;
 import com.trystar.keepincheck.R;
 import com.trystar.keepincheck.SelectIdentity;
 

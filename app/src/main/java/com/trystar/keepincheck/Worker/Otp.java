@@ -1,6 +1,4 @@
-package com.trystar.keepincheck.OwnerPart;
-
-import static android.widget.Toast.makeText;
+package com.trystar.keepincheck.Worker;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,18 +21,18 @@ import com.trystar.keepincheck.R;
 
 import java.util.concurrent.TimeUnit;
 
-public class OwnerOtp extends AppCompatActivity {
+public class Otp extends AppCompatActivity {
 
     EditText otp;
     Button btn2;
     String phonenumber;
     FirebaseAuth mAuth;
     String otpid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
-
         phonenumber = getIntent().getStringExtra("mobile");
         otp = findViewById(R.id.OTP);
         btn2 = findViewById(R.id.btn2);
@@ -45,9 +43,9 @@ public class OwnerOtp extends AppCompatActivity {
         try {
             btn2.setOnClickListener(view -> {
                 if (otp.getText().toString().isEmpty()) {
-                    makeText(getApplicationContext(), "please Enter OTP", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please Enter OTP", Toast.LENGTH_SHORT).show();
                 } else if (otp.getText().toString().length() != 6) {
-                    makeText(getApplicationContext(), "Invalid OTP", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Invalid OTP", Toast.LENGTH_SHORT).show();
                 } else {
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpid, otp.getText().toString());
                     signInWithPhoneAuthCredential(credential);
@@ -57,13 +55,12 @@ public class OwnerOtp extends AppCompatActivity {
             });
 
         } catch (Exception e) {
-            makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
     }
     void initiateotp() {
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(mAuth)
+        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber(phonenumber)       // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                         .setActivity(this)                 // Activity (for callback binding)
@@ -82,7 +79,7 @@ public class OwnerOtp extends AppCompatActivity {
 
                                     @Override
                                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                                        makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                                     }
                                 }
                         )          // OnVerificationStateChangedCallbacks
@@ -97,10 +94,12 @@ public class OwnerOtp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            startActivity(new Intent(OwnerOtp.this, AssignTask.class));
+                            startActivity(new Intent(Otp.this, WorkerDashboard.class));
+
+
                             finish();
                         } else {
-                            makeText(getApplicationContext(),"Signing code Error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Signin Code Error",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

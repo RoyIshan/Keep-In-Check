@@ -7,7 +7,7 @@
     android:layout_margin="8dp"
     android:background="#2196F3"
     android:padding="1dp"
-    tools:context=".WorkerDashboard">
+    tools:context=".Worker.WorkerDashboard">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

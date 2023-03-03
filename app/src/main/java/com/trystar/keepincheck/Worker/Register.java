@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.WorkerPart;
+package com.trystar.keepincheck.Worker;
 
 import android.content.Intent;
 import android.os.Bundle;
