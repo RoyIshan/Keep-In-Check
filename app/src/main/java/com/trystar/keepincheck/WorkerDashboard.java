@@ -168,6 +168,25 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_dashboard);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
+
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+        onLocationChanged(lastKnownLocation);
+
         task_name = findViewById(R.id.task_name);
         deadline = findViewById(R.id.deadline);
         worker = findViewById(R.id.worker);
@@ -186,6 +205,7 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 worker_name = document.getString("Name");
+                                getTaskDetail(worker_name);
                                 Toast.makeText(WorkerDashboard.this, "working", Toast.LENGTH_SHORT).show();
                             }
                         } else {
@@ -193,8 +213,6 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
                         }
                     }
                 });
-        worker_name = "W1";
-        getTaskDetail(worker_name);
     }
     private void getTaskDetail(String worker_name) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
