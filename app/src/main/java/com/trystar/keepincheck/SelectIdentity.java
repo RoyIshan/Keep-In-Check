@@ -7,8 +7,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.trystar.keepincheck.OwnerPart.OwnerRegister;
-import com.trystar.keepincheck.WorkerPart.Register;
+import com.trystar.keepincheck.Owner.OwnerRegister;
+import com.trystar.keepincheck.Worker.Register;
 
 public class SelectIdentity extends AppCompatActivity {
 

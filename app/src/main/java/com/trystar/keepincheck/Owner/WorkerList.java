@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.OwnerPart;
+package com.trystar.keepincheck.Owner;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;

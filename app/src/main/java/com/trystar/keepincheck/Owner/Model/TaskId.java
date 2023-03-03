@@ -1,4 +1,4 @@
-package com.trystar.keepincheck.OwnerPart.Model;
+package com.trystar.keepincheck.Owner.Model;
 
 import androidx.annotation.NonNull;
 

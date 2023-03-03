@@ -16,7 +16,7 @@
         android:theme="@style/Theme.KeepInCheck"
         tools:targetApi="31">
         <activity
-            android:name=".OwnerPart.ViewProfile"
+            android:name=".Owner.ViewProfile"
             android:exported="false" />
         <activity
             android:name=".login"
@@ -52,14 +52,14 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".WorkerDashboard"
+            android:name=".Worker.WorkerDashboard"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OwnerPart.AssignTask"
+            android:name=".Owner.AssignTask"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false">
             <meta-data
@@ -69,20 +69,20 @@
         <activity
             android:name=".SelectIdentity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".OwnerPart.WorkerList" />
+        <activity android:name=".Owner.WorkerList" />
         <activity
-            android:name=".OwnerPart.OwnerOtp"
+            android:name=".Owner.OwnerOtp"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".OwnerPart.OwnerRegister"
+            android:name=".Owner.OwnerRegister"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".WorkerPart.Otp"
+            android:name=".Worker.Otp"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".WorkerPart.Register"
+            android:name=".Worker.Register"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity

@@ -1,4 +1,4 @@
-package com.trystar.keepincheck;
+package com.trystar.keepincheck.Worker;
 
 import android.Manifest;
 import android.content.Context;
@@ -18,17 +18,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.trystar.keepincheck.OwnerPart.ViewProfile;
-import com.trystar.keepincheck.OwnerPart.WorkerList;
+import com.trystar.keepincheck.Owner.WorkerList;
+import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.SelectIdentity;
 import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 public class WorkerDashboard extends AppCompatActivity implements LocationListener {
