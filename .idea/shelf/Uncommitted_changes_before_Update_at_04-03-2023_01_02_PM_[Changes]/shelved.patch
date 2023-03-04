@@ -1,0 +1,207 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.KeepInCheck\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".Worker.WorkerProfile\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".Owner.ViewProfile\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".login\"\r\n            android:exported=\"true\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <!--\r\n             TODO: Before you run your application, you need a Google Maps API key.\r\n\r\n             To get one, follow the directions here:\r\n\r\n                https://developers.google.com/maps/documentation/android-sdk/get-api-key\r\n\r\n             Once you have your API key (it starts with \"AIza\"), define a new property in your\r\n             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the\r\n             \"YOUR_API_KEY\" string in this file with \"${MAPS_API_KEY}\".\r\n        -->\r\n        <meta-data\r\n            android:name=\"com.google.android.geo.API_KEY\"\r\n            android:value=\"AIzaSyBPQhgYPX21JijsqSU0uBAph9HnqDTPf6A\" />\r\n\r\n        <activity\r\n            android:name=\".mapfiles.MapsActivity\"\r\n            android:exported=\"false\"\r\n            android:label=\"@string/title_activity_maps\" />\r\n        <activity\r\n            android:name=\".Worker.WorkerDashboard\"\r\n            android:exported=\"false\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".Owner.AssignTask\"\r\n            android:exported=\"false\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".SelectIdentity\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity android:name=\".Owner.WorkerList\" />\r\n        <activity\r\n            android:name=\".Owner.OwnerOtp\"\r\n            android:exported=\"false\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity\r\n            android:name=\".Owner.OwnerRegister\"\r\n            android:exported=\"false\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity\r\n            android:name=\".Worker.Otp\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity\r\n            android:name=\".Worker.Register\"\r\n            android:exported=\"false\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"false\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision a764ae3181595e614e2254324aae06f1f5977cce)
++++ b/app/src/main/AndroidManifest.xml	(date 1677913287517)
+@@ -16,6 +16,9 @@
+         android:theme="@style/Theme.KeepInCheck"
+         tools:targetApi="31">
+         <activity
++            android:name=".WorkerGiveAttendance"
++            android:exported="false" />
++        <activity
+             android:name=".Worker.WorkerProfile"
+             android:exported="false" />
+         <activity
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"deploymentTargetDropDown\">\r\n    <targetSelectedWithDropDown>\r\n      <Target>\r\n        <type value=\"QUICK_BOOT_TARGET\" />\r\n        <deviceKey>\r\n          <Key>\r\n            <type value=\"VIRTUAL_DEVICE_PATH\" />\r\n            <value value=\"C:\\Users\\vasudev sankla\\.android\\avd\\Pixel_6_API_30.avd\" />\r\n          </Key>\r\n        </deviceKey>\r\n      </Target>\r\n    </targetSelectedWithDropDown>\r\n    <timeTargetWasSelectedWithDropDown value=\"2023-02-27T10:59:06.706961100Z\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+--- a/.idea/deploymentTargetDropDown.xml	(revision a764ae3181595e614e2254324aae06f1f5977cce)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1677913301862)
+@@ -7,11 +7,11 @@
+         <deviceKey>
+           <Key>
+             <type value="VIRTUAL_DEVICE_PATH" />
+-            <value value="C:\Users\vasudev sankla\.android\avd\Pixel_6_API_30.avd" />
++            <value value="C:\Users\vasudev sankla\.android\avd\Pixel_4_API_30.avd" />
+           </Key>
+         </deviceKey>
+       </Target>
+     </targetSelectedWithDropDown>
+-    <timeTargetWasSelectedWithDropDown value="2023-02-27T10:59:06.706961100Z" />
++    <timeTargetWasSelectedWithDropDown value="2023-03-04T06:57:11.208589700Z" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_worker_give_attendance.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_worker_give_attendance.xml b/app/src/main/res/layout/activity_worker_give_attendance.xml
+new file mode 100644
+--- /dev/null	(date 1677915132341)
++++ b/app/src/main/res/layout/activity_worker_give_attendance.xml	(date 1677915132341)
+@@ -0,0 +1,126 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:orientation="vertical"
++    tools:context=".WorkerGiveAttendance"
++    android:padding="30dp"
++    android:gravity="center">
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="horizontal">
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="Task :"/>
++        <TextView
++            android:id="@+id/taskName"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            />
++        <Space
++            android:layout_width="match_parent"
++            android:layout_height="50dp" />
++</LinearLayout>
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="horizontal">
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="Customer Address :"
++            />
++        <TextView
++            android:id="@+id/address"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            />
++    </LinearLayout>
++    <Space
++        android:layout_width="match_parent"
++        android:layout_height="50dp" />
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="horizontal">
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="Customer's Number :"
++            />
++        <TextView
++            android:id="@+id/number"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            />
++    </LinearLayout>
++    <Space
++        android:layout_width="match_parent"
++        android:layout_height="50dp" />
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="horizontal">
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="Deadline :"/>
++        <TextView
++            android:id="@+id/deadline"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_weight="1"
++            />
++    </LinearLayout>
++    <Space
++        android:layout_width="match_parent"
++        android:layout_height="70dp" />
++
++    <TextView
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_gravity="center_horizontal"
++        android:text="Give Attendance"
++        android:textSize="24sp" />
++    <Space
++        android:layout_width="match_parent"
++        android:layout_height="30dp" />
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="horizontal">
++        <EditText
++            android:id="@+id/code"
++            android:layout_width="200dp"
++            android:layout_height="50dp"
++            android:layout_weight="1"
++            android:background="@drawable/input"
++            android:backgroundTint="#D7E5F1"
++            android:ems="10"
++            android:gravity="center"
++            android:inputType="textPersonName"
++            android:textAllCaps="true"
++            android:textColor="#000000"
++            android:textColorHint="#A3A3A3"
++            android:textSize="21sp"
++            android:textStyle="bold|italic"
++            android:hint="Enter Code"/>
++
++        <Button
++            android:id="@+id/button"
++            android:layout_width="wrap_content"
++            android:layout_height="50dp"
++            android:layout_weight="1"
++            android:text="Give Attendance" />
++
++    </LinearLayout>
++
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/trystar/keepincheck/WorkerGiveAttendance.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/trystar/keepincheck/WorkerGiveAttendance.java b/app/src/main/java/com/trystar/keepincheck/WorkerGiveAttendance.java
+new file mode 100644
+--- /dev/null	(date 1677913287798)
++++ b/app/src/main/java/com/trystar/keepincheck/WorkerGiveAttendance.java	(date 1677913287798)
+@@ -0,0 +1,14 @@
++package com.trystar.keepincheck;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++
++public class WorkerGiveAttendance extends AppCompatActivity {
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_worker_give_attendance);
++    }
++}
+\ No newline at end of file

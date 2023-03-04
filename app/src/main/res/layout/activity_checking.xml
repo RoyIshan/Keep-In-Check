@@ -4,16 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp"
-    android:layout_gravity="center_horizontal"
-    android:background="#C5C5C5"
-    tools:context=".Worker.WorkerDashboard">
+    android:padding="30dp"
+    tools:context=".Worker.JobAssigned">
 
     <ListView
         android:id="@+id/taskList"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="136dp"
+        android:layout_height="match_parent"
         android:divider="#000000"
         android:dividerHeight="3dp"
         android:padding="5dp"

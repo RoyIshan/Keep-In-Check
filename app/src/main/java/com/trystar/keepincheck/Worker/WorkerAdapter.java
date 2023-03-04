@@ -35,11 +35,11 @@ public class WorkerAdapter extends RecyclerView.Adapter<WorkerAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull WorkerAdapter.MyViewHolder holder, int position) {
 
-        Worker Worker = workerArrayList.get(position);
+        Worker workerobj = workerArrayList.get(position);
 
-        holder.task.setText(Worker.task);
-        holder.deadline.setText(Worker.deadline);
-        holder.worker.setText(Worker.worker);
+        holder.task.setText(workerobj.task);
+        holder.deadline.setText(workerobj.deadline);
+        holder.worker.setText(workerobj.worker);
 
     }
 
