@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -180,6 +182,14 @@ public class AddNewTask extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 String task = wTaskEdit.getText().toString();
+                String smsNumber = phoneNumber.getText().toString();
+                String verificationCode = randomGenerate();
+                String smsText = "Code for Worker Attendance verification is : "+verificationCode+" \nWorker will ask you for this code";
+
+                Uri uri = Uri.parse("smsto:" + smsNumber);
+                Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+                intent.putExtra("sms_body", smsText);
+                startActivity(intent);
 
                 if (task.isEmpty()) {
                     Toast.makeText(context, "Empty task not allowed!", Toast.LENGTH_SHORT).show();
@@ -188,10 +198,11 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
                     taskMap.put("task", task);
                     taskMap.put("deadline", deadLine);
-                    taskMap.put("status", 0);
+                    taskMap.put("status", 1);
                     taskMap.put("address", address.getText().toString());
                     taskMap.put("number", phoneNumber.getText().toString());
                     taskMap.put("worker",NameofWorker);
+                    taskMap.put("code",verificationCode);
 
                     firestore.collection("task").add(taskMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                         @Override
@@ -212,6 +223,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 dismiss();
             }
         });
+    }
+
+    private String randomGenerate() {
+        return String.valueOf((int) (Math.random()*(9999-1000+1)+1000));
     }
 
     @Override
