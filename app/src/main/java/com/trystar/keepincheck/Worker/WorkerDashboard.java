@@ -1,6 +1,7 @@
 package com.trystar.keepincheck.Worker;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,19 +11,26 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.Owner.WorkerList;
@@ -30,9 +38,14 @@ import com.trystar.keepincheck.R;
 import com.trystar.keepincheck.SelectIdentity;
 import com.trystar.keepincheck.mapfiles.MapsActivity;
 
+import java.util.ArrayList;
+
 public class WorkerDashboard extends AppCompatActivity implements LocationListener {
 
-
+    RecyclerView recyclerView;
+    ArrayList<Worker> workerArrayList;
+    WorkerAdapter workerAdapter;
+    FirebaseFirestore db;
     private LocationManager locationManager;
 
     String uid;
@@ -160,8 +173,6 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
     }
 
     String mobile, worker_name;
-    TextView task_name, deadline;
-    TextView worker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -186,15 +197,21 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
 
         onLocationChanged(lastKnownLocation);
 
-        task_name = findViewById(R.id.task_name);
-        deadline = findViewById(R.id.deadline);
-        worker = findViewById(R.id.worker);
+        recyclerView = findViewById(R.id.recyclerView2);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView.setAdapter(workerAdapter);
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             mobile = user.getPhoneNumber();
             Toast.makeText(WorkerDashboard.this, mobile, Toast.LENGTH_SHORT).show();
         }
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        workerArrayList = new ArrayList<Worker>();
+        workerAdapter = new WorkerAdapter(WorkerDashboard.this, workerArrayList);
+
         db.collection("Worker detail")
                 .whereEqualTo("Phone Number", mobile)
                 .get()
@@ -204,7 +221,7 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 worker_name = document.getString("Name");
-                                getTaskDetail(worker_name);
+                                EventChangeListener(worker_name);
                                 Toast.makeText(WorkerDashboard.this, "working", Toast.LENGTH_SHORT).show();
                             }
                         } else {
@@ -213,7 +230,29 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
                     }
                 });
     }
-    private void getTaskDetail(String worker_name) {
+
+    private void EventChangeListener(String worker_name){
+
+        db.collection("task")
+                .whereEqualTo("worker", worker_name)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if (error != null) {
+                            Toast.makeText(WorkerDashboard.this, "error", Toast.LENGTH_SHORT).show();
+                        }
+                        for (DocumentChange dc : value.getDocumentChanges()){
+                            if (dc.getType() == DocumentChange.Type.ADDED) {
+                                workerArrayList.add(dc.getDocument().toObject(Worker.class));
+                            }
+
+                            workerAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+    }
+    /* private void getTaskDetail(String worker_name) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("task")
                 .whereEqualTo("worker", worker_name)
@@ -233,7 +272,7 @@ public class WorkerDashboard extends AppCompatActivity implements LocationListen
                         }
                     }
                 });
-    }
+    } */
 }
 
 
