@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".WorkerGiveAttendance"
+    tools:context=".Worker.WorkerGiveAttendance"
     android:padding="30dp"
     android:gravity="center">
 
