@@ -19,7 +19,7 @@
             android:name=".Worker.JobAssigned"
             android:exported="false" />
         <activity
-            android:name=".WorkerGiveAttendance"
+            android:name=".Worker.WorkerGiveAttendance"
             android:exported="false" />
         <activity
             android:name=".Worker.WorkerProfile"
@@ -60,13 +60,6 @@
             android:name=".mapfiles.MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
-        <activity
-            android:name=".Worker.WorkerDashboard"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
             android:name=".Owner.AssignTask"
             android:exported="false"

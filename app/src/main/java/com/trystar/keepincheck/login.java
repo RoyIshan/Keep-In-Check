@@ -20,9 +20,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.Owner.AssignTask;
 import com.trystar.keepincheck.Owner.OwnerOtp;
+import com.trystar.keepincheck.Worker.JobAssigned;
 import com.trystar.keepincheck.Worker.Otp;
-import com.trystar.keepincheck.Worker.WorkerDashboard;
-import com.trystar.keepincheck.Worker.WorkerProfile;
 
 public class login extends AppCompatActivity {
 
@@ -137,7 +136,7 @@ public class login extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if(document.exists())
                                 {
-                                    Intent intent = new Intent(login.this, WorkerDashboard.class);
+                                    Intent intent = new Intent(login.this, JobAssigned.class);
                                     startActivity(intent);
                                 }
                             }

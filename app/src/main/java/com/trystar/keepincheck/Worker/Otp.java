@@ -94,7 +94,7 @@ public class Otp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            startActivity(new Intent(Otp.this, WorkerDashboard.class));
+                            startActivity(new Intent(Otp.this, JobAssigned.class));
 
 
                             finish();
