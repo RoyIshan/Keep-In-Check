@@ -49,7 +49,6 @@ public class JobAssigned extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             mobile = user.getPhoneNumber();
-            Toast.makeText(JobAssigned.this, mobile, Toast.LENGTH_SHORT).show();
         }
 
         db = FirebaseFirestore.getInstance();
@@ -74,7 +73,6 @@ public class JobAssigned extends AppCompatActivity {
                                                 if (task.isSuccessful()) {
                                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                                         adapter.add(document.getString("task"));
-                                                        Toast.makeText(JobAssigned.this,"chalu hai",Toast.LENGTH_SHORT).show();
                                                     }
                                                 } else {
 
@@ -91,7 +89,6 @@ public class JobAssigned extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem = (String) parent.getItemAtPosition(position);
-                Toast.makeText(JobAssigned.this,selectedItem,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(JobAssigned.this, WorkerGiveAttendance.class);
                 intent.putExtra("task", selectedItem);
                 startActivity(intent);
