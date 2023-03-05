@@ -2,8 +2,12 @@ package com.trystar.keepincheck.Worker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,24 +20,27 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.R;
 
-public class WorkerProfile extends AppCompatActivity {
+public class WorkerProfile extends Fragment {
 
     String mobile;
     TextView name,phoneNumber,companyCode,companyName;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_worker_profile);
-        name = findViewById(R.id.ownerName);
-        phoneNumber = findViewById(R.id.ownerPhoneNumber);
-        companyCode = findViewById(R.id.ownerCC);
-        companyName = findViewById(R.id.ownerCN);
+        View views = inflater.inflate(R.layout.activity_worker_profile, container, false);
+
+        name = views.findViewById(R.id.ownerName);
+        phoneNumber = views.findViewById(R.id.ownerPhoneNumber);
+        companyCode = views.findViewById(R.id.ownerCC);
+        companyName = views.findViewById(R.id.ownerCN);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             mobile = user.getPhoneNumber();
-            Toast.makeText(WorkerProfile.this,mobile,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),mobile,Toast.LENGTH_SHORT).show();
         }
         updateProfile();
+        return views;
+
     }
 
     private void updateProfile() {
@@ -50,10 +57,10 @@ public class WorkerProfile extends AppCompatActivity {
                                 phoneNumber.setText(mobile);
                                 companyCode.setText(document.getString("Invite Code"));
                                 companyName.setText(document.getString("Company Name"));
-                                Toast.makeText(WorkerProfile.this,"chal ra",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(),"chal ra",Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(WorkerProfile.this,"error",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),"error",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

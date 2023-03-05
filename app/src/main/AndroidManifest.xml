@@ -19,6 +19,9 @@
             android:name=".Worker.JobAssigned"
             android:exported="false" />
         <activity
+            android:name=".Worker.BottomNav"
+            android:exported="false" />
+        <activity
             android:name=".Worker.WorkerGiveAttendance"
             android:exported="false" />
         <activity

@@ -30,6 +30,7 @@ import com.trystar.keepincheck.Owner.Adapter.ToDoAdapter;
 import com.trystar.keepincheck.Owner.Model.ToDoModel;
 import com.trystar.keepincheck.R;
 import com.trystar.keepincheck.SelectIdentity;
+import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -114,18 +115,14 @@ public class AssignTask extends AppCompatActivity {
                         startActivity(new Intent(AssignTask.this,ViewProfile.class));
                         return true;
                     case R.id.item2:
-                        try {
                             startActivity(new Intent(AssignTask.this,WorkerList.class));
-                        }catch (Exception e)
-                        {
-                            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
-                        }
                         return true;
                     case R.id.item3:
                         Toast.makeText(getApplicationContext(),"Item 3 Selected",Toast.LENGTH_LONG).show();
                         return true;
                     case R.id.item4:
-                        Toast.makeText(getApplicationContext(),"Item 4 Selected",Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(AssignTask.this, MapsActivity.class));
+                        Toast.makeText(getApplicationContext(),"Location",Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.item5:
                         FirebaseAuth.getInstance().signOut();
