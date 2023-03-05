@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".Worker.WorkerProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:orientation="vertical"
-        android:background="@drawable/round_corner">
+        android:layout_height="253dp"
+        android:layout_weight="0"
+        android:background="@drawable/round_corner"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView11"
@@ -25,20 +26,21 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
-            android:padding="30dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="169dp"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -63,7 +65,7 @@
                     <TextView
                         android:id="@+id/ownerName"
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
                         android:textSize="20sp" />
@@ -72,8 +74,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="174dp"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -98,7 +100,7 @@
                     <TextView
                         android:id="@+id/ownerPhoneNumber"
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
                         android:textSize="20sp" />
@@ -107,8 +109,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="185dp"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -133,7 +135,7 @@
                     <TextView
                         android:id="@+id/ownerCN"
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
                         android:textSize="20sp" />
@@ -142,8 +144,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="191dp"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -168,7 +170,7 @@
                     <TextView
                         android:id="@+id/ownerCC"
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="TextView"
                         android:textSize="20sp" />
@@ -177,12 +179,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/signout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
