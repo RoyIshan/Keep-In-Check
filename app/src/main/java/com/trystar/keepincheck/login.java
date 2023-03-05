@@ -20,6 +20,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.Owner.AssignTask;
 import com.trystar.keepincheck.Owner.OwnerOtp;
+import com.trystar.keepincheck.Worker.BottomNav;
 import com.trystar.keepincheck.Worker.JobAssigned;
 import com.trystar.keepincheck.Worker.Otp;
 
@@ -136,7 +137,7 @@ public class login extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if(document.exists())
                                 {
-                                    Intent intent = new Intent(login.this, JobAssigned.class);
+                                    Intent intent = new Intent(login.this, BottomNav.class);
                                     startActivity(intent);
                                 }
                             }
