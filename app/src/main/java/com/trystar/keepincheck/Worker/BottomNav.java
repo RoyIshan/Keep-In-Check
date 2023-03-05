@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.trystar.keepincheck.Owner.AssignTask;
 import com.trystar.keepincheck.R;
 import com.trystar.keepincheck.SelectIdentity;
+import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 public class BottomNav extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener  {
 
@@ -48,9 +49,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                 return true;
 
             case R.id.item4:
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(BottomNav.this, SelectIdentity.class));
-                Toast.makeText(BottomNav.this, "Signing Out", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(BottomNav.this, MapsActivity.class));
                 return true;
 
             case R.id.item5:
