@@ -31,6 +31,9 @@
             android:name=".Owner.ViewProfile"
             android:exported="false" />
         <activity
+            android:name=".Owner.EditProfile"
+            android:exported="false" />
+        <activity
             android:name=".login"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">

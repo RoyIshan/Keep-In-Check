@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item  android:id="@+id/item1"
-        android:title="Profile"
-        android:icon="@drawable/baseline_person_24"/>
+        android:title="Profile"/>
     <item  android:id="@+id/item2"
-        android:title="Attendance"
-        android:icon="@drawable/ic_action_name"/>
+        android:title="Attendance"/>
     <item  android:id="@+id/item3"
-        android:title="Job Assigned"
-        android:icon="@android:drawable/ic_menu_compass"/>
+        android:title="Job Assigned"/>
     <item  android:id="@+id/item4"
-        android:title="Show Location"
-        android:icon="@drawable/ic_selected"/>
+        android:title="Show Location"/>
     <item  android:id="@+id/item5"
-        android:title="LogOut"
-        android:icon="@android:drawable/presence_busy"/>
+        android:title="LogOut"/>
 </menu>

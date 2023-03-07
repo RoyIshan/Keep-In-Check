@@ -1,6 +1,9 @@
 package com.trystar.keepincheck.Owner;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,7 @@ public class ViewProfile extends AppCompatActivity {
 
     String mobile;
     TextView name,phoneNumber,companyCode,companyName;
+    Button editProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +32,24 @@ public class ViewProfile extends AppCompatActivity {
         phoneNumber = findViewById(R.id.ownerPhoneNumber);
         companyCode = findViewById(R.id.ownerCC);
         companyName = findViewById(R.id.ownerCN);
+
+        editProfile = findViewById(R.id.editProfile);
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEditProfile();
+            }
+        });
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             mobile = user.getPhoneNumber();
             Toast.makeText(ViewProfile.this,mobile,Toast.LENGTH_SHORT).show();
         }
         updateProfile();
+    }
+    public void openEditProfile(){
+        Intent intent = new Intent(this, EditProfile.class);
+        startActivity(intent);
     }
 
     private void updateProfile() {
