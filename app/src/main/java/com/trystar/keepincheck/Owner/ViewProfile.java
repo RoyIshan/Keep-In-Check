@@ -18,12 +18,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.login;
 
 public class ViewProfile extends AppCompatActivity {
 
     String mobile;
     TextView name,phoneNumber,companyCode,companyName;
-    Button editProfile;
+    Button editProfile, logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,15 @@ public class ViewProfile extends AppCompatActivity {
                 openEditProfile();
             }
         });
+
+        logout = findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Logout();
+            }
+        });
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             mobile = user.getPhoneNumber();
@@ -50,6 +60,12 @@ public class ViewProfile extends AppCompatActivity {
     public void openEditProfile(){
         Intent intent = new Intent(this, EditProfile.class);
         startActivity(intent);
+    }
+
+    public void Logout(){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(ViewProfile.this, login.class));
+        Toast.makeText(ViewProfile.this, "You have logged out", Toast.LENGTH_SHORT).show();
     }
 
     private void updateProfile() {
@@ -66,10 +82,7 @@ public class ViewProfile extends AppCompatActivity {
                                 phoneNumber.setText(mobile);
                                 companyCode.setText(document.getString("Invite Code"));
                                 companyName.setText(document.getString("Company Name"));
-                                Toast.makeText(ViewProfile.this,"chal ra",Toast.LENGTH_SHORT).show();
                             }
-                        } else {
-                            Toast.makeText(ViewProfile.this,"error",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

@@ -9,10 +9,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="253dp"
-        android:layout_weight="0"
-        android:background="@drawable/round_corner"
-        android:orientation="vertical">
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:background="@drawable/round_corner">
 
         <ImageView
             android:id="@+id/imageView11"
@@ -25,28 +24,28 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
-            android:orientation="vertical"
-            android:padding="30dp">
+            android:padding="30dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="169dp"
-                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView10"
                     android:layout_width="30dp"
                     android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingTop="20dp"
                     android:src="@drawable/baseline_person_24" />
 
                 <LinearLayout
@@ -55,18 +54,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
                         android:text="Name"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/ownerName"
+                        android:id="@+id/workerName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -74,14 +74,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="174dp"
-                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView21"
                     android:layout_width="30dp"
                     android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingTop="20dp"
                     android:src="@drawable/baseline_phone_iphone_24" />
 
                 <LinearLayout
@@ -90,18 +91,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Phone Number"
+                        android:fontFamily="@font/poppins"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/ownerPhoneNumber"
+                        android:id="@+id/workerPhoneNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -109,14 +111,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="185dp"
-                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView9"
                     android:layout_width="30dp"
                     android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingTop="20dp"
                     android:src="@drawable/baseline_business_24" />
 
                 <LinearLayout
@@ -125,18 +128,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
                         android:text="Company Name"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/ownerCN"
+                        android:id="@+id/workerCN"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -144,14 +148,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="191dp"
-                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView8"
                     android:layout_width="30dp"
                     android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingTop="20dp"
                     android:src="@drawable/baseline_code_24" />
 
                 <LinearLayout
@@ -160,18 +165,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
                         android:text="Company Code"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/ownerCC"
+                        android:id="@+id/workerCC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -179,22 +185,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/signout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SignOut" />
+                    android:id="@+id/editProfile"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Edit Profile"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_login" />
 
                 <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Edit" />
+                    android:id="@+id/logout"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Logout"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_login" />
             </LinearLayout>
 
         </LinearLayout>

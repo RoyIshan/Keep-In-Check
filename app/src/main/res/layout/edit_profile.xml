@@ -23,8 +23,8 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,6 +41,13 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/baseline_person_24" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -51,6 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins"
                         android:text="Update Name"
                         android:textColor="#000000" />
 
@@ -59,8 +67,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="45dp"
                         android:layout_weight="1"
-                        android:layout_marginTop="5dp"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins"
                         android:hint="Enter new name"
                         android:background="@drawable/input"/>
                 </LinearLayout>
@@ -72,6 +80,13 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/baseline_phone_iphone_24" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,6 +97,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins"
                         android:text="(Contact Admin to update Phone Number)"
                         android:textColor="#000000" />
 
@@ -89,9 +105,9 @@
                         android:id="@+id/viewPhoneNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="45dp"
-                        android:layout_marginTop="5dp"
                         android:paddingTop="10dp"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins"
                         android:hint="Phone Number"
                         android:textSize="16sp"
                         android:textColor="@color/black"
@@ -105,6 +121,13 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/baseline_business_24" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -115,6 +138,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins"
                         android:text="Update Company Name"
                         android:textColor="#000000" />
 
@@ -123,8 +147,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="45dp"
                         android:layout_weight="1"
-                        android:layout_marginTop="5dp"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins"
                         android:hint="Enter new company name"
                         android:background="@drawable/input" />
                 </LinearLayout>
@@ -136,6 +160,13 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/baseline_code_24" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -146,6 +177,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins"
                         android:text="Update Company Code"
                         android:textColor="#000000" />
 
@@ -154,8 +186,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="45dp"
                         android:layout_weight="1"
-                        android:layout_marginTop="5dp"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/poppins"
                         android:hint="Enter new company code"
                         android:background="@drawable/input" />
                 </LinearLayout>
@@ -170,11 +202,22 @@
 
                 <Button
                     android:id="@+id/editProfileSubmit"
-                    android:layout_width="220dp"
+                    android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
                     android:text="Submit"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_login" />
+
+                <Button
+                    android:id="@+id/goHome"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Go Back"
                     android:textColor="@color/white"
                     android:background="@drawable/btn_login"/>
             </LinearLayout>

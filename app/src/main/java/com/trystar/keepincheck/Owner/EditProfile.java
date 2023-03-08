@@ -1,5 +1,6 @@
 package com.trystar.keepincheck.Owner;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,7 @@ public class EditProfile extends AppCompatActivity {
 
     private static final String TAG = "EditProfile";
 
-    Button editProfileSubmit;
+    Button editProfileSubmit, goHome;
     EditText updateName, updateCompanyName, updateCompanyCode;
     TextView viewPhoneNumber;
     String mobile;
@@ -34,6 +35,7 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_profile);
         editProfileSubmit = findViewById(R.id.editProfileSubmit);
+        goHome = findViewById(R.id.goHome);
         updateName = findViewById(R.id.updateName);
         viewPhoneNumber = findViewById(R.id.viewPhoneNumber);
         updateCompanyName = findViewById(R.id.updateCompanyName);
@@ -127,5 +129,15 @@ public class EditProfile extends AppCompatActivity {
                         });
             }
         });
+        goHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToHome();
+            }
+        });
+    }
+    public void goToHome(){
+        Intent intent = new Intent(this, AssignTask.class);
+        startActivity(intent);
     }
 }

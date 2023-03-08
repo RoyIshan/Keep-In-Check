@@ -9,5 +9,5 @@
     <item  android:id="@+id/item4"
         android:title="Show Location"/>
     <item  android:id="@+id/item5"
-        android:title="LogOut"/>
+        android:title="Logout"/>
 </menu>

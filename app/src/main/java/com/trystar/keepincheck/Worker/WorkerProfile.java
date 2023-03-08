@@ -1,5 +1,6 @@
 package com.trystar.keepincheck.Worker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,21 +20,25 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.login;
 
 public class WorkerProfile extends Fragment {
 
     String mobile;
-    Button signout;
+    Button logout;
     TextView name,phoneNumber,companyCode,companyName;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View views = inflater.inflate(R.layout.activity_worker_profile, container, false);
 
-        name = views.findViewById(R.id.ownerName);
-        phoneNumber = views.findViewById(R.id.ownerPhoneNumber);
-        companyCode = views.findViewById(R.id.ownerCC);
-        companyName = views.findViewById(R.id.ownerCN);
+        name = views.findViewById(R.id.workerName);
+        phoneNumber = views.findViewById(R.id.workerPhoneNumber);
+        companyCode = views.findViewById(R.id.workerCC);
+        companyName = views.findViewById(R.id.workerCN);
+
+        logout = views.findViewById(R.id.logout);
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             mobile = user.getPhoneNumber();
@@ -41,7 +46,6 @@ public class WorkerProfile extends Fragment {
         }
         updateProfile();
         return views;
-
     }
 
     private void updateProfile() {
