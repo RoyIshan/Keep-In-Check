@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Owner.ViewProfile"
+    tools:context=".Owner.EditProfile"
     android:orientation="vertical">
 
     <LinearLayout
@@ -32,6 +32,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
             android:padding="30dp"
+            android:background="#F0F4F3"
             android:orientation="vertical">
 
             <LinearLayout
@@ -44,7 +45,7 @@
                     android:layout_width="30dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="5dp"
-                    android:paddingTop="20dp"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/baseline_person_24" />
 
                 <LinearLayout
@@ -56,18 +57,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingLeft="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Name"
+                        android:text="Update Name"
                         android:textColor="#000000" />
 
-                    <TextView
-                        android:id="@+id/ownerName"
+                    <EditText
+                        android:id="@+id/updateName"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:layout_weight="1"
+                        android:paddingLeft="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="TextView"
-                        android:textSize="20sp" />
+                        android:hint="Enter new name"
+                        android:background="@drawable/input"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -81,7 +84,7 @@
                     android:layout_width="30dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="5dp"
-                    android:paddingTop="20dp"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/baseline_phone_iphone_24" />
 
                 <LinearLayout
@@ -93,18 +96,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Phone Number"
+                        android:paddingLeft="10dp"
                         android:fontFamily="@font/poppins"
+                        android:text="(Contact Admin to update Phone Number)"
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/ownerPhoneNumber"
+                        android:id="@+id/viewPhoneNumber"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_height="45dp"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="TextView"
-                        android:textSize="20sp" />
+                        android:hint="Phone Number"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/input" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -118,7 +125,7 @@
                     android:layout_width="30dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="5dp"
-                    android:paddingTop="20dp"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/baseline_business_24" />
 
                 <LinearLayout
@@ -130,18 +137,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingLeft="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Company Name"
+                        android:text="Update Company Name"
                         android:textColor="#000000" />
 
-                    <TextView
-                        android:id="@+id/ownerCN"
+                    <EditText
+                        android:id="@+id/updateCompanyName"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:layout_weight="1"
+                        android:paddingLeft="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="TextView"
-                        android:textSize="20sp" />
+                        android:hint="Enter new company name"
+                        android:background="@drawable/input" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -155,7 +164,7 @@
                     android:layout_width="30dp"
                     android:layout_height="50dp"
                     android:layout_marginRight="5dp"
-                    android:paddingTop="20dp"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/baseline_code_24" />
 
                 <LinearLayout
@@ -167,18 +176,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingLeft="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Company Code"
+                        android:text="Update Company Code"
                         android:textColor="#000000" />
 
-                    <TextView
-                        android:id="@+id/ownerCC"
+                    <EditText
+                        android:id="@+id/updateCompanyCode"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:layout_weight="1"
+                        android:paddingLeft="10dp"
                         android:fontFamily="@font/poppins"
-                        android:text="TextView"
-                        android:textSize="20sp" />
+                        android:hint="Enter new company code"
+                        android:background="@drawable/input" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -186,29 +197,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/editProfile"
+                    android:id="@+id/editProfileSubmit"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Edit Profile"
+                    android:text="Submit"
                     android:textColor="@color/white"
                     android:background="@drawable/btn_login" />
 
                 <Button
-                    android:id="@+id/logout"
+                    android:id="@+id/goHome"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
                     android:fontFamily="@font/poppins"
-                    android:text="Logout"
+                    android:text="Go Back"
                     android:textColor="@color/white"
-                    android:background="@drawable/btn_login" />
+                    android:background="@drawable/btn_login"/>
             </LinearLayout>
 
         </LinearLayout>

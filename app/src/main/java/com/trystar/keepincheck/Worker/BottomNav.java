@@ -17,11 +17,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
-import com.trystar.keepincheck.R;
-import com.trystar.keepincheck.SelectIdentity;
-import com.trystar.keepincheck.mapfiles.LocationHelper;
+
 import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 import java.util.List;
@@ -74,6 +70,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
             case R.id.item1:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, secondFragment).commit();
                 return true;
+
             case R.id.item2:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, firstFragment).commit();
                 return true;
@@ -84,8 +81,8 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
 
             case R.id.item5:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(BottomNav.this, SelectIdentity.class));
-                Toast.makeText(BottomNav.this, "Signing Out", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(BottomNav.this, login.class));
+                Toast.makeText(BottomNav.this, "You have logged out", Toast.LENGTH_SHORT).show();
                 return true;
 
         }
