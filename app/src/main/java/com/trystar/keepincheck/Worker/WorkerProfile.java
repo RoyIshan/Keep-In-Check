@@ -42,7 +42,6 @@ public class WorkerProfile extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             mobile = user.getPhoneNumber();
-            Toast.makeText(getContext(),mobile,Toast.LENGTH_SHORT).show();
         }
         updateProfile();
         return views;
@@ -62,7 +61,6 @@ public class WorkerProfile extends Fragment {
                                 phoneNumber.setText(mobile);
                                 companyCode.setText(document.getString("Invite Code"));
                                 companyName.setText(document.getString("Company Name"));
-                                Toast.makeText(getActivity(),"chal ra",Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             Toast.makeText(getActivity(),"error",Toast.LENGTH_SHORT).show();
