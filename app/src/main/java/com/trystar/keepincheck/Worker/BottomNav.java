@@ -20,6 +20,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import com.trystar.keepincheck.mapfiles.MapsActivity;
 
+import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.login;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.SelectIdentity;
+import com.trystar.keepincheck.mapfiles.LocationHelper;
 import java.util.List;
 
 public class BottomNav extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, LocationListener {
