@@ -1,5 +1,6 @@
 package com.trystar.keepincheck.Owner;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -13,6 +14,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.ViewAttendance;
+import com.trystar.keepincheck.Worker.WorkerGiveAttendance;
 
 import java.util.ArrayList;
 
@@ -45,5 +48,12 @@ public class WorkerList extends AppCompatActivity {
                         }
                     }
                 });
+        wList.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedItem = (String) parent.getItemAtPosition(position);
+            Intent intent = new Intent(WorkerList.this, ViewAttendance.class);
+            intent.putExtra("name", selectedItem);
+            startActivity(intent);
+            //textView.setText("The best football player is : " + selectedItem);
+        });
     }
 }

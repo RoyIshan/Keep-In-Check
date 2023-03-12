@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4E4E4"
-    tools:context=".Owner.WorkerList">
+    tools:context=".ViewAttendance">
 
     <ListView
-        android:id="@+id/workerList"
+        android:id="@+id/attendanceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#000000"

@@ -1,5 +1,7 @@
 package com.trystar.keepincheck.Worker;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,10 +21,11 @@ import com.trystar.keepincheck.R;
 
 public class WorkerGiveAttendance extends AppCompatActivity {
 
-    String task,vcode;
+    String task,vcode,id;
     TextView taskName,deadline,cAddress,cNumber;
     EditText code;
     Button button;
+    Long status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,9 @@ public class WorkerGiveAttendance extends AppCompatActivity {
                                 cNumber.setText(document.getString("number"));
                                 cAddress.setText(document.getString("address"));
                                 vcode = document.getString("code");
+                                status =  document.getLong("status");
+                                id = document.getId();
+                                Toast.makeText(WorkerGiveAttendance.this,status+"",Toast.LENGTH_SHORT).show();
                             }
                         } else {
 
@@ -63,9 +69,17 @@ public class WorkerGiveAttendance extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String verificationCode = code.getText().toString();
-                if(verificationCode.equals(vcode))
+                if(verificationCode.equals(vcode) && status==1)
                 {
-                    Toast.makeText(WorkerGiveAttendance.this,"attendance recorded",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WorkerGiveAttendance.this,"Attendance recorded",Toast.LENGTH_SHORT).show();
+                    db.collection("task").document(id)
+                            .update(
+                                    "status", 0
+                            );
+                }
+                else if (verificationCode.equals(vcode) && status==0)
+                {
+                    Toast.makeText(WorkerGiveAttendance.this,"You have already given your attendance",Toast.LENGTH_LONG).show();
                 }
                 else {
                     Toast.makeText(WorkerGiveAttendance.this,"Wrong Code",Toast.LENGTH_SHORT).show();

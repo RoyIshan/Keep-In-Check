@@ -15,9 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.trystar.keepincheck.Owner.OwnerOtp;
+import com.trystar.keepincheck.Owner.OwnerRegister;
+import com.trystar.keepincheck.Owner.ViewProfile;
+import com.trystar.keepincheck.ViewAttendance;
 import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 import com.trystar.keepincheck.R;
@@ -79,7 +88,36 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                 return true;
 
             case R.id.item2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, firstFragment).commit();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    String mobile = user.getPhoneNumber();
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("Worker detail")
+                            .whereEqualTo("Phone Number",mobile)
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            String name =document.getString("Name");
+                                            Intent intent = new Intent(BottomNav.this, ViewAttendance.class);
+                                            intent.putExtra("name",  name);
+                                            startActivity(intent);
+                                        }
+                                    } else {
+                                        Toast.makeText(BottomNav.this,"error",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                    Intent intent = new Intent(BottomNav.this, ViewAttendance.class);
+                    intent.putExtra("mobile",  mobile);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(BottomNav.this, "error", Toast.LENGTH_SHORT).show();
+                }
+                //getSupportFragmentManager().beginTransaction().replace(R.id.container, firstFragment).commit();
                 return true;
 
             case R.id.item4:
