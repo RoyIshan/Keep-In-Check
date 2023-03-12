@@ -117,7 +117,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         FirebaseDatabase.getInstance().getReference(uid)
                 .setValue(helper).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(BottomNav.this, "Locations Saved", Toast.LENGTH_SHORT).show();
+
                     } else {
                         Toast.makeText(BottomNav.this, "Location Not Saved", Toast.LENGTH_SHORT).show();
                     }
