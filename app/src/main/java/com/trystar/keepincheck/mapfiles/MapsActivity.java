@@ -72,20 +72,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 phone=document.getString("Phone Number");
-
                                 DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child(phone);
                                 reff.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         try {
-                                            String num=phone;
+                                            name = document.getString("Name");
                                             latitude = snapshot.child("latitude").getValue(Double.class);
                                             longitude = snapshot.child("longitude").getValue(Double.class);
 
                                             Toast.makeText(MapsActivity.this,"vasu"+latitude+longitude,Toast.LENGTH_SHORT).show();
 
-
-                                            Locationlist.add(new Location("Location", new LatLng(latitude, longitude)));
+                                            Locationlist.add(new Location(name, new LatLng(latitude, longitude)));
                                             //list=getLocationList();
                                             initMarkers();
                                             viewPagerAdapter= new ViewPagerAdapter(getSupportFragmentManager(),Locationlist);
