@@ -1,0 +1,354 @@
+Index: app/src/main/java/com/trystar/keepincheck/Worker/WorkerGiveAttendance.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.trystar.keepincheck.Worker;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.google.android.gms.tasks.OnCompleteListener;\r\nimport com.google.android.gms.tasks.Task;\r\nimport com.google.firebase.firestore.FirebaseFirestore;\r\nimport com.google.firebase.firestore.QueryDocumentSnapshot;\r\nimport com.google.firebase.firestore.QuerySnapshot;\r\nimport com.trystar.keepincheck.R;\r\n\r\npublic class WorkerGiveAttendance extends AppCompatActivity {\r\n\r\n    String task,vcode;\r\n    TextView taskName,deadline,cAddress,cNumber;\r\n    EditText code;\r\n    Button button;\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_worker_give_attendance);\r\n\r\n        task = getIntent().getStringExtra(\"task\");\r\n        taskName = findViewById(R.id.taskName);\r\n        deadline = findViewById(R.id.deadline);\r\n        cAddress = findViewById(R.id.address);\r\n        cNumber = findViewById(R.id.number);\r\n        code = findViewById(R.id.code);\r\n        button = findViewById(R.id.button);\r\n\r\n        FirebaseFirestore db;\r\n        db = FirebaseFirestore.getInstance();\r\n        db.collection(\"task\")\r\n                .whereEqualTo(\"task\",task)\r\n                .get()\r\n                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {\r\n                    @Override\r\n                    public void onComplete(@NonNull Task<QuerySnapshot> task) {\r\n                        if (task.isSuccessful()) {\r\n                            for (QueryDocumentSnapshot document : task.getResult()) {\r\n\r\n                                taskName.setText(document.getString(\"task\"));\r\n                                deadline.setText(document.getString(\"deadline\"));\r\n                                cNumber.setText(document.getString(\"number\"));\r\n                                cAddress.setText(document.getString(\"address\"));\r\n                                vcode = document.getString(\"code\");\r\n                            }\r\n                        } else {\r\n\r\n                        }\r\n                    }\r\n                });\r\n\r\n        button.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                String verificationCode = code.getText().toString();\r\n                if(verificationCode.equals(vcode))\r\n                {\r\n                    Toast.makeText(WorkerGiveAttendance.this,\"attendance recorded\",Toast.LENGTH_SHORT).show();\r\n                }\r\n                else {\r\n                    Toast.makeText(WorkerGiveAttendance.this,\"Wrong Code\",Toast.LENGTH_SHORT).show();\r\n                }\r\n            }\r\n        });\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/trystar/keepincheck/Worker/WorkerGiveAttendance.java b/app/src/main/java/com/trystar/keepincheck/Worker/WorkerGiveAttendance.java
+--- a/app/src/main/java/com/trystar/keepincheck/Worker/WorkerGiveAttendance.java	(revision 7441b8295f9793368113ad65ff23dede70212bb1)
++++ b/app/src/main/java/com/trystar/keepincheck/Worker/WorkerGiveAttendance.java	(date 1678625608108)
+@@ -1,5 +1,7 @@
+ package com.trystar.keepincheck.Worker;
+ 
++import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
++
+ import androidx.annotation.NonNull;
+ import androidx.appcompat.app.AppCompatActivity;
+ 
+@@ -19,10 +21,11 @@
+ 
+ public class WorkerGiveAttendance extends AppCompatActivity {
+ 
+-    String task,vcode;
++    String task,vcode,id;
+     TextView taskName,deadline,cAddress,cNumber;
+     EditText code;
+     Button button;
++    Long status;
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+@@ -52,6 +55,9 @@
+                                 cNumber.setText(document.getString("number"));
+                                 cAddress.setText(document.getString("address"));
+                                 vcode = document.getString("code");
++                                status =  document.getLong("status");
++                                id = document.getId();
++                                Toast.makeText(WorkerGiveAttendance.this,status+"",Toast.LENGTH_SHORT).show();
+                             }
+                         } else {
+ 
+@@ -63,9 +69,17 @@
+             @Override
+             public void onClick(View view) {
+                 String verificationCode = code.getText().toString();
+-                if(verificationCode.equals(vcode))
++                if(verificationCode.equals(vcode) && status==1)
+                 {
+-                    Toast.makeText(WorkerGiveAttendance.this,"attendance recorded",Toast.LENGTH_SHORT).show();
++                    Toast.makeText(WorkerGiveAttendance.this,"Attendance recorded",Toast.LENGTH_SHORT).show();
++                    db.collection("task").document(id)
++                            .update(
++                                    "status", 0
++                            );
++                }
++                else if (verificationCode.equals(vcode) && status==0)
++                {
++                    Toast.makeText(WorkerGiveAttendance.this,"You have already given your attendance",Toast.LENGTH_LONG).show();
+                 }
+                 else {
+                     Toast.makeText(WorkerGiveAttendance.this,"Wrong Code",Toast.LENGTH_SHORT).show();
+Index: app/src/main/java/com/trystar/keepincheck/Owner/WorkerList.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.trystar.keepincheck.Owner;\r\n\r\nimport android.os.Bundle;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.ListView;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.google.android.gms.tasks.OnCompleteListener;\r\nimport com.google.android.gms.tasks.Task;\r\nimport com.google.firebase.firestore.FirebaseFirestore;\r\nimport com.google.firebase.firestore.QueryDocumentSnapshot;\r\nimport com.google.firebase.firestore.QuerySnapshot;\r\nimport com.trystar.keepincheck.R;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class WorkerList extends AppCompatActivity {\r\n\r\n    ListView wList;\r\n    ArrayAdapter<String> adapter;\r\n    FirebaseFirestore db;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_worker_list);\r\n\r\n        wList = findViewById(R.id.workerList);\r\n        db = FirebaseFirestore.getInstance();\r\n        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,new ArrayList<String>());\r\n        wList.setAdapter(adapter);\r\n        db.collection(\"Worker detail\")\r\n                .get()\r\n                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {\r\n                    @Override\r\n                    public void onComplete(@NonNull Task<QuerySnapshot> task) {\r\n                        if (task.isSuccessful()) {\r\n                            for (QueryDocumentSnapshot document : task.getResult()) {\r\n                                adapter.add(document.getString(\"Name\"));\r\n                            }\r\n                        } else {\r\n\r\n                        }\r\n                    }\r\n                });\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/trystar/keepincheck/Owner/WorkerList.java b/app/src/main/java/com/trystar/keepincheck/Owner/WorkerList.java
+--- a/app/src/main/java/com/trystar/keepincheck/Owner/WorkerList.java	(revision 7441b8295f9793368113ad65ff23dede70212bb1)
++++ b/app/src/main/java/com/trystar/keepincheck/Owner/WorkerList.java	(date 1678628597718)
+@@ -1,5 +1,6 @@
+ package com.trystar.keepincheck.Owner;
+ 
++import android.content.Intent;
+ import android.os.Bundle;
+ import android.widget.ArrayAdapter;
+ import android.widget.ListView;
+@@ -13,6 +14,8 @@
+ import com.google.firebase.firestore.QueryDocumentSnapshot;
+ import com.google.firebase.firestore.QuerySnapshot;
+ import com.trystar.keepincheck.R;
++import com.trystar.keepincheck.ViewAttendance;
++import com.trystar.keepincheck.Worker.WorkerGiveAttendance;
+ 
+ import java.util.ArrayList;
+ 
+@@ -45,5 +48,12 @@
+                         }
+                     }
+                 });
++        wList.setOnItemClickListener((parent, view, position, id) -> {
++            String selectedItem = (String) parent.getItemAtPosition(position);
++            Intent intent = new Intent(WorkerList.this, ViewAttendance.class);
++            intent.putExtra("name", selectedItem);
++            startActivity(intent);
++            //textView.setText("The best football player is : " + selectedItem);
++        });
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.KeepInCheck\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".Worker.JobAssigned\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".Worker.BottomNav\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".Worker.WorkerGiveAttendance\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".Worker.WorkerProfile\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".Owner.ViewProfile\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".Owner.EditProfile\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".login\"\r\n            android:exported=\"true\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <!--\r\n             TODO: Before you run your application, you need a Google Maps API key.\r\n\r\n             To get one, follow the directions here:\r\n\r\n                https://developers.google.com/maps/documentation/android-sdk/get-api-key\r\n\r\n             Once you have your API key (it starts with \"AIza\"), define a new property in your\r\n             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the\r\n             \"YOUR_API_KEY\" string in this file with \"${MAPS_API_KEY}\".\r\n        -->\r\n        <meta-data\r\n            android:name=\"com.google.android.geo.API_KEY\"\r\n            android:value=\"AIzaSyBPQhgYPX21JijsqSU0uBAph9HnqDTPf6A\" />\r\n\r\n        <activity\r\n            android:name=\".mapfiles.MapsActivity\"\r\n            android:exported=\"false\"\r\n            android:label=\"@string/title_activity_maps\" />\r\n        <activity\r\n            android:name=\".Owner.AssignTask\"\r\n            android:exported=\"false\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\">\r\n            <meta-data\r\n                android:name=\"android.app.lib_name\"\r\n                android:value=\"\" />\r\n        </activity>\r\n        <activity\r\n            android:name=\".SelectIdentity\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity android:name=\".Owner.WorkerList\" />\r\n        <activity\r\n            android:name=\".Owner.OwnerOtp\"\r\n            android:exported=\"false\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity\r\n            android:name=\".Owner.OwnerRegister\"\r\n            android:exported=\"false\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity\r\n            android:name=\".Worker.Otp\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity\r\n            android:name=\".Worker.Register\"\r\n            android:exported=\"false\"\r\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"false\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 7441b8295f9793368113ad65ff23dede70212bb1)
++++ b/app/src/main/AndroidManifest.xml	(date 1678625861313)
+@@ -16,6 +16,9 @@
+         android:theme="@style/Theme.KeepInCheck"
+         tools:targetApi="31">
+         <activity
++            android:name=".ViewAttendance"
++            android:exported="false" />
++        <activity
+             android:name=".Worker.JobAssigned"
+             android:exported="false" />
+         <activity
+Index: app/src/main/java/com/trystar/keepincheck/Worker/BottomNav.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.trystar.keepincheck.Worker;\r\n\r\nimport android.Manifest;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.content.pm.PackageManager;\r\nimport android.location.Location;\r\nimport android.location.LocationListener;\r\nimport android.location.LocationManager;\r\nimport android.os.Bundle;\r\nimport android.view.MenuItem;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.app.ActivityCompat;\r\n\r\nimport com.google.android.material.bottomnavigation.BottomNavigationView;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\n\r\nimport com.trystar.keepincheck.mapfiles.MapsActivity;\r\n\r\nimport com.trystar.keepincheck.R;\r\nimport com.trystar.keepincheck.login;\r\nimport com.google.firebase.auth.FirebaseUser;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.trystar.keepincheck.R;\r\nimport com.trystar.keepincheck.SelectIdentity;\r\nimport com.trystar.keepincheck.mapfiles.LocationHelper;\r\nimport java.util.List;\r\n\r\npublic class BottomNav extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, LocationListener {\r\n\r\n    BottomNavigationView bottomNavigationView;\r\n    android.os.Handler customHandler = new android.os.Handler();\r\n    Location lastKnownLocation;\r\n    FirebaseUser user;\r\n    String uid;\r\n    JobAssigned firstFragment = new JobAssigned();\r\n    WorkerProfile secondFragment = new WorkerProfile();\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_bottom_nav);\r\n\r\n        bottomNavigationView = findViewById(R.id.bottomNavigationView);\r\n\r\n        bottomNavigationView.setOnNavigationItemSelectedListener(this);\r\n        bottomNavigationView.setSelectedItemId(R.id.item3);\r\n\r\n        //For Saving Location in Firebase\r\n        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);\r\n\r\n\r\n        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)\r\n                != PackageManager.PERMISSION_GRANTED &&\r\n                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)\r\n                        != PackageManager.PERMISSION_GRANTED) {\r\n            return;\r\n        }\r\n        lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);\r\n        customHandler.postDelayed(updateTimerThread, 0);\r\n        onLocationChanged(lastKnownLocation);\r\n\r\n    }\r\n\r\n\r\n    @Override\r\n    public boolean onNavigationItemSelected(@NonNull MenuItem item) {\r\n\r\n        switch (item.getItemId()) {\r\n            case R.id.item3:\r\n                getSupportFragmentManager().beginTransaction().replace(R.id.container, firstFragment).commit();\r\n                return true;\r\n\r\n            case R.id.item1:\r\n                getSupportFragmentManager().beginTransaction().replace(R.id.container, secondFragment).commit();\r\n                return true;\r\n\r\n            case R.id.item2:\r\n                getSupportFragmentManager().beginTransaction().replace(R.id.container, firstFragment).commit();\r\n                return true;\r\n\r\n            case R.id.item4:\r\n                startActivity(new Intent(BottomNav.this, MapsActivity.class));\r\n                return true;\r\n\r\n            case R.id.item5:\r\n                FirebaseAuth.getInstance().signOut();\r\n                startActivity(new Intent(BottomNav.this, login.class));\r\n                Toast.makeText(BottomNav.this, \"You have logged out\", Toast.LENGTH_SHORT).show();\r\n                return true;\r\n\r\n        }\r\n        return false;\r\n    }\r\n\r\n    private Runnable updateTimerThread = new Runnable() {\r\n        public void run() {\r\n            onLocationChanged(lastKnownLocation);\r\n            customHandler.postDelayed(this, 10000);\r\n        }\r\n    };\r\n\r\n\r\n    @Override\r\n    public void onLocationChanged(@NonNull Location location) {\r\n        LocationHelper helper = new LocationHelper(\r\n\r\n                location.getLongitude(), location.getLatitude()\r\n        );\r\n        user = FirebaseAuth.getInstance().getCurrentUser();\r\n        if (user != null) {\r\n            uid = user.getPhoneNumber();\r\n        }\r\n        FirebaseDatabase.getInstance().getReference(uid)\r\n                .setValue(helper).addOnCompleteListener(task -> {\r\n                    if (task.isSuccessful()) {\r\n\r\n                    } else {\r\n                        Toast.makeText(BottomNav.this, \"Location Not Saved\", Toast.LENGTH_SHORT).show();\r\n                    }\r\n\r\n                });\r\n    }\r\n\r\n\r\n\r\n    @Override\r\n    public void onFlushComplete(int requestCode) {\r\n        LocationListener.super.onFlushComplete(requestCode);\r\n    }\r\n\r\n    @Override\r\n    public void onStatusChanged(String provider, int status, Bundle extras) {\r\n        LocationListener.super.onStatusChanged(provider, status, extras);\r\n    }\r\n\r\n    @Override\r\n    public void onProviderEnabled(@NonNull String provider) {\r\n        LocationListener.super.onProviderEnabled(provider);\r\n    }\r\n\r\n    @Override\r\n    public void onProviderDisabled(@NonNull String provider) {\r\n        LocationListener.super.onProviderDisabled(provider);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/trystar/keepincheck/Worker/BottomNav.java b/app/src/main/java/com/trystar/keepincheck/Worker/BottomNav.java
+--- a/app/src/main/java/com/trystar/keepincheck/Worker/BottomNav.java	(revision 7441b8295f9793368113ad65ff23dede70212bb1)
++++ b/app/src/main/java/com/trystar/keepincheck/Worker/BottomNav.java	(date 1678627065515)
+@@ -15,9 +15,18 @@
+ import androidx.appcompat.app.AppCompatActivity;
+ import androidx.core.app.ActivityCompat;
+ 
++import com.google.android.gms.tasks.OnCompleteListener;
++import com.google.android.gms.tasks.Task;
+ import com.google.android.material.bottomnavigation.BottomNavigationView;
+ import com.google.firebase.auth.FirebaseAuth;
+ 
++import com.google.firebase.firestore.FirebaseFirestore;
++import com.google.firebase.firestore.QueryDocumentSnapshot;
++import com.google.firebase.firestore.QuerySnapshot;
++import com.trystar.keepincheck.Owner.OwnerOtp;
++import com.trystar.keepincheck.Owner.OwnerRegister;
++import com.trystar.keepincheck.Owner.ViewProfile;
++import com.trystar.keepincheck.ViewAttendance;
+ import com.trystar.keepincheck.mapfiles.MapsActivity;
+ 
+ import com.trystar.keepincheck.R;
+@@ -79,7 +88,36 @@
+                 return true;
+ 
+             case R.id.item2:
+-                getSupportFragmentManager().beginTransaction().replace(R.id.container, firstFragment).commit();
++                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
++                if (user != null) {
++                    String mobile = user.getPhoneNumber();
++                    FirebaseFirestore db = FirebaseFirestore.getInstance();
++                    db.collection("Worker detail")
++                            .whereEqualTo("Phone Number",mobile)
++                            .get()
++                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
++                                @Override
++                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
++                                    if (task.isSuccessful()) {
++                                        for (QueryDocumentSnapshot document : task.getResult()) {
++                                            String name =document.getString("Name");
++                                            Intent intent = new Intent(BottomNav.this, ViewAttendance.class);
++                                            intent.putExtra("name",  name);
++                                            startActivity(intent);
++                                        }
++                                    } else {
++                                        Toast.makeText(BottomNav.this,"error",Toast.LENGTH_SHORT).show();
++                                    }
++                                }
++                            });
++                    Intent intent = new Intent(BottomNav.this, ViewAttendance.class);
++                    intent.putExtra("mobile",  mobile);
++                    startActivity(intent);
++                }
++                else {
++                    Toast.makeText(BottomNav.this, "error", Toast.LENGTH_SHORT).show();
++                }
++                //getSupportFragmentManager().beginTransaction().replace(R.id.container, firstFragment).commit();
+                 return true;
+ 
+             case R.id.item4:
+Index: app/src/main/res/layout/activity_worker_list.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#E4E4E4\"\r\n    tools:context=\".Owner.WorkerList\">\r\n\r\n    <ListView\r\n        android:id=\"@+id/workerList\"\r\n        android:layout_width=\"409dp\"\r\n        android:layout_height=\"828dp\"\r\n        android:fontFamily=\"@font/poppins\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"1.0\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_worker_list.xml b/app/src/main/res/layout/activity_worker_list.xml
+--- a/app/src/main/res/layout/activity_worker_list.xml	(revision 7441b8295f9793368113ad65ff23dede70212bb1)
++++ b/app/src/main/res/layout/activity_worker_list.xml	(date 1678628728494)
+@@ -9,12 +9,14 @@
+ 
+     <ListView
+         android:id="@+id/workerList"
+-        android:layout_width="409dp"
+-        android:layout_height="828dp"
+-        android:fontFamily="@font/poppins"
+-        app:layout_constraintBottom_toBottomOf="parent"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:divider="#000000"
++        android:dividerHeight="3dp"
++        android:padding="5dp"
++        android:background="@color/white"
+         app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="1.0" />
++        app:layout_constraintTop_toTopOf="parent" />
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+--- /dev/null	(date 1678625106595)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1678625106595)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <targetSelectedWithDropDown>
++      <Target>
++        <type value="QUICK_BOOT_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\vasudev sankla\.android\avd\Pixel_5_API_30.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </targetSelectedWithDropDown>
++    <timeTargetWasSelectedWithDropDown value="2023-03-12T12:44:57.127314700Z" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_view_attendance.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_view_attendance.xml b/app/src/main/res/layout/activity_view_attendance.xml
+new file mode 100644
+--- /dev/null	(date 1678628413633)
++++ b/app/src/main/res/layout/activity_view_attendance.xml	(date 1678628413633)
+@@ -0,0 +1,21 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".ViewAttendance">
++
++    <ListView
++        android:id="@+id/attendanceView"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:divider="#000000"
++        android:dividerHeight="3dp"
++        android:padding="5dp"
++        android:background="@color/white"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/trystar/keepincheck/ViewAttendance.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/trystar/keepincheck/ViewAttendance.java b/app/src/main/java/com/trystar/keepincheck/ViewAttendance.java
+new file mode 100644
+--- /dev/null	(date 1678628306105)
++++ b/app/src/main/java/com/trystar/keepincheck/ViewAttendance.java	(date 1678628306105)
+@@ -0,0 +1,63 @@
++package com.trystar.keepincheck;
++
++import androidx.annotation.NonNull;
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.os.Bundle;
++import android.widget.ArrayAdapter;
++import android.widget.ListView;
++import android.widget.Toast;
++
++import com.google.android.gms.tasks.OnCompleteListener;
++import com.google.android.gms.tasks.Task;
++import com.google.firebase.firestore.FirebaseFirestore;
++import com.google.firebase.firestore.QueryDocumentSnapshot;
++import com.google.firebase.firestore.QuerySnapshot;
++import com.trystar.keepincheck.Worker.WorkerGiveAttendance;
++
++import java.util.ArrayList;
++
++public class ViewAttendance extends AppCompatActivity {
++
++    ListView attendanceView;
++    String name,date;
++    Long status;
++    ArrayAdapter<String> adapter;
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_view_attendance);
++
++        name = getIntent().getStringExtra("name");
++
++        attendanceView  = findViewById(R.id.attendanceView);
++        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,new ArrayList<String>());
++        attendanceView.setAdapter(adapter);
++        Toast.makeText(ViewAttendance.this,"name :"+name,Toast.LENGTH_SHORT).show();
++        FirebaseFirestore db;
++        db = FirebaseFirestore.getInstance();
++        db.collection("task")
++                .whereEqualTo("worker",name)
++                .get()
++                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
++                    @Override
++                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
++                        if (task.isSuccessful()) {
++                            for (QueryDocumentSnapshot document : task.getResult()) {
++
++                                //taskName.setText(document.getString("task"));
++                                date = document.getString("deadline");
++                                //cNumber.setText(document.getString("number"));
++                               // cAddress.setText(document.getString("address"));
++                                //vcode = document.getString("code");
++                                status =  document.getLong("status");
++                                adapter.add(document.getString("deadline"));
++                                Toast.makeText(ViewAttendance.this,"name :"+status,Toast.LENGTH_SHORT).show();
++                            }
++                        } else {
++
++                        }
++                    }
++                });
++    }
++}
+\ No newline at end of file

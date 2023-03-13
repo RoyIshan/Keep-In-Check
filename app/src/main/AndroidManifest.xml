@@ -16,7 +16,7 @@
         android:theme="@style/Theme.KeepInCheck"
         tools:targetApi="31">
         <activity
-            android:name=".ViewAttendance"
+            android:name=".Attendance.ViewAttendance"
             android:exported="false" />
         <activity
             android:name=".Worker.JobAssigned"

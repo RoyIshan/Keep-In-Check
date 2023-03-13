@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.trystar.keepincheck.R;
-import com.trystar.keepincheck.ViewAttendance;
+import com.trystar.keepincheck.Attendance.ViewAttendance;
 
 import java.util.ArrayList;
 
