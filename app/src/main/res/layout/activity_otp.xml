@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="405dp"
-        android:layout_height="443dp"
+        android:layout_width="413dp"
+        android:layout_height="402dp"
         android:src="@drawable/otpwall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,25 +36,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.269" />
-
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="282dp"
-        android:layout_height="62dp"
-        android:background="#009CEF"
-        android:text="VERIFY"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/OTP"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.16" />
 
     <TextView
         android:id="@+id/textView4"
@@ -94,11 +79,11 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="351dp"
-        android:layout_height="60dp"
+        android:layout_height="46dp"
         android:fontFamily="@font/poppins"
         android:text="We have sent the verification code to Your Mobile Number"
         android:textColor="#818181"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,5 +91,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.027" />
+
+    <ImageButton
+        android:id="@+id/btn2"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:background="@drawable/circlebutton"
+        android:rotationY="180"
+        android:src="?attr/actionModeCloseDrawable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toEndOf="@+id/OTP"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.16" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
