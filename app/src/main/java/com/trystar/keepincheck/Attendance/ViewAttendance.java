@@ -1,10 +1,9 @@
-package com.trystar.keepincheck;
+package com.trystar.keepincheck.Attendance;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -13,7 +12,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.trystar.keepincheck.Worker.WorkerGiveAttendance;
+import com.trystar.keepincheck.R;
 
 import java.util.ArrayList;
 
@@ -22,17 +21,20 @@ public class ViewAttendance extends AppCompatActivity {
     ListView attendanceView;
     String name,date;
     Long status;
-    ArrayAdapter<String> adapter;
+    MyListAdapter adapter;
+    ArrayList<MyItem> items;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_attendance);
 
         name = getIntent().getStringExtra("name");
+        items = new ArrayList<>();
 
+        //items.add(new MyItem("date", "Present"));
         attendanceView  = findViewById(R.id.attendanceView);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,new ArrayList<String>());
-        attendanceView.setAdapter(adapter);
+        adapter = new MyListAdapter(this, items);
+
         Toast.makeText(ViewAttendance.this,"name :"+name,Toast.LENGTH_SHORT).show();
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
@@ -51,13 +53,21 @@ public class ViewAttendance extends AppCompatActivity {
                                // cAddress.setText(document.getString("address"));
                                 //vcode = document.getString("code");
                                 status =  document.getLong("status");
-                                adapter.add(document.getString("deadline"));
+                                if(status==0)
+                                {
+                                    items.add(new MyItem(date, "Present"));
+                                }
+                                else{
+                                    items.add(new MyItem(date, "Absent"));
+                                }
                                 Toast.makeText(ViewAttendance.this,"name :"+status,Toast.LENGTH_SHORT).show();
+                                attendanceView.setAdapter(adapter);
                             }
                         } else {
 
                         }
                     }
                 });
+
     }
 }
