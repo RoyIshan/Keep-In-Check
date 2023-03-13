@@ -1,6 +1,10 @@
 package com.trystar.keepincheck.Attendance;
 
+import static androidx.core.app.NotificationCompat.getColor;
+
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +35,20 @@ public class MyListAdapter extends ArrayAdapter<MyItem> {
         TextView titleTextView = convertView.findViewById(R.id.titleTextView);
         titleTextView.setText(item.getTitle());
 
+
         TextView descriptionTextView = convertView.findViewById(R.id.descriptionTextView);
         descriptionTextView.setText(item.getDescription());
+        if(item.getDescription().equals("Absent"))
+        {
+            descriptionTextView.setTextColor( Color.RED );
+        }
+        else if (item.getDescription().equals("Present")){
+            descriptionTextView.setTextColor( Color.BLUE );
+        }
+        if (position==0){
+            descriptionTextView.setTextColor( Color.BLACK );
+            descriptionTextView.setTypeface(null, Typeface.BOLD);
+        }
 
         return convertView;
     }
