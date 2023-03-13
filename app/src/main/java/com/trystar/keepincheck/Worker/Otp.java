@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class Otp extends AppCompatActivity {
 
     EditText otp;
-    Button btn2;
+    ImageButton btn2;
     String phonenumber;
     FirebaseAuth mAuth;
     String otpid;
