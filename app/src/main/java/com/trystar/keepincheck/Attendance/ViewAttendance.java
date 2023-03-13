@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,6 +34,8 @@ public class ViewAttendance extends AppCompatActivity {
 
         //items.add(new MyItem("date", "Present"));
         attendanceView  = findViewById(R.id.attendanceView);
+        items.add(new MyItem("Date", "Status"));
+
         adapter = new MyListAdapter(this, items);
 
         Toast.makeText(ViewAttendance.this,"name :"+name,Toast.LENGTH_SHORT).show();

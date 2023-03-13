@@ -21,9 +21,10 @@
         android:id="@+id/descriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|end"
         android:layout_weight="1"
-        android:gravity="left"
+        android:text="text"
+        android:textAlignment="center"
+        android:layout_marginLeft="110dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="14sp" />
 
