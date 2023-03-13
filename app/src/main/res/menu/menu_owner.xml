@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <group>
     <item  android:id="@+id/ownerprofile"
-        android:title="Profile"/>
+        android:title="Profile"
+        android:icon="@drawable/baseline_person_24"/>
+    </group>
+
+    <group>
     <item  android:id="@+id/item2"
-        android:title="Workers List"/>
+        android:title="Workers List"
+        android:icon="@drawable/ic_action_name"/>
     <item  android:id="@+id/item3"
-        android:title="Jobs Created"/>
+        android:title="Jobs Created"
+        android:icon="@drawable/ic_baseline_add_24"/>
     <item  android:id="@+id/item4"
-        android:title="Workers Location"/>
+        android:title="Workers Location"
+        android:icon="@drawable/ic_unselected"/>
+    </group>
+
     <item  android:id="@+id/item5"
-        android:title="Logout"/>
+        android:title="Logout"
+        android:icon="@drawable/ic_exit"/>
 
 </menu>

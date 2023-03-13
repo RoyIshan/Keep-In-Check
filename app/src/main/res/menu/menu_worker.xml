@@ -10,7 +10,7 @@
 
     <item  android:id="@+id/item3"
         android:title="Job Assigned"
-        android:icon="@android:drawable/ic_menu_compass"/>
+        android:icon="@drawable/ic_worker_job"/>
 
     <item  android:id="@+id/item4"
         android:title="Show Location"
@@ -18,5 +18,5 @@
 
     <item  android:id="@+id/item5"
         android:title="LogOut"
-        android:icon="@android:drawable/presence_busy"/>
+        android:icon="@drawable/ic_exit"/>
 </menu>
