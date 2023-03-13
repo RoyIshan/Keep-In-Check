@@ -41,6 +41,7 @@ public class JobAssigned extends Fragment {
         listView = views.findViewById(R.id.taskList);
         list = new ArrayList<>();
 
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             mobile = user.getPhoneNumber();

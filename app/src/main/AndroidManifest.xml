@@ -20,6 +20,7 @@
             android:exported="false" />
         <activity
             android:name=".Worker.JobAssigned"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".Worker.BottomNav"

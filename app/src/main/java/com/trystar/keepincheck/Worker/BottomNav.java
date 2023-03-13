@@ -19,24 +19,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.trystar.keepincheck.Owner.OwnerOtp;
-import com.trystar.keepincheck.Owner.OwnerRegister;
-import com.trystar.keepincheck.Owner.ViewProfile;
+import com.trystar.keepincheck.R;
 import com.trystar.keepincheck.ViewAttendance;
-import com.trystar.keepincheck.mapfiles.MapsActivity;
-
-import com.trystar.keepincheck.R;
 import com.trystar.keepincheck.login;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
-import com.trystar.keepincheck.R;
-import com.trystar.keepincheck.SelectIdentity;
 import com.trystar.keepincheck.mapfiles.LocationHelper;
-import java.util.List;
+import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 public class BottomNav extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, LocationListener {
 
@@ -52,6 +44,10 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_nav);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -134,7 +130,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
         return false;
     }
 
-    private Runnable updateTimerThread = new Runnable() {
+    private final Runnable updateTimerThread = new Runnable() {
         public void run() {
             onLocationChanged(lastKnownLocation);
             customHandler.postDelayed(this, 10000);
