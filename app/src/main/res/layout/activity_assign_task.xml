@@ -50,6 +50,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:animateLayoutChanges="true"
+        app:headerLayout="@layout/nav_header"
         android:clickable="true"
         android:fadingEdge="none"
         android:focusable="auto"

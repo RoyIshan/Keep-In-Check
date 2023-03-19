@@ -1,0 +1,138 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\">\n\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />\n    <uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />\n\n    <application\n        android:allowBackup=\"true\"\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\n        android:fullBackupContent=\"@xml/backup_rules\"\n        android:icon=\"@mipmap/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\n        android:supportsRtl=\"true\"\n        android:theme=\"@style/Theme.KeepInCheck\"\n        tools:targetApi=\"31\">\n        <activity\n            android:name=\".ViewAttendance\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".Worker.JobAssigned\"\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".Worker.BottomNav\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".Worker.WorkerGiveAttendance\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".Worker.WorkerProfile\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".Owner.ViewProfile\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".Owner.EditProfile\"\n            android:exported=\"false\" />\n        <activity\n            android:name=\".login\"\n            android:exported=\"true\"\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\">\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n\n            <meta-data\n                android:name=\"android.app.lib_name\"\n                android:value=\"\" />\n        </activity>\n        <!--\n             TODO: Before you run your application, you need a Google Maps API key.\n\n             To get one, follow the directions here:\n\n                https://developers.google.com/maps/documentation/android-sdk/get-api-key\n\n             Once you have your API key (it starts with \"AIza\"), define a new property in your\n             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the\n             \"YOUR_API_KEY\" string in this file with \"${MAPS_API_KEY}\".\n        -->\n        <meta-data\n            android:name=\"com.google.android.geo.API_KEY\"\n            android:value=\"AIzaSyBPQhgYPX21JijsqSU0uBAph9HnqDTPf6A\" />\n\n        <activity\n            android:name=\".mapfiles.MapsActivity\"\n            android:exported=\"false\"\n            android:label=\"@string/title_activity_maps\" />\n        <activity\n            android:name=\".Owner.AssignTask\"\n            android:exported=\"false\"\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\">\n            <meta-data\n                android:name=\"android.app.lib_name\"\n                android:value=\"\" />\n        </activity>\n        <activity\n            android:name=\".SelectIdentity\"\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\n        <activity android:name=\".Owner.WorkerList\" />\n        <activity\n            android:name=\".Owner.OwnerOtp\"\n            android:exported=\"false\"\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\n        <activity\n            android:name=\".Owner.OwnerRegister\"\n            android:exported=\"false\"\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\n        <activity\n            android:name=\".Worker.Otp\"\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\n        <activity\n            android:name=\".Worker.Register\"\n            android:exported=\"false\"\n            android:theme=\"@style/Theme.AppCompat.DayNight.NoActionBar\" />\n        <activity\n            android:name=\".MainActivity\"\n            android:exported=\"false\" />\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision a9120cb2521a70157f3ddb33065dde6fe86be99e)
++++ b/app/src/main/AndroidManifest.xml	(date 1678703545206)
+@@ -9,9 +9,9 @@
+         android:allowBackup="true"
+         android:dataExtractionRules="@xml/data_extraction_rules"
+         android:fullBackupContent="@xml/backup_rules"
+-        android:icon="@mipmap/ic_launcher"
++        android:icon="@mipmap/ic_ivdp"
+         android:label="@string/app_name"
+-        android:roundIcon="@mipmap/ic_launcher_round"
++        android:roundIcon="@mipmap/ic_ivdp_round"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.KeepInCheck"
+         tools:targetApi="31">
+Index: app/src/main/res/mipmap-anydpi-v26/ic_ivdp_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_ivdp_round.xml b/app/src/main/res/mipmap-anydpi-v26/ic_ivdp_round.xml
+new file mode 100644
+--- /dev/null	(date 1678703362086)
++++ b/app/src/main/res/mipmap-anydpi-v26/ic_ivdp_round.xml	(date 1678703362086)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_ivdp_background"/>
++    <foreground android:drawable="@mipmap/ic_ivdp_foreground"/>
++</adaptive-icon>
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_ivdp_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_ivdp_background.xml b/app/src/main/res/drawable/ic_ivdp_background.xml
+new file mode 100644
+--- /dev/null	(date 1678703669685)
++++ b/app/src/main/res/drawable/ic_ivdp_background.xml	(date 1678703669685)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#FFFFFF"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>
+Index: app/src/main/res/mipmap-anydpi-v26/ic_ivdp.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_ivdp.xml b/app/src/main/res/mipmap-anydpi-v26/ic_ivdp.xml
+new file mode 100644
+--- /dev/null	(date 1678703362127)
++++ b/app/src/main/res/mipmap-anydpi-v26/ic_ivdp.xml	(date 1678703362127)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_ivdp_background"/>
++    <foreground android:drawable="@mipmap/ic_ivdp_foreground"/>
++</adaptive-icon>
+\ No newline at end of file

@@ -3,6 +3,7 @@
     <style name="Theme.KeepInCheck" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#009CEF</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -17,5 +18,5 @@
         <item name="drawableNavigationItemBackground">@drawable/menu_background_color_state</item>
         <!-- Customize your theme here. -->
     </style>
-    
+
 </resources>
