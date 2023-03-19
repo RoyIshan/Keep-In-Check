@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F0F4F3"
+    android:background="#F2F6F5"
     tools:context=".SelectIdentity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/shape" />
+        android:src="@drawable/shape"
+        app:tint="#008080" />
 
     <TextView
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
         android:text="Select Your Identity"
         android:layout_marginTop="20dp"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="#333333"
         android:textSize="25sp"
         android:textStyle="bold"/>
 
@@ -41,7 +42,7 @@
             android:textSize="15sp"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/btn_login"/>
+            android:background="#2F9C95"/>
 
         <Button
             android:id="@+id/Worker"

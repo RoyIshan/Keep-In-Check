@@ -31,7 +31,8 @@ public class WorkerList extends AppCompatActivity {
 
         wList = findViewById(R.id.workerList);
         db = FirebaseFirestore.getInstance();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,new ArrayList<String>());
+        adapter = new ArrayAdapter<>(this,
+                R.layout.workerlist_resource, R.id.textView2,new ArrayList<String>());
         wList.setAdapter(adapter);
         db.collection("Worker detail")
                 .get()
