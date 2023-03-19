@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4E4E4"
-    tools:context=".Owner.WorkerList">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#4ebff3"
+    tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/workerList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="#000000"
-        android:dividerHeight="3dp"
-        android:padding="5dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+<ListView
+    android:id="@+id/workerList"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@null"
+    android:dividerHeight="0dp"
+    android:background="#4ebff3"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp" />
+
+</LinearLayout>
