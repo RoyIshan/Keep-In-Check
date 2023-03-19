@@ -36,26 +36,28 @@
             android:id="@+id/Owner"
             android:layout_width="125dp"
             android:layout_height="125dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:background="@drawable/circlebutton"
+            android:backgroundTint="#2F9C95"
             android:fontFamily="@font/poppins"
             android:text="Owner"
-            android:textSize="15sp"
             android:textColor="@color/white"
-            android:layout_gravity="center_horizontal"
-            android:background="#2F9C95"/>
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/Worker"
             android:layout_width="125dp"
             android:layout_height="125dp"
-            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/circlebutton"
+            android:backgroundTint="#2F9C95"
             android:fontFamily="@font/poppins"
             android:text="Worker"
-            android:textSize="15sp"
             android:textColor="@color/white"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/btn_login"/>
+            android:textSize="15sp" />
 
     </LinearLayout>
 

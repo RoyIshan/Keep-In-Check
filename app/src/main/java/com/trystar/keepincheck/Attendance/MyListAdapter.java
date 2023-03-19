@@ -1,7 +1,5 @@
 package com.trystar.keepincheck.Attendance;
 
-import static androidx.core.app.NotificationCompat.getColor;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
