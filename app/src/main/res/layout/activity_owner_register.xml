@@ -4,42 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#121111"
     tools:context=".Owner.OwnerRegister">
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="421dp"
-        android:layout_height="355dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/welcomebg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="418dp"
-        android:layout_height="236dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:rotationX="180"
-        android:rotationY="180"
-        android:scaleType="fitXY"
-        android:src="@drawable/welcomebg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn" />
 
     <EditText
         android:id="@+id/number"
         android:layout_width="340dp"
         android:layout_height="60dp"
+        android:background="@drawable/input"
         android:elegantTextHeight="true"
         android:ems="10"
         android:hint="Mobile No."
         android:inputType="phone"
+        android:paddingStart="15dp"
+        android:textColor="#000000"
+        android:textColorHint="#8A8A8A"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invite"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="317dp"
+        android:layout_height="55dp"
+        android:background="@drawable/rounded_corner_bg"
+        android:backgroundTint="#028DF3"
+        android:elegantTextHeight="true"
+        android:text="Create Account"
+        android:textColor="#FDFDFD"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:background="@drawable/input"
+        android:elegantTextHeight="true"
+        android:ems="10"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
         android:textColor="#000000"
         android:textColorHint="#8A8A8A"
         android:textSize="24sp"
@@ -49,42 +64,7 @@
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
-
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="317dp"
-        android:layout_height="55dp"
-        android:background="#028DF3"
-        android:elegantTextHeight="true"
-        android:text="Create Account"
-        android:textColor="#FDFDFD"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.826" />
-
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:elegantTextHeight="true"
-        android:ems="10"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:textColor="#000000"
-        android:textColorHint="#8A8A8A"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
+        app:layout_constraintVertical_bias="0.37" />
 
     <TextView
         android:id="@+id/textView3"
@@ -108,29 +88,33 @@
         android:id="@+id/invite"
         android:layout_width="340dp"
         android:layout_height="60dp"
+        android:background="@drawable/input"
         android:elegantTextHeight="true"
         android:ems="10"
         android:hint="Create Invite Code"
         android:inputType="textPersonName"
+        android:paddingStart="15dp"
         android:textAllCaps="true"
         android:textColorHint="#8A8A8A"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintTop_toBottomOf="@+id/cName"
+        app:layout_constraintVertical_bias="0.049" />
 
     <EditText
         android:id="@+id/cName"
         android:layout_width="340dp"
         android:layout_height="60dp"
+        android:background="@drawable/input"
         android:elegantTextHeight="true"
         android:ems="10"
         android:hint="Company Name"
         android:inputType="textPersonName"
+        android:paddingStart="15dp"
         android:textAllCaps="true"
         android:textColorHint="#8A8A8A"
         android:textSize="24sp"
@@ -139,15 +123,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.552" />
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.042" />
 
     <Button
         android:id="@+id/btn_signup3"
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="100dp"
         android:layout_height="35dp"
-        android:background="#028DF3"
+        android:background="#000000"
         android:elegantTextHeight="false"
         android:text="Login"
         android:textAlignment="center"
@@ -156,9 +140,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.018" />
+        app:layout_constraintTop_toBottomOf="@+id/btn"
+        app:layout_constraintVertical_bias="0.061" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

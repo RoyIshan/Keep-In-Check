@@ -24,7 +24,7 @@
         android:layout_width="282dp"
         android:layout_height="58dp"
         android:background="@drawable/input"
-        android:backgroundTint="#D7E5F1"
+        android:backgroundTint="#EBF4FB"
         android:ems="10"
         android:gravity="center"
         android:hint="One Time Password"

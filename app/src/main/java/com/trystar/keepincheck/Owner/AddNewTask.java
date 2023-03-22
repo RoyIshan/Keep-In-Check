@@ -105,16 +105,13 @@ public class AddNewTask extends BottomSheetDialogFragment {
         adapter.add("Select Worker");
         db.collection("Worker detail")
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                adapter.add(document.getString("Name"));
-                            }
-                        } else {
-
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            adapter.add(document.getString("Name"));
                         }
+                    } else {
+
                     }
                 });
 
@@ -157,71 +154,57 @@ public class AddNewTask extends BottomSheetDialogFragment {
             }
         });
 
-        setDeadline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
+        setDeadline.setOnClickListener(view1 -> {
+            Calendar calendar = Calendar.getInstance();
 
-                int MONTH = calendar.get(Calendar.MONTH);
-                int YEAR = calendar.get(Calendar.YEAR);
-                int DAY = calendar.get(Calendar.DATE);
+            int MONTH = calendar.get(Calendar.MONTH);
+            int YEAR = calendar.get(Calendar.YEAR);
+            int DAY = calendar.get(Calendar.DATE);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        setDeadline.setText(dayOfMonth + "/" + month + "/" + year);
-                        deadLine = dayOfMonth + "/" + month + "/" + year;
-                    }
-                }, YEAR, MONTH, DAY);
-                datePickerDialog.show();
-            }
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view1, int year, int month, int dayOfMonth) {
+                    month = month + 1;
+                    setDeadline.setText(dayOfMonth + "/" + month + "/" + year);
+                    deadLine = dayOfMonth + "/" + month + "/" + year;
+                }
+            }, YEAR, MONTH, DAY);
+            datePickerDialog.show();
         });
 
-        wAssignBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String task = wTaskEdit.getText().toString();
-                String smsNumber = phoneNumber.getText().toString();
-                String verificationCode = randomGenerate();
-                String smsText = "Code for Worker Attendance verification is : "+verificationCode+" \nWorker will ask you for this code";
+        wAssignBtn.setOnClickListener(view12 -> {
+            String task = wTaskEdit.getText().toString();
+            String smsNumber = phoneNumber.getText().toString();
+            String verificationCode = randomGenerate();
+            String smsText = "Code for Worker Attendance verification is : "+verificationCode+" \nWorker will ask you for this code";
 
-                Uri uri = Uri.parse("smsto:" + smsNumber);
-                Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
-                intent.putExtra("sms_body", smsText);
-                startActivity(intent);
+            Uri uri = Uri.parse("smsto:" + smsNumber);
+            Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+            intent.putExtra("sms_body", smsText);
+            startActivity(intent);
 
-                if (task.isEmpty()) {
-                    Toast.makeText(context, "Empty task not allowed!", Toast.LENGTH_SHORT).show();
-                } else {
-                    Map<String, Object> taskMap = new HashMap<>();
+            if (task.isEmpty()) {
+                Toast.makeText(context, "Empty task not allowed!", Toast.LENGTH_SHORT).show();
+            } else {
+                Map<String, Object> taskMap = new HashMap<>();
 
-                    taskMap.put("task", task);
-                    taskMap.put("deadline", deadLine);
-                    taskMap.put("status", 1);
-                    taskMap.put("address", address.getText().toString());
-                    taskMap.put("number", phoneNumber.getText().toString());
-                    taskMap.put("worker",NameofWorker);
-                    taskMap.put("code",verificationCode);
+                taskMap.put("task", task);
+                taskMap.put("deadline", deadLine);
+                taskMap.put("status", 1);
+                taskMap.put("address", address.getText().toString());
+                taskMap.put("number", phoneNumber.getText().toString());
+                taskMap.put("worker",NameofWorker);
+                taskMap.put("code",verificationCode);
 
-                    firestore.collection("task").add(taskMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentReference> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(context, "Task Assigned", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-                dismiss();
+                firestore.collection("task").add(taskMap).addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        Toast.makeText(context, "Task Assigned", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(e -> Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show());
             }
+            dismiss();
         });
     }
 
