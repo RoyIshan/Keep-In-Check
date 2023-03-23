@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121111"
+    android:background="#081F3D"
     tools:context=".Owner.OwnerRegister">
 
     <EditText
@@ -12,7 +12,12 @@
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:background="@drawable/input"
+        android:backgroundTint="#0A2549"
+        android:drawableStart="@drawable/baseline_phone_iphone_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#3BFABD"
         android:elegantTextHeight="true"
+        android:elevation="20dp"
         android:ems="10"
         android:hint="Mobile No."
         android:inputType="phone"
@@ -30,27 +35,34 @@
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="317dp"
-        android:layout_height="55dp"
+        android:layout_width="169dp"
+        android:layout_height="67dp"
         android:background="@drawable/rounded_corner_bg"
-        android:backgroundTint="#028DF3"
+        android:backgroundTint="#01ECA1"
+        android:drawableEnd="@drawable/baseline_arrow_forward_24"
         android:elegantTextHeight="true"
-        android:text="Create Account"
+        android:text="Sign Up"
         android:textColor="#FDFDFD"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.851"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/number"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.227" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:background="@drawable/input"
+        android:backgroundTint="#0A2549"
+        android:drawableStart="@drawable/baseline_person_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#3BFABD"
         android:elegantTextHeight="true"
+        android:elevation="20dp"
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
@@ -61,35 +73,41 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.537" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="328dp"
+        android:layout_width="wrap_content"
         android:layout_height="70dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Register"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins"
+        android:text="Create Account"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="50sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.41" />
 
     <EditText
         android:id="@+id/invite"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:background="@drawable/input"
+        android:backgroundTint="#0A2549"
+        android:drawableStart="@drawable/baseline_123_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#3BFABD"
         android:elegantTextHeight="true"
+        android:elevation="20dp"
         android:ems="10"
         android:hint="Create Invite Code"
         android:inputType="textPersonName"
@@ -110,7 +128,12 @@
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:background="@drawable/input"
+        android:backgroundTint="#0A2549"
+        android:drawableStart="@drawable/baseline_business_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#3BFABD"
         android:elegantTextHeight="true"
+        android:elevation="20dp"
         android:ems="10"
         android:hint="Company Name"
         android:inputType="textPersonName"
@@ -140,9 +163,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn"
-        app:layout_constraintVertical_bias="0.061" />
+        app:layout_constraintVertical_bias="0.396" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="352dp"
+        android:layout_height="249dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082"
+        app:srcCompat="@drawable/oregistericon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
