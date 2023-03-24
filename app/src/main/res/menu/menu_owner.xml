@@ -14,16 +14,22 @@
     <item  android:id="@+id/item2"
         android:title="Workers List"
         android:icon="@drawable/ic_action_name"/>
-    <item  android:id="@+id/item3"
-        android:title="Jobs Created"
-        android:icon="@drawable/ic_worker_job"/>
-    <item  android:id="@+id/item4"
-        android:title="Workers Location"
-        android:icon="@drawable/ic_unselected"/>
+        <item
+            android:id="@+id/item3"
+            android:icon="@drawable/ic_worker_job"
+            android:iconTint="@color/colorPrimary"
+            android:title="Jobs Created" />
+        <item
+            android:id="@+id/item4"
+            android:icon="@drawable/ic_unselected"
+            android:iconTint="@color/colorPrimary"
+            android:title="Workers Location" />
     </group>
 
-    <item  android:id="@+id/item5"
-        android:title="Logout"
-        android:icon="@drawable/ic_exit"/>
+    <item
+        android:id="@+id/item5"
+        android:icon="@drawable/ic_exit"
+        android:iconTint="@color/colorPrimary"
+        android:title="Logout" />
 
 </menu>

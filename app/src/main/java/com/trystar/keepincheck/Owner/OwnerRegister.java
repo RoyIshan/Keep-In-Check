@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,8 @@ import java.util.Map;
 public class OwnerRegister extends AppCompatActivity {
 
     EditText number,name,inviteCode,companyName;
-    Button btn, login;
+    Button btn;
+    TextView login;
     FirebaseAuth fAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

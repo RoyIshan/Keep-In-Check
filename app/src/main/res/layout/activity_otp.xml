@@ -33,7 +33,7 @@
         android:textColor="#000000"
         android:textColorHint="#A3A3A3"
         android:textSize="21sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.224"
