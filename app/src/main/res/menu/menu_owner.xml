@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_action_name"/>
     <item  android:id="@+id/item3"
         android:title="Jobs Created"
-        android:icon="@drawable/ic_baseline_add_24"/>
+        android:icon="@drawable/ic_worker_job"/>
     <item  android:id="@+id/item4"
         android:title="Workers Location"
         android:icon="@drawable/ic_unselected"/>

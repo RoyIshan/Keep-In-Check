@@ -13,10 +13,13 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
 
-        <item name="colorNavigationItem">@color/menu_item_color_state</item>
         <item name="colorNavigationItemSelected">@color/white</item>
-        <item name="drawableNavigationItemBackground">@drawable/menu_background_color_state</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">30dp</item>
     </style>
 
 </resources>

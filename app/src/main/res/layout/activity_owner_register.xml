@@ -4,180 +4,194 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#081F3D"
+    android:background="#FBFBF5"
     tools:context=".Owner.OwnerRegister">
 
-    <EditText
-        android:id="@+id/number"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:background="@drawable/input"
-        android:backgroundTint="#0A2549"
-        android:drawableStart="@drawable/baseline_phone_iphone_24"
-        android:drawablePadding="10dp"
-        android:drawableTint="#3BFABD"
-        android:elegantTextHeight="true"
-        android:elevation="20dp"
-        android:ems="10"
-        android:hint="Mobile No."
-        android:inputType="phone"
-        android:paddingStart="15dp"
-        android:textColor="#000000"
-        android:textColorHint="#8A8A8A"
-        android:textSize="24sp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/invite"
-        app:layout_constraintVertical_bias="0.057" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="169dp"
-        android:layout_height="67dp"
-        android:background="@drawable/rounded_corner_bg"
-        android:backgroundTint="#01ECA1"
-        android:drawableEnd="@drawable/baseline_arrow_forward_24"
-        android:elegantTextHeight="true"
-        android:text="Sign Up"
-        android:textColor="#FDFDFD"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.851"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number"
-        app:layout_constraintVertical_bias="0.227" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/oregistericon" />
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:background="@drawable/input"
-        android:backgroundTint="#0A2549"
-        android:drawableStart="@drawable/baseline_person_24"
-        android:drawablePadding="10dp"
-        android:drawableTint="#3BFABD"
-        android:elegantTextHeight="true"
-        android:elevation="20dp"
-        android:ems="10"
-        android:hint="Full Name"
-        android:inputType="textPersonName"
-        android:paddingStart="15dp"
-        android:textColor="#000000"
-        android:textColorHint="#8A8A8A"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="start"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins"
+            android:paddingStart="20dp"
+            android:text="Create Account"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:elegantTextHeight="true"
-        android:fontFamily="@font/poppins"
-        android:text="Create Account"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
 
-    <EditText
-        android:id="@+id/invite"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:background="@drawable/input"
-        android:backgroundTint="#0A2549"
-        android:drawableStart="@drawable/baseline_123_24"
-        android:drawablePadding="10dp"
-        android:drawableTint="#3BFABD"
-        android:elegantTextHeight="true"
-        android:elevation="20dp"
-        android:ems="10"
-        android:hint="Create Invite Code"
-        android:inputType="textPersonName"
-        android:paddingStart="15dp"
-        android:textAllCaps="true"
-        android:textColorHint="#8A8A8A"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cName"
-        app:layout_constraintVertical_bias="0.049" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-    <EditText
-        android:id="@+id/cName"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:background="@drawable/input"
-        android:backgroundTint="#0A2549"
-        android:drawableStart="@drawable/baseline_business_24"
-        android:drawablePadding="10dp"
-        android:drawableTint="#3BFABD"
-        android:elegantTextHeight="true"
-        android:elevation="20dp"
-        android:ems="10"
-        android:hint="Company Name"
-        android:inputType="textPersonName"
-        android:paddingStart="15dp"
-        android:textAllCaps="true"
-        android:textColorHint="#8A8A8A"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.042" />
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="340dp"
+                android:layout_height="60dp"
+                android:background="@drawable/input"
+                android:backgroundTint="#FFFFFF"
+                android:drawableStart="@drawable/baseline_person_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="#009CEF"
+                android:elegantTextHeight="true"
+                android:elevation="20dp"
+                android:ems="10"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:textColor="#000000"
+                android:textColorHint="#8A8A8A"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btn_signup3"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:background="#000000"
-        android:elegantTextHeight="false"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn"
-        app:layout_constraintVertical_bias="0.396" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="352dp"
-        android:layout_height="249dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082"
-        app:srcCompat="@drawable/oregistericon" />
+            <EditText
+                android:id="@+id/cName"
+                android:layout_width="340dp"
+                android:layout_height="60dp"
+                android:background="@drawable/input"
+                android:backgroundTint="#FFFFFF"
+                android:drawableStart="@drawable/baseline_business_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="#009CEF"
+                android:elegantTextHeight="true"
+                android:elevation="20dp"
+                android:ems="10"
+                android:hint="Company Name"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:textAllCaps="true"
+                android:textColorHint="#8A8A8A"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <EditText
+                android:id="@+id/invite"
+                android:layout_width="340dp"
+                android:layout_height="60dp"
+                android:background="@drawable/input"
+                android:backgroundTint="#FFFFFF"
+                android:drawableStart="@drawable/baseline_123_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="#009CEF"
+                android:elegantTextHeight="true"
+                android:elevation="20dp"
+                android:ems="10"
+                android:hint="Create Invite Code"
+                android:inputType="textPersonName"
+                android:paddingStart="15dp"
+                android:textAllCaps="true"
+                android:textColorHint="#8A8A8A"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <EditText
+                android:id="@+id/number"
+                android:layout_width="340dp"
+                android:layout_height="60dp"
+                android:background="@drawable/input"
+                android:backgroundTint="#FFFFFF"
+                android:drawableStart="@drawable/round_phone_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="#009CEF"
+                android:elegantTextHeight="true"
+                android:elevation="20dp"
+                android:ems="10"
+                android:hint="Mobile No."
+                android:inputType="phone"
+                android:paddingStart="15dp"
+                android:textColor="#000000"
+                android:textColorHint="#8A8A8A"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="169dp"
+                android:layout_height="70dp"
+                android:layout_gravity="right"
+                android:background="@drawable/rounded_corner_bg"
+                android:backgroundTint="#009CEF"
+                android:elegantTextHeight="true"
+                android:text="Sign Up"
+                android:textColor="#FDFDFD"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Already have an account? "
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btn_signup3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_semibold"
+                android:text=" Sign In "
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
