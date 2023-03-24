@@ -72,9 +72,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:textColor="@color/black"
             android:text=" Sign Up"
-            android:textStyle="bold"/>
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

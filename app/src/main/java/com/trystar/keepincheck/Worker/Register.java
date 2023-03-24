@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,8 @@ import java.util.Map;
 public class Register extends AppCompatActivity {
 
     EditText number,name,inviteCode;
-    Button btn, login;
+    Button btn;
+    TextView login;
     FirebaseAuth fAuth;
     String code, mNumber ,Name;
     @Override
