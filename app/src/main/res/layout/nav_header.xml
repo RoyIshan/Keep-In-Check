@@ -3,28 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#6ACAE5FA"
     android:fitsSystemWindows="true"
     android:gravity="center|start"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="104dp"
+        android:layout_height="83dp"
+        android:foregroundTint="#2196F3"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/shape"
+        app:tint="#2196F3" />
+
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="166dp"
-        android:orientation="vertical">
+        android:layout_height="72dp"
+        app:srcCompat="@drawable/kic_logo" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="104dp"
-            android:layout_height="83dp"
-            android:foregroundTint="#2196F3"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/shape" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            app:srcCompat="@drawable/kic_logo" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elegantTextHeight="true"
+        android:text="Keep In Check"
+        android:textAlignment="center"
+        android:textColor="#050505"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

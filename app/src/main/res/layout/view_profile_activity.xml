@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,8 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="70dp"
-            android:scaleType="center"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/workerlist_icon" />
     </LinearLayout>
 
     <RelativeLayout
@@ -40,13 +41,6 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="5dp"
-                    android:paddingTop="20dp"
-                    android:src="@drawable/baseline_person_24" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,6 +59,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:drawableStart="@drawable/baseline_person_24"
+                        android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textSize="20sp" />
@@ -102,6 +98,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:drawableStart="@drawable/baseline_phone_iphone_24"
+                        android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textSize="20sp" />
@@ -139,6 +137,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:drawableStart="@drawable/baseline_business_24"
+                        android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textSize="20sp" />
@@ -176,6 +176,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:drawableStart="@drawable/baseline_code_24"
+                        android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
                         android:textSize="20sp" />
