@@ -39,6 +39,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
     String uid;
     JobAssigned firstFragment = new JobAssigned();
     WorkerProfile secondFragment = new WorkerProfile();
+    ViewAttendance thirdFragment = new ViewAttendance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                                     if (task.isSuccessful()) {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             String name =document.getString("Name");
+                                            getSupportFragmentManager().beginTransaction().replace(R.id.container, thirdFragment).commit();
                                             Intent intent = new Intent(BottomNav.this, ViewAttendance.class);
                                             intent.putExtra("name",  name);
                                             startActivity(intent);
@@ -106,14 +108,11 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                                     }
                                 }
                             });
-                    Intent intent = new Intent(BottomNav.this, ViewAttendance.class);
-                    intent.putExtra("mobile",  mobile);
-                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(BottomNav.this, "error", Toast.LENGTH_SHORT).show();
                 }
-                //getSupportFragmentManager().beginTransaction().replace(R.id.container, firstFragment).commit();
+
                 return true;
 
             case R.id.item4:

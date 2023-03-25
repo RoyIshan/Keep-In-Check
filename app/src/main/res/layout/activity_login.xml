@@ -36,11 +36,12 @@
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/input"
         android:fontFamily="@font/poppins"
         android:hint="Enter your mobile number"
-        android:textAlignment="center"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/input"/>
+        android:inputType="phone"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/btn_login"

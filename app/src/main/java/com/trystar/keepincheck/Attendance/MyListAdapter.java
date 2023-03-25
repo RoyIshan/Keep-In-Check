@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class MyListAdapter extends ArrayAdapter<MyItem> {
 
-    private ArrayList<MyItem> items;
+    private final ArrayList<MyItem> items;
 
     public MyListAdapter(Context context, ArrayList<MyItem> items) {
         super(context, 0, items);
@@ -41,7 +41,7 @@ public class MyListAdapter extends ArrayAdapter<MyItem> {
             descriptionTextView.setTextColor( Color.RED );
         }
         else if (item.getDescription().equals("Present")){
-            descriptionTextView.setTextColor( Color.BLUE );
+            descriptionTextView.setTextColor( Color.GREEN );
         }
         if (position==0){
             descriptionTextView.setTextColor( Color.BLACK );

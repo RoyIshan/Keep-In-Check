@@ -99,12 +99,7 @@ public class Register extends AppCompatActivity {
                                 //Toast.makeText(Register.this,"Data added", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Register.this,e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        .addOnFailureListener(e -> Toast.makeText(Register.this,e.getMessage(), Toast.LENGTH_SHORT).show());
             }
 
             private int checkExist(String companyCode) {

@@ -26,7 +26,7 @@ import com.trystar.keepincheck.Worker.Otp;
 
 public class login extends AppCompatActivity {
 
-    EditText number,name,inviteCode,companyName;
+    EditText number;
     TextView signup;
     Button btn;
     FirebaseAuth fAuth;
@@ -114,8 +114,6 @@ public class login extends AppCompatActivity {
                                             startActivity(intent);
                                         }
                                     }
-                                } else {
-
                                 }
                             }
                         });
@@ -142,8 +140,6 @@ public class login extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                             }
-                        } else {
-
                         }
                     }
                 });
@@ -167,8 +163,6 @@ public class login extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                             }
-                        } else {
-
                         }
                     }
                 });
