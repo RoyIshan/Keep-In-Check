@@ -98,7 +98,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableStart="@drawable/baseline_phone_iphone_24"
                         android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"

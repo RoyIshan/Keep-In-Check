@@ -50,19 +50,16 @@ public class WorkerProfile extends Fragment {
         db.collection("Worker detail")
                 .whereEqualTo("Phone Number",mobile)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                name.setText(document.getString("Name"));
-                                phoneNumber.setText(mobile);
-                                companyCode.setText(document.getString("Invite Code"));
-                                companyName.setText(document.getString("Company Name"));
-                            }
-                        } else {
-                            Toast.makeText(getActivity(),"error",Toast.LENGTH_SHORT).show();
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            name.setText(document.getString("Name"));
+                            phoneNumber.setText(mobile);
+                            companyCode.setText(document.getString("Invite Code"));
+                            companyName.setText(document.getString("Company Name"));
                         }
+                    } else {
+                        Toast.makeText(getActivity(),"error",Toast.LENGTH_SHORT).show();
                     }
                 });
     }

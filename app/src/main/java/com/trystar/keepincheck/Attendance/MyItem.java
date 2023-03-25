@@ -1,7 +1,7 @@
 package com.trystar.keepincheck.Attendance;
 
 public class MyItem {
-    private String title;
+    private final String title;
     private String description;
 
     public MyItem(String title, String description) {

@@ -1,11 +1,15 @@
 package com.trystar.keepincheck.Attendance;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,7 +20,7 @@ import com.trystar.keepincheck.R;
 
 import java.util.ArrayList;
 
-public class ViewAttendance extends AppCompatActivity {
+public class ViewAttendance extends Fragment {
 
     ListView attendanceView;
     String name,date;
@@ -24,20 +28,20 @@ public class ViewAttendance extends AppCompatActivity {
     MyListAdapter adapter;
     ArrayList<MyItem> items;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_attendance);
+        View views = inflater.inflate(R.layout.activity_view_attendance, container, false);
 
-        name = getIntent().getStringExtra("name");
+        name = getActivity().getIntent().getStringExtra("name");
         items = new ArrayList<>();
 
         //items.add(new MyItem("date", "Present"));
-        attendanceView  = findViewById(R.id.attendanceView);
+        attendanceView  = views.findViewById(R.id.attendanceView);
         items.add(new MyItem("Date", "Status"));
 
-        adapter = new MyListAdapter(this, items);
+        adapter = new MyListAdapter(getContext(), items);
 
-        Toast.makeText(ViewAttendance.this,"name :"+name,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),"name :"+name,Toast.LENGTH_SHORT).show();
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
         db.collection("task")
@@ -62,14 +66,13 @@ public class ViewAttendance extends AppCompatActivity {
                                 else{
                                     items.add(new MyItem(date, "Absent"));
                                 }
-                                Toast.makeText(ViewAttendance.this,"name :"+status,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"name :"+status,Toast.LENGTH_SHORT).show();
                                 attendanceView.setAdapter(adapter);
                             }
-                        } else {
-
                         }
                     }
                 });
 
+        return views;
     }
 }

@@ -29,7 +29,7 @@ public class SelectIdentity extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(SelectIdentity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectIdentity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
             worker.setOnClickListener(view -> {
@@ -38,13 +38,13 @@ public class SelectIdentity extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(SelectIdentity.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectIdentity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
         catch (Exception e)
         {
-            Toast.makeText(this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

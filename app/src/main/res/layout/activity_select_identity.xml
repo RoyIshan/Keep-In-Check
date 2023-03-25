@@ -52,7 +52,7 @@
         android:layout_height="30dp" />
 
     <LinearLayout
-        android:layout_width="274dp"
+        android:layout_width="304dp"
         android:layout_height="143dp"
         android:layout_gravity="center|center_horizontal"
         android:layout_margin="5dp"
@@ -65,28 +65,35 @@
             android:id="@+id/Owner"
             android:layout_width="125dp"
             android:layout_height="125dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|left"
             android:layout_marginTop="20dp"
             android:background="@drawable/circlebutton"
             android:backgroundTint="#01B0FF"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Owner"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/Worker"
             android:layout_width="125dp"
             android:layout_height="125dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right|center_horizontal"
             android:layout_marginLeft="1dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/circlebutton"
             android:backgroundTint="#00B0FF"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Worker"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
