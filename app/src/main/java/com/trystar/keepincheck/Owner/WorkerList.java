@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.trystar.keepincheck.Attendance.OwnerViewAttendance;
 import com.trystar.keepincheck.Attendance.ViewAttendance;
 import com.trystar.keepincheck.R;
 
@@ -50,7 +51,7 @@ public class WorkerList extends AppCompatActivity {
                 });
         wList.setOnItemClickListener((parent, view, position, id) -> {
             String selectedItem = (String) parent.getItemAtPosition(position);
-            Intent intent = new Intent(WorkerList.this, ViewAttendance.class);
+            Intent intent = new Intent(WorkerList.this, OwnerViewAttendance.class);
             intent.putExtra("name", selectedItem);
             startActivity(intent);
             //textView.setText("The best football player is : " + selectedItem);
