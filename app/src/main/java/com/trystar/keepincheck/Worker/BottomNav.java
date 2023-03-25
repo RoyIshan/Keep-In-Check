@@ -98,10 +98,13 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                                     if (task.isSuccessful()) {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             String name =document.getString("Name");
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("String", name);
+                                            thirdFragment.setArguments(bundle);
                                             getSupportFragmentManager().beginTransaction().replace(R.id.container, thirdFragment).commit();
-                                            Intent intent = new Intent(BottomNav.this, ViewAttendance.class);
-                                            intent.putExtra("name",  name);
-                                            startActivity(intent);
+                                                /*Intent intent = new Intent(BottomNav.this, ViewAttendance.class);
+                                                intent.putExtra("name",  name);
+                                            startActivity(intent);*/
                                         }
                                     } else {
                                         Toast.makeText(BottomNav.this,"error",Toast.LENGTH_SHORT).show();

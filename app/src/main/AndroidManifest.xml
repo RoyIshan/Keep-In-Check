@@ -37,6 +37,7 @@
         <activity
             android:name=".Owner.EditProfile"
             android:exported="false" />
+        <activity android:name=".Attendance.OwnerViewAttendance" />
         <activity
             android:name=".login"
             android:exported="true"
