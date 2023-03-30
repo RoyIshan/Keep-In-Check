@@ -4,23 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F1F1"
-    android:padding="10dp"
+    android:padding="1dp"
+    android:paddingTop="25dp"
+    android:paddingBottom="20dp"
     android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
     tools:context=".Worker.JobAssigned">
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#3760B9FF"
+        android:elegantTextHeight="true"
+        android:paddingTop="15dp"
+        android:text="Assigned Jobs"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#090909"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/taskList"
         android:layout_width="match_parent"
-        android:layout_height="763dp"
-        android:layout_marginBottom="30dp"
+        android:layout_height="0dp"
         android:background="@color/white"
-        android:divider="#000000"
+        android:divider="@color/material_dynamic_neutral20"
         android:dividerHeight="3dp"
         android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
