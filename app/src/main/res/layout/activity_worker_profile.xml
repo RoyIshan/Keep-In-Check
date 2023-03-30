@@ -69,7 +69,9 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
-                        android:textSize="20sp" />
+                        android:textColor="#040404"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -106,7 +108,9 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
-                        android:textSize="20sp" />
+                        android:textColor="#040404"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -143,7 +147,9 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
-                        android:textSize="20sp" />
+                        android:textColor="#040404"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -180,7 +186,9 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
-                        android:textSize="20sp" />
+                        android:textColor="#040404"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 

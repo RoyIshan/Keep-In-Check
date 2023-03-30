@@ -21,6 +21,7 @@
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:padding="2dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/oregistericon" />
 
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:elegantTextHeight="true"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_semibold"
             android:paddingStart="20dp"
             android:text="Create Account"
             android:textAlignment="viewStart"
@@ -54,7 +55,7 @@
             <EditText
                 android:id="@+id/name"
                 android:layout_width="340dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/input"
                 android:backgroundTint="#FFFFFF"
                 android:drawableStart="@drawable/baseline_person_24"
@@ -78,7 +79,7 @@
             <EditText
                 android:id="@+id/cName"
                 android:layout_width="340dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/input"
                 android:backgroundTint="#FFFFFF"
                 android:drawableStart="@drawable/baseline_business_24"
@@ -102,7 +103,7 @@
             <EditText
                 android:id="@+id/invite"
                 android:layout_width="340dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/input"
                 android:backgroundTint="#FFFFFF"
                 android:drawableStart="@drawable/baseline_123_24"
@@ -126,14 +127,13 @@
             <EditText
                 android:id="@+id/number"
                 android:layout_width="340dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/input"
                 android:backgroundTint="#FFFFFF"
                 android:drawableStart="@drawable/round_phone_24"
                 android:drawablePadding="10dp"
                 android:drawableTint="#009CEF"
                 android:elegantTextHeight="true"
-                android:elevation="20dp"
                 android:ems="10"
                 android:hint="Mobile No."
                 android:inputType="phone"
@@ -149,12 +149,13 @@
 
             <Button
                 android:id="@+id/btn"
-                android:layout_width="169dp"
+                android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:background="@drawable/rounded_corner_bg"
                 android:backgroundTint="#009CEF"
                 android:elegantTextHeight="true"
+                android:elevation="10dp"
                 android:text="Sign Up"
                 android:textColor="#FDFDFD"
                 android:textSize="20sp"

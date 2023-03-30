@@ -10,8 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:orientation="vertical"
-        android:background="@drawable/round_corner">
+        android:background="@drawable/round_corner"
+        android:backgroundTint="#4F58BFF8"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView11"
@@ -19,8 +20,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="70dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/workerlist_icon" />
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/oregistericon" />
     </LinearLayout>
 
     <RelativeLayout
@@ -196,7 +197,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:gravity="start|fill"
+                android:orientation="horizontal"
+                android:padding="2dp">
 
                 <Button
                     android:id="@+id/editProfile"
@@ -204,7 +207,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/btn_login"
+                    android:background="@drawable/rounded_corner_bg"
                     android:fontFamily="@font/poppins"
                     android:text="Edit Profile"
                     android:textColor="@color/white" />
@@ -215,7 +218,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/btn_login"
+                    android:background="@drawable/rounded_corner_bg"
                     android:fontFamily="@font/poppins"
                     android:text="Logout"
                     android:textColor="@color/white" />

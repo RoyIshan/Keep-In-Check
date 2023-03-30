@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3663BAFF"
+    android:background="#3766FF6C"
     tools:context="Worker.Register">
 
 
     <EditText
         android:id="@+id/number"
         android:layout_width="345dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/input"
         android:drawableStart="@drawable/baseline_phone_iphone_24"
         android:drawablePadding="10dp"
-        android:drawableTint="#0796FE"
+        android:drawableTint="#03DD0C"
         android:elegantTextHeight="true"
         android:ems="10"
         android:hint="Mobile No."
@@ -29,14 +29,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/invite"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <Button
         android:id="@+id/btn"
         android:layout_width="259dp"
         android:layout_height="58dp"
         android:background="@drawable/rounded_corner_bg"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="#02A108"
+        android:backgroundTintMode="src_in"
         android:elegantTextHeight="true"
         android:text="Create Account"
         android:textColor="#FFFFFF"
@@ -45,63 +46,68 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737" />
+        app:layout_constraintTop_toBottomOf="@+id/number"
+        app:layout_constraintVertical_bias="0.108"
+        app:strokeColor="#041DA3"
+        app:strokeWidth="10dp" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="345dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/input"
         android:drawableStart="@drawable/baseline_person_24"
         android:drawablePadding="10dp"
-        android:drawableTint="#0796FE"
+        android:drawableTint="#03DD0C"
         android:elegantTextHeight="true"
+        android:elevation="25dp"
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
         android:paddingStart="15dp"
+        android:shadowColor="#ED0E0E"
         android:textColor="#000000"
         android:textColorHint="#888888"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.359" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.093" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="325dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elegantTextHeight="true"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Register"
+        android:text="Let's Get Started"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textSize="60sp"
+        android:textColor="#020202"
+        android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintVertical_bias="0.222" />
 
     <EditText
         android:id="@+id/invite"
         android:layout_width="345dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/input"
         android:drawableStart="@drawable/baseline_123_24"
         android:drawablePadding="10dp"
-        android:drawableTint="#0796FE"
+        android:drawableTint="#03DD0C"
         android:elegantTextHeight="true"
         android:ems="10"
         android:hint="Invite code"
         android:inputType="textPersonName"
         android:paddingStart="15dp"
+        android:paddingEnd="10dp"
         android:textAllCaps="true"
         android:textColorHint="#888888"
         android:textSize="24sp"
@@ -110,9 +116,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.072" />
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -136,8 +143,48 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text=" Sign In "
-            android:textColor="@color/colorPrimary"
+            android:textColor="#098E0E"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="170dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/regworkerbg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="133dp"
+        android:layout_height="102dp"
+        android:rotationY="180"
+        android:scaleType="centerCrop"
+        android:src="@drawable/shape"
+        android:tint="#049709"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.996"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="219dp"
+        android:layout_height="87dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
