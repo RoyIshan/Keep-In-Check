@@ -85,7 +85,8 @@
         <activity
             android:name=".SelectIdentity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".Owner.WorkerList" />
+        <activity android:name=".Owner.WorkerList"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
             android:name=".Owner.OwnerOtp"
             android:exported="false"

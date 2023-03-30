@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#FBFBF5"
     tools:context=".Owner.OwnerRegister">
 
@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:elegantTextHeight="true"
             android:fontFamily="@font/poppins"
@@ -41,7 +41,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
+            android:layout_height="20dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -73,7 +73,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="15dp" />
 
             <EditText
                 android:id="@+id/cName"
@@ -97,7 +97,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="15dp" />
 
             <EditText
                 android:id="@+id/invite"
@@ -121,7 +121,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="15dp" />
 
             <EditText
                 android:id="@+id/number"
@@ -150,7 +150,7 @@
             <Button
                 android:id="@+id/btn"
                 android:layout_width="169dp"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:layout_gravity="right"
                 android:background="@drawable/rounded_corner_bg"
                 android:backgroundTint="#009CEF"
@@ -163,7 +163,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="15dp" />
+            android:layout_height="10dp" />
 
         <LinearLayout
             android:id="@+id/linearLayout"

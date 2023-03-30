@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CD4EBFF3"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#4ebff3"
+    android:padding="12dp"
     tools:context=".MainActivity">
 
 
-<ListView
-    android:id="@+id/workerList"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@null"
-    android:dividerHeight="0dp"
-    android:background="#4ebff3"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp" />
+    <ListView
+        android:id="@+id/workerList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4ebff3"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp" />
 
 </LinearLayout>

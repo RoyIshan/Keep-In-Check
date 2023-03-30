@@ -102,7 +102,6 @@ public class AssignTask extends AppCompatActivity {
                         startActivity(new Intent(AssignTask.this,WorkerList.class));
                     return true;
                 case R.id.item3:
-                    Toast.makeText(getApplicationContext(),"Item 3 Selected",Toast.LENGTH_LONG).show();
                     return true;
                 case R.id.item4:
                     startActivity(new Intent(AssignTask.this, MapsActivity.class));
