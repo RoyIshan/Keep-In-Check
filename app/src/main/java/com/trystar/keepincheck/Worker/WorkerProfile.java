@@ -1,5 +1,6 @@
 package com.trystar.keepincheck.Worker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.trystar.keepincheck.Owner.AssignTask;
 import com.trystar.keepincheck.R;
+import com.trystar.keepincheck.SelectIdentity;
+import com.trystar.keepincheck.login;
 
 public class WorkerProfile extends Fragment {
 
@@ -36,6 +40,14 @@ public class WorkerProfile extends Fragment {
         companyName = views.findViewById(R.id.workerCN);
 
         logout = views.findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), SelectIdentity.class));
+                Toast.makeText(getContext(), "Signing Out", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
