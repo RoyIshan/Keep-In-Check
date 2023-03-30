@@ -41,6 +41,13 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingTop="20dp"
+                    android:src="@drawable/baseline_person_24" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -59,10 +66,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableStart="@drawable/baseline_person_24"
                         android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
+                        android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -89,8 +96,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Phone Number"
                         android:fontFamily="@font/poppins"
+                        android:text="Phone Number"
                         android:textColor="#000000" />
 
                     <TextView
@@ -101,6 +108,7 @@
                         android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
+                        android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -136,10 +144,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableStart="@drawable/baseline_business_24"
                         android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
+                        android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -175,10 +183,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableStart="@drawable/baseline_code_24"
                         android:drawableTint="@color/colorPrimary"
                         android:fontFamily="@font/poppins"
                         android:text="TextView"
+                        android:textColor="#000000"
                         android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -193,23 +201,23 @@
                     android:id="@+id/editProfile"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_login"
                     android:fontFamily="@font/poppins"
                     android:text="Edit Profile"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_login" />
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/logout"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_login"
                     android:fontFamily="@font/poppins"
                     android:text="Logout"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_login" />
+                    android:textColor="@color/white" />
             </LinearLayout>
 
         </LinearLayout>

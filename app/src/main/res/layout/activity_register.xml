@@ -4,36 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FEFEFE"
+    android:background="#3663BAFF"
     tools:context="Worker.Register">
 
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="416dp"
-        android:layout_height="437dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/regworkerbg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="226dp"
-        android:layout_height="171dp"
-        android:layout_marginTop="194dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/regworkerbg2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/number"
@@ -47,7 +20,7 @@
         android:ems="10"
         android:hint="Mobile No."
         android:inputType="phone"
-        android:paddingStart="10dp"
+        android:paddingStart="15dp"
         android:textColor="#000000"
         android:textColorHint="#888888"
         android:textSize="24sp"
@@ -87,7 +60,7 @@
         android:ems="10"
         android:hint="Full Name"
         android:inputType="textPersonName"
-        android:paddingStart="10dp"
+        android:paddingStart="15dp"
         android:textColor="#000000"
         android:textColorHint="#888888"
         android:textSize="24sp"
@@ -108,7 +81,6 @@
         android:text="Register"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
         android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -129,7 +101,7 @@
         android:ems="10"
         android:hint="Invite code"
         android:inputType="textPersonName"
-        android:paddingStart="10dp"
+        android:paddingStart="15dp"
         android:textAllCaps="true"
         android:textColorHint="#888888"
         android:textSize="24sp"
