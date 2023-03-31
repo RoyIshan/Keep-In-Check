@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ public class WorkerGiveAttendance extends AppCompatActivity {
     String task,vcode,id;
     TextView taskName,deadline,cAddress,cNumber;
     EditText code;
-    Button button;
+    ImageButton button;
     Long status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
