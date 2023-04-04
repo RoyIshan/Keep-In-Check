@@ -27,6 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".Worker.WorkerGiveAttendance"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".Worker.WorkerProfile"

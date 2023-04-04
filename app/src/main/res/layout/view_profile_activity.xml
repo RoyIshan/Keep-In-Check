@@ -203,25 +203,29 @@
 
                 <Button
                     android:id="@+id/editProfile"
-                    android:layout_width="150dp"
+                    android:layout_width="163dp"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
                     android:background="@drawable/rounded_corner_bg"
                     android:fontFamily="@font/poppins"
                     android:text="Edit Profile"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:icon="@android:drawable/ic_menu_edit"
+                    app:iconPadding="10dp"
+                    app:iconSize="20dp" />
 
                 <Button
                     android:id="@+id/logout"
-                    android:layout_width="150dp"
+                    android:layout_width="163dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rounded_corner_bg"
                     android:fontFamily="@font/poppins"
                     android:text="Logout"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    app:icon="@drawable/ic_exit"
+                    app:iconPadding="10dp"
+                    app:iconSize="20dp" />
             </LinearLayout>
 
         </LinearLayout>

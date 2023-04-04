@@ -115,7 +115,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:elegantTextHeight="true"
         android:elevation="5dp"
-        android:fontFamily="@font/poppins"
+        android:fontFamily="@font/poppins_semibold"
         android:padding="10dp"
         android:text="Sign In"
         android:textColor="@color/white"

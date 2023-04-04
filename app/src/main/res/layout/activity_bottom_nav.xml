@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/rounded_bottom_navbg"
-        app:backgroundTint="#EEE5F4FF"
+        app:backgroundTint="#E8F5FF"
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

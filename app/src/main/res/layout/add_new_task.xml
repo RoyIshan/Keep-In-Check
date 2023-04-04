@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/rounded_corner_bg"
     android:backgroundTint="#D8EEFF"
+    android:clipToOutline="true"
+    android:clipToPadding="true"
     android:padding="17dp"
     android:transitionName="Select Worker"
     tools:context=".Owner.AddNewTask">
