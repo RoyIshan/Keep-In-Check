@@ -12,18 +12,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_radius"
-        android:orientation="vertical">
+        android:background="@drawable/rounded_corner_bg"
+        android:backgroundTint="#48cae4"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:paddingTop="70dp"
+            android:background="#497DCC"
             android:fontFamily="@font/faster_one"
             android:gravity="center_horizontal"
-            android:text="Job   details"
-            android:background="#497DCC"
+            android:paddingTop="70dp"
+            android:text="Job  Details"
             android:textColor="#EDEDED"
             android:textSize="34sp" />
 
@@ -31,11 +33,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="15dp"
             android:background="#0077b6"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,90 +45,92 @@
                 android:text="Task : "
                 android:textColor="#FFFFFF"
                 android:textSize="25dp" />
+
             <TextView
                 android:id="@+id/taskName"
                 android:layout_width="wrap_content"
-                android:textColor="#FFFFFF"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
                 android:layout_weight="1"
-                />
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="15dp"
             android:background="#0096c7"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:textColor="#FFFFFF"
                 android:text="Customer's : \n Number"
-                />
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
+
             <TextView
                 android:id="@+id/number"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textColor="#FFFFFF"
-                android:textSize="25dp"
-                android:layout_weight="1"
-                />
+                android:textSize="25dp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00b4d8"
-            android:paddingTop="15dp"
+            android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingBottom="15dp"
-            android:orientation="horizontal">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:text="Deadline : "
                 android:textColor="#FFFFFF"
-                android:text="Deadline : "/>
+                android:textSize="25dp" />
+
             <TextView
                 android:id="@+id/deadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
-                android:textSize="25dp"
                 android:layout_weight="1"
-                />
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#48cae4"
-            android:paddingTop="15dp"
+            android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingBottom="15dp"
-            android:orientation="horizontal">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:textColor="#FFFFFF"
                 android:text="Customer's : \n Address"
-                />
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
+
             <TextView
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textColor="#FFFFFF"
-                android:textSize="25dp"
-                android:layout_weight="1"
-                />
+                android:textSize="25dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -139,8 +143,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_radius"
+        android:background="@drawable/rounded_corner_bg"
 
+        android:backgroundTint="#48cae4"
         android:orientation="vertical">
 
         <TextView
@@ -148,17 +153,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/faster_one"
+            android:text="Give  Attendance"
             android:textColor="#FFFFFF "
-            android:text="Give    Attendance"
             android:textSize="34sp" />
+
         <Space
             android:layout_width="match_parent"
-            android:layout_height="30dp" />
+            android:layout_height="15dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <EditText
                 android:id="@+id/code"
@@ -180,17 +187,13 @@
 
             <ImageButton
                 android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:background="@drawable/circlebutton"
+                android:background="@drawable/rounded_corner_bg"
+                android:backgroundTint="#3F51B5"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/baseline_arrow_forward_24" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
         </LinearLayout>
     </LinearLayout>

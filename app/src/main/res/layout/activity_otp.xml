@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2C67CEFB"
+    android:background="#EBF9FF"
     tools:context="Worker.Otp">
 
     <ImageView
@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/OTP"
-        android:layout_width="282dp"
+        android:layout_width="270dp"
         android:layout_height="58dp"
         android:autofillHints=""
         android:background="@drawable/input"
