@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@drawable/round_corner"
-        android:backgroundTint="#4F58BFF8"
+        android:backgroundTint="#049BEE"
         android:orientation="vertical">
 
         <ImageView
@@ -19,9 +19,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:elevation="20dp"
             android:padding="70dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/oregistericon" />
+            app:srcCompat="@drawable/ownericon"
+            app:tint="#FFFCFC" />
     </LinearLayout>
 
     <RelativeLayout
@@ -206,6 +208,7 @@
                     android:layout_width="163dp"
                     android:layout_height="50dp"
                     android:background="@drawable/rounded_corner_bg"
+                    android:backgroundTint="@color/colorPrimary"
                     android:fontFamily="@font/poppins"
                     android:text="Edit Profile"
                     android:textColor="@color/white"
@@ -220,6 +223,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rounded_corner_bg"
+                    android:backgroundTint="@color/colorPrimary"
                     android:fontFamily="@font/poppins"
                     android:text="Logout"
                     android:textColor="@color/white"

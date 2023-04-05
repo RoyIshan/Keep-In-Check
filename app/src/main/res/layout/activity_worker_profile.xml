@@ -10,17 +10,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:orientation="vertical"
-        android:background="@drawable/round_corner">
+        android:background="@drawable/round_corner"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="70dp"
-            android:scaleType="center"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:elevation="20dp"
+            android:padding="80dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/workericon" />
     </LinearLayout>
 
     <RelativeLayout

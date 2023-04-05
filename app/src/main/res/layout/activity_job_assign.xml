@@ -15,7 +15,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:background="#3760B9FF"
+        android:background="#4A60B9FF"
         android:elegantTextHeight="true"
         android:paddingTop="15dp"
         android:text="Assigned Jobs"

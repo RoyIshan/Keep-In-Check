@@ -1,12 +1,10 @@
 package com.trystar.keepincheck.Attendance;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,7 +36,6 @@ public class OwnerViewAttendance extends AppCompatActivity {
 
         adapter = new MyListAdapter(this, items);
 
-        Toast.makeText(OwnerViewAttendance.this,"name :"+name,Toast.LENGTH_SHORT).show();
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
         db.collection("task")
@@ -63,11 +60,8 @@ public class OwnerViewAttendance extends AppCompatActivity {
                                 else{
                                     items.add(new MyItem(date, "Absent"));
                                 }
-                                Toast.makeText(OwnerViewAttendance.this,"name :"+status,Toast.LENGTH_SHORT).show();
                                 attendanceView.setAdapter(adapter);
                             }
-                        } else {
-
                         }
                     }
                 });

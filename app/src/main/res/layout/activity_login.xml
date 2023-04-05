@@ -4,42 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#7DFBE9"
     android:orientation="vertical"
-    android:background="#F0F4F3"
     tools:context=".login">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/shape" />
+        android:src="@drawable/shape"
+        app:tint="#006BCA" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins"
         android:text="Welcome Back!"
-        android:layout_marginTop="20dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/kic_logo"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
-        android:layout_gravity="center_horizontal"/>
+        android:src="@drawable/kic_logo" />
 
     <EditText
         android:id="@+id/number_login"
-        android:layout_width="320dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
         android:background="@drawable/input"
+        android:backgroundTint="#B8FFF4"
         android:fontFamily="@font/poppins"
-        android:hint="Enter your mobile number"
+        android:hint="Enter Your Mobile Number"
         android:inputType="phone"
         android:textAlignment="center" />
 
@@ -47,34 +49,38 @@
         android:id="@+id/btn_login"
         android:layout_width="220dp"
         android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins"
+        android:background="@drawable/rounded_corner_bg"
+        android:backgroundTint="#070707"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Login"
         android:textColor="@color/white"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/btn_login"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:fontFamily="@font/poppins"
-            android:text="Don't have an account?"/>
+            android:text="Don't have an account?"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/btn_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/poppins_semibold"
             android:text=" Sign Up"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#001BB3"
             android:textStyle="bold" />
 
     </LinearLayout>
