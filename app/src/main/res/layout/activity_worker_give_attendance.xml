@@ -17,17 +17,36 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#497DCC"
-            android:fontFamily="@font/faster_one"
-            android:gravity="center_horizontal"
-            android:paddingTop="70dp"
-            android:text="Job  Details"
-            android:textColor="#EDEDED"
-            android:textSize="34sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_corner_bg"
+            android:backgroundTint="#497DCC"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_bg"
+                android:backgroundTint="#497DCC"
+                android:fontFamily="@font/faster_one"
+                android:gravity="center"
+                android:paddingTop="35dp"
+                android:paddingBottom="15dp"
+                android:text="Job  Details"
+                android:textColor="#EDEDED"
+                android:textSize="34sp" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#497DCC"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/workericon" />
+        </LinearLayout>
 
 
         <LinearLayout
@@ -42,6 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
                 android:text="Task : "
                 android:textColor="#FFFFFF"
                 android:textSize="25dp" />
@@ -51,8 +71,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
+                android:textAllCaps="true"
                 android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
@@ -68,7 +91,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Customer's : \n Number"
+                android:fontFamily="@font/poppins"
+                android:text="Contact No. :  "
                 android:textColor="#FFFFFF"
                 android:textSize="25dp" />
 
@@ -77,9 +101,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
                 android:gravity="center_vertical"
                 android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,6 +120,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
                 android:text="Deadline : "
                 android:textColor="#FFFFFF"
                 android:textSize="25dp" />
@@ -103,8 +130,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
                 android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -119,7 +148,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Customer's : \n Address"
+                android:fontFamily="@font/poppins"
+                android:text="Location :  "
                 android:textColor="#FFFFFF"
                 android:textSize="25dp" />
 
@@ -128,9 +158,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins_semibold"
                 android:gravity="center_vertical"
                 android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
@@ -152,14 +184,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/faster_one"
-            android:text="Give  Attendance"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Give Attendance"
             android:textColor="#FFFFFF "
-            android:textSize="34sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,15 +199,16 @@
 
             <EditText
                 android:id="@+id/code"
-                android:layout_width="200dp"
+                android:layout_width="280dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
                 android:background="@drawable/input"
                 android:backgroundTint="#DDE8F1"
                 android:ems="10"
+                android:fontFamily="@font/poppins_semibold"
                 android:gravity="center"
                 android:hint="Enter Code"
                 android:inputType="textPersonName"
+                android:padding="3dp"
                 android:textAllCaps="true"
                 android:textColor="#000000"
                 android:textColorHint="#A3A3A3"
@@ -187,11 +218,11 @@
 
             <ImageButton
                 android:id="@+id/button"
-                android:layout_width="20dp"
+                android:layout_width="85dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
                 android:background="@drawable/rounded_corner_bg"
-                android:backgroundTint="#3F51B5"
+                android:backgroundTint="#497DCB"
+                android:padding="3dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/baseline_arrow_forward_24" />
 

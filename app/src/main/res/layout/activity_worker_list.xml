@@ -17,6 +17,8 @@
         android:backgroundTint="#79CFF8"
         android:divider="@null"
         android:dividerHeight="0dp"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
         android:paddingTop="15dp"
         android:paddingBottom="15dp" />
 

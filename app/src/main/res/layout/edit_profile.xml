@@ -18,8 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="70dp"
-            android:scaleType="center"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/ownericon" />
     </LinearLayout>
 
     <RelativeLayout
@@ -207,19 +207,17 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
                     android:text="Submit"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_login" />
+                    android:textColor="@color/white" />
 
                 <Button
                     android:id="@+id/goHome"
                     android:layout_width="150dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
                     android:text="Go Back"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_login"/>
+                    android:textColor="@color/white" />
             </LinearLayout>
 
         </LinearLayout>

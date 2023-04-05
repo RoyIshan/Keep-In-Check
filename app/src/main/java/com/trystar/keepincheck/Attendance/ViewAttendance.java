@@ -5,10 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,7 +40,6 @@ public class ViewAttendance extends Fragment {
 
         adapter = new MyListAdapter(getContext(), items);
 
-        Toast.makeText(getContext(),"name :"+name,Toast.LENGTH_SHORT).show();
         FirebaseFirestore db;
         db = FirebaseFirestore.getInstance();
         db.collection("task")
@@ -67,7 +64,6 @@ public class ViewAttendance extends Fragment {
                                 else{
                                     items.add(new MyItem(date, "Absent"));
                                 }
-                                Toast.makeText(getContext(),"name :"+status,Toast.LENGTH_SHORT).show();
                                 attendanceView.setAdapter(adapter);
                             }
                         }
