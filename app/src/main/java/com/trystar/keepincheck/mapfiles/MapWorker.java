@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapWorker extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     Map<String, Object> user = new HashMap<>();
@@ -67,7 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mobile = user.getPhoneNumber();
         }
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Owner detail")
+        db.collection("Worker detail")
                 .whereEqualTo("Phone Number",mobile)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -84,56 +84,56 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                             @Override
                                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                                 if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                phone=document.getString("Phone Number");
-                                DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child(phone);
-                                reff.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        try {
-                                            name = document.getString("Name");
-                                            latitude = snapshot.child("latitude").getValue(Double.class);
-                                            longitude = snapshot.child("longitude").getValue(Double.class);
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                        phone=document.getString("Phone Number");
+                                                        DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child(phone);
+                                                        reff.addValueEventListener(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                try {
+                                                                    name = document.getString("Name");
+                                                                    latitude = snapshot.child("latitude").getValue(Double.class);
+                                                                    longitude = snapshot.child("longitude").getValue(Double.class);
 
-                                            Toast.makeText(MapsActivity.this,"vasu"+latitude+longitude,Toast.LENGTH_SHORT).show();
+                                                                    Toast.makeText(MapWorker.this,"vasu"+latitude+longitude,Toast.LENGTH_SHORT).show();
 
-                                            Locationlist.add(new Location(name, new LatLng(latitude, longitude)));
-                                            //list=getLocationList();
-                                            initMarkers();
-                                            viewPagerAdapter= new ViewPagerAdapter(getSupportFragmentManager(),Locationlist);
-                                            viewPager.setAdapter(viewPagerAdapter);
-                                            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                                                @Override
-                                                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                                                                    Locationlist.add(new Location(name, new LatLng(latitude, longitude)));
+                                                                    //list=getLocationList();
+                                                                    initMarkers();
+                                                                    viewPagerAdapter= new ViewPagerAdapter(getSupportFragmentManager(),Locationlist);
+                                                                    viewPager.setAdapter(viewPagerAdapter);
+                                                                    viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                                                                        @Override
+                                                                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                                                }
+                                                                        }
 
-                                                @Override
-                                                public void onPageSelected(int position) {
-                                                    updateView(position);
+                                                                        @Override
+                                                                        public void onPageSelected(int position) {
+                                                                            updateView(position);
 
-                                                }
+                                                                        }
 
-                                                @Override
-                                                public void onPageScrollStateChanged(int state) {
+                                                                        @Override
+                                                                        public void onPageScrollStateChanged(int state) {
 
-                                                }
-                                            });
+                                                                        }
+                                                                    });
 
-                                        }
-                                        catch (Exception e)
-                                        {
-                                            Toast.makeText(MapsActivity.this,e.getMessage(), LENGTH_LONG).show();
-                                        }
-                                    }
+                                                                }
+                                                                catch (Exception e)
+                                                                {
+                                                                    Toast.makeText(MapWorker.this,e.getMessage(), LENGTH_LONG).show();
+                                                                }
+                                                            }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-                                        Toast.makeText(MapsActivity.this,"Data not Found", LENGTH_LONG).show();
-                                    }
-                                });
-                            }
-                        }           else {
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError error) {
+                                                                Toast.makeText(MapWorker.this,"Data not Found", LENGTH_LONG).show();
+                                                            }
+                                                        });
+                                                    }
+                                                }           else {
                                                 }}});
                             }
                         }
@@ -187,7 +187,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
-//view pager for scrolling
+    //view pager for scrolling
     private void updateView(int position) {
         markerList.get(position).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_selected));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(Locationlist.get(position).getLatLng(), 15));
@@ -196,7 +196,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markerList.get(oldPosition).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_unselected));
         oldPosition = position;
     }
-//location markers
+    //location markers
     private void initMarkers() {
 
         for (int i = 0; i < Locationlist.size(); i++) {
@@ -217,9 +217,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //change it to worker location
 //    public void getLocationList() {
 
-  //      Locationlist.add(new Location(phone, new LatLng(latitude, longitude)));
+    //      Locationlist.add(new Location(phone, new LatLng(latitude, longitude)));
 
-  //  }
+    //  }
 
 
 }

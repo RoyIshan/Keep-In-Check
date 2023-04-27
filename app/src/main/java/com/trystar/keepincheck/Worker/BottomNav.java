@@ -28,6 +28,7 @@ import com.trystar.keepincheck.Attendance.ViewAttendance;
 import com.trystar.keepincheck.R;
 import com.trystar.keepincheck.login;
 import com.trystar.keepincheck.mapfiles.LocationHelper;
+import com.trystar.keepincheck.mapfiles.MapWorker;
 import com.trystar.keepincheck.mapfiles.MapsActivity;
 
 public class BottomNav extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, LocationListener {
@@ -119,7 +120,7 @@ public class BottomNav extends AppCompatActivity implements BottomNavigationView
                 return true;
 
             case R.id.item4:
-                startActivity(new Intent(BottomNav.this, MapsActivity.class));
+                startActivity(new Intent(BottomNav.this, MapWorker.class));
                 return true;
 
             case R.id.item5:

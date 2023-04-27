@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -25,6 +28,7 @@ public class WorkerList extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     FirebaseFirestore db;
 
+    String iCode,mobile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +39,39 @@ public class WorkerList extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this,
                 R.layout.workerlist_resource, R.id.textView2,new ArrayList<String>());
         wList.setAdapter(adapter);
-        db.collection("Worker detail")
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            mobile = user.getPhoneNumber();
+            Toast.makeText(WorkerList.this,mobile,Toast.LENGTH_SHORT).show();
+        }
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Owner detail")
+                .whereEqualTo("Phone Number",mobile)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                adapter.add(document.getString("Name"));
-                            }
-                        } else {
+                                String companyCode;
+                                companyCode= document.getString("Invite Code");
+                                db.collection("Worker detail")
+                                        .whereEqualTo("Invite Code",companyCode)
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                        adapter.add(document.getString("Name"));
+                                                    }
+                                                } else {
 
+                                                }
+                                            }
+                                        });
+                            }
                         }
                     }
                 });
